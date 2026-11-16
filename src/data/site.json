@@ -8,7 +8,7 @@
     "description": "Portfolio of Mila Parsec, graphic and brand designer."
   },
   "about": {
-    "photo": "https://framerusercontent.com/images/KK3IoS3Ptw5ZyLYW2o3RasyB8.jpg",
+    "photo": "/media/KK3IoS3Ptw5ZyLYW2o3RasyB8.jpg",
     "rows": [
       { "label": "What I do", "text": "I help brands find clarity and express it through strong, thoughtful design." },
       { "label": "My background", "text": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond." },
@@ -28,7 +28,7 @@
     "intro": "Let’s create something meaningful together. I’d love to hear about your project, big or small.",
     "email": "hi@jorge.com",
     "phone": "+52 55 7391 2486",
-    "photo": "https://framerusercontent.com/images/HFh5kLnilRLgrC1PZNvmx0PRRA.jpg",
+    "photo": "/media/HFh5kLnilRLgrC1PZNvmx0PRRA.jpg",
     "socials": [
       { "name": "Instagram", "url": "https://www.instagram.com/ludoviclosco/" },
       { "name": "Threads", "url": "https://www.threads.com/@ludoviclosco" },
