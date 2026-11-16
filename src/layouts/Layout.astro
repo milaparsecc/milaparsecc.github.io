@@ -50,7 +50,7 @@ const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
           </nav>
         </div>
         <div class="nav__right">
-          <a class="nav__cta" href={`${base}/contact`}>Contact</a>
+          <a class="nav__cta" href={`${base}/contact`}>Get in touch</a>
           <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
             <span class="nav__toggle-open">Menu</span>
             <span class="nav__toggle-close">Close</span>
@@ -61,7 +61,7 @@ const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
         {nav.map((l) => (
           <a href={`${base}${l.href}`} class="nav__mobile-link">{l.label}</a>
         ))}
-        <a href={`${base}/contact`} class="nav__mobile-link">Contact</a>
+        <a href={`${base}/contact`} class="nav__mobile-link">Get in touch</a>
       </div>
     </header>
 
