@@ -22,7 +22,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (`homeCategory` in `src/pages/index.astro`), no "All works" button there; /works keeps "All works".
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
-- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, serif 26px). Lead = `task`, or `tagline`
+- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `task`, or `tagline`
   if no task. "More information +" expands: Services/Client/Location/Year, Info (`description`), Solution, live link.
 - `task`, `solution` — same text format as description. Empty fields are hidden.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
@@ -45,7 +45,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 
 ## Design consistency (check before every change)
 - Type scale is defined at the top of `src/styles/global.css` — never introduce new sizes.
-  Body text 18px everywhere (incl. hero intro), uppercase UI 16px, labels 14px.
+  Body text 18px everywhere (incl. hero intro), uppercase UI 16px, labels 14px, project lead 26px Inter.
+  Serif (Instrument Serif) only for headings/names — never for running text.
 - Spacing: multiples of 4/8; card gaps 20px; page margins 40px (20px on phones).
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 

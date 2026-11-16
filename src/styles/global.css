@@ -14,7 +14,9 @@
 
   /* Type scale — use only these sizes:
      serif: 132 (hero name) / 80 (page title) / 56 (section title) / 26 (card title)
-     sans:  18 body / 16 uppercase UI (links, buttons, nav) / 14 uppercase labels */
+     sans:  26 lead (project intro) / 18 body / 16 uppercase UI (links, buttons, nav) / 14 uppercase labels
+     Rule: serif only for headings and names; every running text is Inter. */
+  --fs-lead: 26px; /* intro text on project pages (Inter) */
   --fs-body: 18px;
   --fs-ui: 16px;
   --fs-label: 14px;

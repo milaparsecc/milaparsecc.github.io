@@ -148,11 +148,11 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   .project__body {
     max-width: 760px;
   }
+  /* Lead: same family as all body text (Inter), only larger — serif stays for headings */
   .project__lead {
-    font-family: var(--font-serif);
-    font-size: 26px; /* card-title size from the type scale */
+    font-size: var(--fs-lead);
     line-height: 1.25;
-    letter-spacing: 0;
+    letter-spacing: -0.04em;
     text-wrap: pretty;
   }
   .project__lead :global(p + p) { margin-top: 0.8em; }
