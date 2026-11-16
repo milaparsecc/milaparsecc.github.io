@@ -44,8 +44,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 
 ## Hero
-- Left half (desktop) / top block (mobile): `hero.image`, or `hero.video` if set (MP4, autoplay muted loop;
-  the image is used as the poster). Keep the video 4:5, ~1440×1800, H.264, no sound, under ~5 MB.
+- Left half (desktop) / top block (mobile): `hero.video` (+ `videoMobile`, `videoPoster`) if set, else `hero.image`.
+  Current reel: 11 works × 0.6 s, 4:5, 1080×1350 (desktop) / 720×900 (mobile), H.264 no audio, built with ffmpeg
+  (center 4:5 crops; poster = first frame). Keep desktop under ~4 MB, mobile under ~1.5 MB.
 
 ## Fonts
 - Google Fonts: Instrument Serif, Inter (loaded in `src/layouts/Layout.astro`).

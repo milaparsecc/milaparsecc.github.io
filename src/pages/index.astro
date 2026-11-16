@@ -14,7 +14,10 @@ const featured = works.filter((w) => w.showOnHomepage);
   <section class="hero">
     <div class="hero__photo">
       {site.hero.video ? (
-        <video src={media(site.hero.video)} poster={media(site.hero.image)} autoplay muted loop playsinline aria-label={site.hero.imageAlt} />
+        <video poster={media(site.hero.videoPoster || site.hero.image)} autoplay muted loop playsinline preload="auto" aria-label="Selected works by Mila Parsec">
+          {site.hero.videoMobile && <source src={media(site.hero.videoMobile)} type="video/mp4" media="(max-width: 809.98px)" />}
+          <source src={media(site.hero.video)} type="video/mp4" />
+        </video>
       ) : (
         <img src={media(site.hero.image)} alt={site.hero.imageAlt} fetchpriority="high" />
       )}
