@@ -22,6 +22,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (`homeCategory` in `src/pages/index.astro`), no "All works" button there; /works keeps "All works".
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
+- `task`, `solution` — Behance-style "Task / Solution" block under the info block (same text format). Hidden when empty.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
 - `gallery` — images/videos shown on the project page, in order (`.mp4` plays as video).
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.

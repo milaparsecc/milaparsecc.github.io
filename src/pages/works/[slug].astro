@@ -69,6 +69,23 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
       </div>
     )}
 
+    {(work.task || work.solution) && (
+      <div class="project__case">
+        {work.task && (
+          <div>
+            <p class="small-upper">Task</p>
+            <div class="rich" set:html={richText(work.task)} />
+          </div>
+        )}
+        {work.solution && (
+          <div>
+            <p class="small-upper">Solution</p>
+            <div class="rich" set:html={richText(work.solution)} />
+          </div>
+        )}
+      </div>
+    )}
+
     <div class="project__gallery">
       {work.gallery.map((src) =>
         isVideo(src) ? (
@@ -131,6 +148,20 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     margin-top: 24px;
     font-size: var(--fs-ui);
   }
+  .project__info:has(+ .project__case) { padding-bottom: 60px; }
+  /* Task / Solution — same two columns as the info block above */
+  .project__case {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 0 80px;
+  }
+  .project__case > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 560px;
+  }
   .project__gallery {
     display: flex;
     flex-direction: column;
@@ -147,6 +178,8 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   }
   @media (max-width: 809.98px) {
     .project__info { grid-template-columns: 1fr; padding: 40px 0 48px; }
+    .project__case { grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; }
+    .project__info:has(+ .project__case) { padding-bottom: 32px; }
     .next-grid { grid-template-columns: 1fr; }
   }
 </style>
