@@ -1,44 +1,38 @@
 [
   {
-    "title": "Art Direction",
-    "slug": "art-direction",
-    "description": "I provide creative leadership to ensure your brand’s visuals, photography, and campaigns align beautifully with your identity, guiding every detail for a cohesive, polished result.",
-    "image": "/media/il2xuEmA8CeQHcLSG1SjZpTDys.jpg"
-  },
-  {
-    "title": "Brand Strategy",
-    "slug": "brand-strategy",
-    "description": "I help uncover your brand’s unique position in the market, define your audience, craft a clear message, and lay the foundation for a compelling visual identity.",
-    "image": "/media/NttmaohG1P69PNzRiBuwFbwDw0.webp"
-  },
-  {
-    "title": "Digital",
-    "slug": "digital",
-    "description": "I provide visual direction and custom designs for your website or online store, ensuring your digital presence feels seamless, engaging, and on-brand.",
-    "image": "/media/SKwLwQq84WnB5bDrgWBresonBtw.jpg"
-  },
-  {
-    "title": "Illustration",
-    "slug": "illustration",
-    "description": "",
-    "image": ""
-  },
-  {
-    "title": "Marketing Materials",
-    "slug": "marketing-materials",
-    "description": "I design all the materials you need to communicate with your audience, from sleek business cards and brochures to social media graphics and marketing assets.",
-    "image": "/media/MVF4o0NaWQhCbJN7HDqJdoa8bs.webp"
-  },
-  {
-    "title": "Packaging",
-    "slug": "packaging",
-    "description": "I create thoughtful, eye-catching packaging that not only protects your product but tells a story, making sure every unboxing moment feels memorable.",
-    "image": "/media/G7F5lBUTxyEcvIEObsURpkAAN4c.jpg"
-  },
-  {
     "title": "Visual Identity",
     "slug": "visual-identity",
     "description": "From logos and typography to colors and brand systems, I design distinctive visual identities that bring your brand’s personality to life across every touchpoint.",
     "image": "/media/gZRefHMvIF3jVM7Pv72QUN0.jpg"
+  },
+  {
+    "title": "Social Media Design",
+    "slug": "social-media-design",
+    "description": "I create cohesive social media visuals, from post templates and stories to campaign graphics, so your brand looks consistent and recognizable in every feed.",
+    "image": "/media/MVF4o0NaWQhCbJN7HDqJdoa8bs.webp"
+  },
+  {
+    "title": "Packaging & Print",
+    "slug": "packaging-print",
+    "description": "I design packaging and printed materials that tell your story, from boxes and labels to business cards, posters, and brochures, with every detail ready for production.",
+    "image": "/media/G7F5lBUTxyEcvIEObsURpkAAN4c.jpg"
+  },
+  {
+    "title": "Web Design",
+    "slug": "web-design",
+    "description": "I design websites and online stores that feel seamless, engaging, and on-brand, with clear structure and thoughtful details on every screen.",
+    "image": "/media/SKwLwQq84WnB5bDrgWBresonBtw.jpg"
+  },
+  {
+    "title": "AI Visuals",
+    "slug": "ai-visuals",
+    "description": "I use AI tools to create campaign imagery, product scenes, and visual concepts, art-directed by hand so the results stay consistent with your brand.",
+    "image": "/media/il2xuEmA8CeQHcLSG1SjZpTDys.jpg"
+  },
+  {
+    "title": "Spaces & Events",
+    "slug": "spaces-events",
+    "description": "I bring brands into physical spaces, from signage and interiors to festival and event identities, so the experience feels as considered offline as it does online.",
+    "image": "/media/NttmaohG1P69PNzRiBuwFbwDw0.webp"
   }
 ]
