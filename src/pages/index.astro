@@ -97,8 +97,11 @@ const featured = works.filter((w) => w.showOnHomepage);
 </Layout>
 
 <script>
+  // Mouse: descriptions open on hover (CSS). Touch screens have no hover, so a tap toggles them.
+  const touch = window.matchMedia("(hover: none)").matches;
   document.querySelectorAll<HTMLButtonElement>(".service").forEach((card) => {
     card.addEventListener("click", () => {
+      if (!touch) return;
       const open = card.getAttribute("aria-expanded") === "true";
       card.setAttribute("aria-expanded", String(!open));
     });
@@ -243,8 +246,9 @@ const featured = works.filter((w) => w.showOnHomepage);
     font: inherit;
     letter-spacing: inherit;
     text-align: left;
-    cursor: pointer;
+    cursor: default;
   }
+  @media (hover: none) { .service { cursor: pointer; } }
   .service img {
     position: absolute;
     inset: 0;
@@ -283,11 +287,15 @@ const featured = works.filter((w) => w.showOnHomepage);
   }
   .service__plus::before { left: 0; right: 0; top: 50%; height: 1px; }
   .service__plus::after { top: 0; bottom: 0; left: 50%; width: 1px; }
-  .service[aria-expanded="true"] .service__plus { transform: rotate(45deg); }
+  .service[aria-expanded="true"] .service__plus, .service:hover .service__plus, .service:focus-visible .service__plus { transform: rotate(45deg); }
   .service[aria-expanded="true"] .service__head,
+  .service:hover .service__head,
+  .service:focus-visible .service__head,
   .service:not(:has(img)) .service__head { color: var(--text); }
   .service__head { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25); }
   .service[aria-expanded="true"] .service__head,
+  .service:hover .service__head,
+  .service:focus-visible .service__head,
   .service:not(:has(img)) .service__head { text-shadow: none; }
 
   .service__desc {
@@ -301,12 +309,14 @@ const featured = works.filter((w) => w.showOnHomepage);
     opacity: 0;
     transition: opacity 0.35s;
   }
-  .service[aria-expanded="true"] .service__desc {
+  .service[aria-expanded="true"] .service__desc,
+  .service:hover .service__desc,
+  .service:focus-visible .service__desc {
     opacity: 1;
   }
   .service { background: var(--bg); }
   .service img { transition: transform 0.6s var(--ease), opacity 0.35s; }
-  .service[aria-expanded="true"] img { opacity: var(--fade-to); }
+  .service[aria-expanded="true"] img, .service:hover img, .service:focus-visible img { opacity: var(--fade-to); }
 
   .about {
     display: grid;
