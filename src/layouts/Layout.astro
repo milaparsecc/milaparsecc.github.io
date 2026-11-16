@@ -11,12 +11,11 @@ const pageTitle = title ? `${title} — ${site.name}` : site.seo.title;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const path = Astro.url.pathname.replace(base, "") || "/";
 const nav = [
-  { label: "Home", href: "/" },
   { label: "Works", href: "/works" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
 ];
-const isActive = (href: string) =>
-  href === "/" ? path === "/" : path.startsWith(href);
+const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
 ---
 
 <!doctype html>
@@ -40,24 +39,29 @@ const isActive = (href: string) =>
   <body>
     <header class="nav" data-open="false">
       <div class="nav__bar container">
-        <a class="nav__logo" href={`${base}/`}>{site.logo}</a>
-        <nav class="nav__links" aria-label="Main">
-          {nav.map((l) => (
-            <a href={`${base}${l.href}`} class:list={["nav__link", { "is-active": isActive(l.href) }]}>
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <span class="nav__clock" data-clock data-location={site.location}>{site.location}</span>
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="nav__toggle-open">Menu</span>
-          <span class="nav__toggle-close">Close</span>
-        </button>
+        <div class="nav__left">
+          <a class="nav__logo" href={`${base}/`} style={`font-family: "${site.fonts.signatureFamily}", cursive`}>{site.logo}</a>
+          <nav class="nav__links" aria-label="Main">
+            {nav.map((l) => (
+              <a href={`${base}${l.href}`} class:list={["nav__link", { "is-active": isActive(l.href) }]}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+        <div class="nav__right">
+          <a class="nav__cta" href={`${base}/contact`}>Contact</a>
+          <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="nav__toggle-open">Menu</span>
+            <span class="nav__toggle-close">Close</span>
+          </button>
+        </div>
       </div>
       <div class="nav__mobile" id="mobile-menu">
         {nav.map((l) => (
           <a href={`${base}${l.href}`} class="nav__mobile-link">{l.label}</a>
         ))}
+        <a href={`${base}/contact`} class="nav__mobile-link">Contact</a>
       </div>
     </header>
 
@@ -83,30 +87,21 @@ const isActive = (href: string) =>
     </footer>
 
     <script>
-      // Live clock in the navigation
-      const clock = document.querySelector<HTMLElement>("[data-clock]");
-      if (clock) {
-        const tick = () => {
-          clock.textContent = new Date().toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          });
-        };
-        tick();
-        setInterval(tick, 1000);
-      }
+      // Solid background once the page is scrolled
+      const header = document.querySelector<HTMLElement>(".nav");
+      const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 10);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
 
       // Mobile menu
-      const header = document.querySelector<HTMLElement>(".nav");
       const toggle = document.querySelector<HTMLButtonElement>(".nav__toggle");
-      toggle?.addEventListener("click", () => {
-        const open = header?.dataset.open === "true";
-        header!.dataset.open = String(!open);
-        toggle.setAttribute("aria-expanded", String(!open));
-        document.body.style.overflow = open ? "" : "hidden";
-      });
-
+      const setOpen = (open: boolean) => {
+        header!.dataset.open = String(open);
+        toggle?.setAttribute("aria-expanded", String(open));
+        document.body.style.overflow = open ? "hidden" : "";
+      };
+      toggle?.addEventListener("click", () => setOpen(header?.dataset.open !== "true"));
+      document.querySelectorAll(".nav__mobile-link").forEach((a) => a.addEventListener("click", () => setOpen(false)));
       // Fade-in on scroll
       const io = new IntersectionObserver(
         (entries) => {

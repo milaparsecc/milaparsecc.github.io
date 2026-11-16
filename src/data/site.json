@@ -1,6 +1,6 @@
 {
   "name": "Mila Parsec",
-  "logo": "Parsec©",
+  "logo": "Parsec",
   "role": "Graphic & brand designer",
   "location": "CDMX",
   "seo": {
@@ -66,7 +66,7 @@
     "copyright": "©2026"
   },
   "fonts": {
-    "adobeKitId": "",
+    "adobeKitId": "pgl2jww",
     "signatureFamily": "adobe-handwriting-ernie"
   }
 }
