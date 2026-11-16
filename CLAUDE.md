@@ -37,6 +37,12 @@ explain them in plain language (she writes in Russian), and never leave the buil
 2. Commit to `main` with a short message → GitHub Actions deploys to GitHub Pages automatically (~1–2 min).
 3. Tell the owner what changed and where to look.
 
+## Design consistency (check before every change)
+- Type scale is defined at the top of `src/styles/global.css` — never introduce new sizes.
+  Body text 18px everywhere (incl. hero intro), uppercase UI 16px, labels 14px.
+- Spacing: multiples of 4/8; card gaps 20px; page margins 40px (20px on phones).
+- After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
+
 ## Hero
 - Left half (desktop) / top block (mobile): `hero.image`, or `hero.video` if set (MP4, autoplay muted loop;
   the image is used as the poster). Keep the video 4:5, ~1440×1800, H.264, no sound, under ~5 MB.

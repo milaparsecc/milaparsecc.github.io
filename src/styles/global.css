@@ -11,6 +11,13 @@
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
 
+  /* Type scale — use only these sizes:
+     serif: 132 (hero name) / 80 (page title) / 56 (section title) / 26 (card title)
+     sans:  18 body / 16 uppercase UI (links, buttons, nav) / 14 uppercase labels */
+  --fs-body: 18px;
+  --fs-ui: 16px;
+  --fs-label: 14px;
+
   --pad-x: 40px;
   --section-y: 100px;
   --gap: 8px;
@@ -38,7 +45,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: var(--fs-body);
   line-height: 1.2;
   letter-spacing: -0.04em;
   -webkit-font-smoothing: antialiased;
@@ -103,11 +110,11 @@ ul {
   line-height: 1.2;
 }
 .upper {
-  font-size: 16px;
+  font-size: var(--fs-ui);
   text-transform: uppercase;
 }
 .small-upper {
-  font-size: 14px;
+  font-size: var(--fs-label);
   text-transform: uppercase;
   color: var(--text-secondary);
 }
@@ -168,7 +175,7 @@ html { scroll-padding-top: 72px; }
   gap: 24px;
 }
 .nav__link {
-  font-size: 15px;
+  font-size: var(--fs-ui);
   text-transform: uppercase;
   transition: opacity 0.2s;
 }
@@ -186,7 +193,7 @@ html { scroll-padding-top: 72px; }
   padding: 0 16px;
   background: var(--text);
   color: var(--bg);
-  font-size: 15px;
+  font-size: var(--fs-ui);
   text-transform: uppercase;
   transition: opacity 0.2s;
 }
@@ -199,7 +206,7 @@ html { scroll-padding-top: 72px; }
   border: 0;
   color: inherit;
   font: inherit;
-  font-size: 15px;
+  font-size: var(--fs-ui);
   text-transform: uppercase;
   letter-spacing: -0.04em;
   cursor: pointer;
