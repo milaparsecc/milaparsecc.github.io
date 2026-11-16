@@ -28,9 +28,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 ## Images
 - New images: put files in `public/media/` and reference them as `/media/file.jpg`.
   Compress large photos first (max ~2400px wide, JPEG/WebP).
-- Some images still point to `framerusercontent.com`. The manual workflow
-  "Copy images from Framer into the repo" (`.github/workflows/localize-images.yml`)
-  downloads them into `public/media` and rewrites the JSON.
+- Any remote `framerusercontent.com` URL in `src/data` is downloaded into `public/media`
+  and committed automatically by the deploy workflow (`scripts/localize-images.mjs`).
+  After a deploy, run `git pull` before editing the JSON files.
 
 ## Workflow
 1. Edit files, run `npm run build` to check it builds.

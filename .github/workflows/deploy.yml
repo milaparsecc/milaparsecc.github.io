@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -23,6 +23,16 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # Copies any images still hosted on Framer into public/media and commits them
+      - name: Copy remote images into the repo
+        run: |
+          if grep -rq "framerusercontent.com" src/data; then
+            node scripts/localize-images.mjs
+            git config user.name "github-actions"
+            git config user.email "github-actions@users.noreply.github.com"
+            git add -A
+            git diff --cached --quiet || (git commit -m "Copy images from Framer into the repo" && git push)
+          fi
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
