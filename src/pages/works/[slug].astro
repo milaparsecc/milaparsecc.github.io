@@ -89,9 +89,9 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     <div class="project__gallery">
       {work.gallery.map((src) =>
         isVideo(src) ? (
-          <video class="reveal" src={media(src)} autoplay muted loop playsinline />
+          <video src={media(src)} autoplay muted loop playsinline />
         ) : (
-          <img class="reveal" src={media(src)} alt="" loading="lazy" />
+          <img src={media(src)} alt="" loading="lazy" />
         )
       )}
     </div>
