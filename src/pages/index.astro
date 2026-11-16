@@ -30,7 +30,9 @@ const featured = works.filter((w) => w.showOnHomepage);
           <img class="hero__signature" src={media(site.hero.signature)} alt={site.hero.signatureText} width="600" height="78" />
         )}
       </div>
-      <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
+      <div class="hero__portrait-wrap">
+        <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
+      </div>
       <p class="hero__intro">{site.hero.intro}</p>
     </div>
   </section>
@@ -125,8 +127,8 @@ const featured = works.filter((w) => w.showOnHomepage);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 58px var(--pad-x) 24px;
+    /* 40px from the nav on top, 40px (= page margin) under the intro */
+    padding: calc(var(--nav-h) + var(--pad-x)) var(--pad-x) var(--pad-x);
     text-align: center;
   }
 
@@ -160,10 +162,19 @@ const featured = works.filter((w) => w.showOnHomepage);
     margin-top: 8px;
   }
 
-  /* Portrait: as large as the screen height allows */
-  .hero__portrait {
+  /* Portrait takes the space left between the name and the intro */
+  .hero__portrait-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
-    height: clamp(260px, calc(100svh - 440px), 480px);
+  }
+  .hero__portrait {
+    height: 100%;
+    max-height: 560px;
     width: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
@@ -186,8 +197,10 @@ const featured = works.filter((w) => w.showOnHomepage);
     .hero__content {
       padding: 48px var(--pad-x) 8px;
     }
-    .hero__portrait {
+    .hero__portrait-wrap {
       margin-top: 32px;
+    }
+    .hero__portrait {
       height: auto;
       width: min(360px, 100%);
     }

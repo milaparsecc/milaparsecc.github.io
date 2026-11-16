@@ -19,6 +19,7 @@
   --fs-label: 14px;
 
   --pad-x: 40px;
+  --nav-h: 58px;
   --section-y: 100px;
   --gap: 20px; /* space between cards everywhere */
   --max: 1920px;
@@ -155,7 +156,7 @@ html { scroll-padding-top: 72px; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 58px;
+  height: var(--nav-h);
 }
 .nav__left,
 .nav__right {
