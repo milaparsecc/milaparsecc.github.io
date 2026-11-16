@@ -117,8 +117,18 @@ const featured = works.filter((w) => w.showOnHomepage);
     min-height: 640px;
   }
   .hero__photo {
+    position: relative;
     background: var(--tile);
     overflow: hidden;
+  }
+  /* Soft shade under the floating nav so it reads on any video frame */
+  .hero__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    pointer-events: none;
   }
   .hero__photo img,
   .hero__photo video {
@@ -201,6 +211,7 @@ const featured = works.filter((w) => w.showOnHomepage);
       aspect-ratio: 4 / 5;
       margin-top: var(--nav-h);
     }
+    .hero__photo::after { display: none; }
     .hero__content {
       padding: 48px var(--pad-x) 8px;
     }
