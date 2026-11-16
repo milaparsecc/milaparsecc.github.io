@@ -146,23 +146,10 @@ ul {
   z-index: 50;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-.nav.is-scrolled,
-.nav[data-open="true"] {
+/* Solid white bar with a thin line, on every page and at every scroll position */
+.nav {
   background: var(--bg);
   box-shadow: 0 1px 0 var(--border);
-}
-/* At the top of the page the nav floats over the hero video: invert it against
-   whatever is underneath so it stays readable on light and dark frames. */
-@media (min-width: 810px) {
-  .nav:not(.is-scrolled):not([data-open="true"]) {
-    mix-blend-mode: difference;
-    --text: #fff;
-    --bg: #000;
-  }
-}
-/* Phones: solid bar, the hero starts below it */
-@media (max-width: 809.98px) {
-  .nav { background: var(--bg); box-shadow: 0 1px 0 var(--border); }
 }
 html { scroll-padding-top: 72px; }
 .nav__bar {
