@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import archives from "../data/archives.json";
+import { media } from "../lib/text";
+---
+
+<Layout title="Archives">
+  <section class="section container page-top">
+    <h1 class="h1">The archives</h1>
+    <div class="grid">
+      {archives.map((a) => (
+        <figure class="item reveal">
+          <div class="tile media">
+            {a.video ? (
+              <video src={media(a.video)} poster={media(a.image)} autoplay muted loop playsinline />
+            ) : (
+              <img src={media(a.image)} alt={a.title} loading="lazy" />
+            )}
+          </div>
+          <figcaption>{a.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px 10px;
+  }
+  .item { margin: 0; }
+  .media { aspect-ratio: 16 / 9; }
+  figcaption { margin-top: 16px; font-size: 16px; }
+  @media (max-width: 1199.98px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 809.98px) { .grid { grid-template-columns: 1fr; gap: 32px; } }
+</style>

@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { url } from "../lib/text";
+---
+
+<Layout title="Page not found">
+  <section class="nf">
+    <h1 class="h1">Page not found</h1>
+    <a class="upper underline" href={url("/")}>Return home</a>
+  </section>
+</Layout>
+
+<style>
+  .nf {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 120px var(--pad-x) 60px;
+    text-align: center;
+  }
+</style>

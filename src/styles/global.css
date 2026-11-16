@@ -1,0 +1,297 @@
+/* ---------- Design tokens (taken from the Framer project) ---------- */
+:root {
+  --bg: rgb(15, 15, 15);
+  --text: rgb(255, 255, 255);
+  --text-secondary: rgb(166, 166, 166);
+  --border: rgb(26, 26, 26);
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --pad-x: 40px;
+  --section-y: 100px;
+  --gap: 8px;
+  --max: 1920px;
+}
+
+@media (max-width: 809.98px) {
+  :root {
+    --pad-x: 20px;
+    --section-y: 72px;
+  }
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+/* ---------- Typography ---------- */
+.big,
+.h1,
+.h2,
+.h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.big {
+  font-size: 132px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.h1 {
+  font-size: 80px;
+  line-height: 1.1;
+}
+.h2 {
+  font-size: 56px;
+  line-height: 1.15;
+}
+.h3 {
+  font-size: 26px;
+  line-height: 1.2;
+}
+.upper {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.small-upper {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.muted {
+  color: var(--text-secondary);
+}
+.underline {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+@media (max-width: 1199.98px) {
+  .big { font-size: 100px; }
+  .h1 { font-size: 64px; }
+  .h2 { font-size: 48px; }
+}
+@media (max-width: 809.98px) {
+  .big { font-size: 52px; }
+  .h1 { font-size: 48px; }
+  .h2 { font-size: 40px; }
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+}
+.nav__bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 58px;
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0));
+}
+.nav__logo {
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.nav__links {
+  display: flex;
+  gap: 24px;
+}
+.nav__link {
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav__links:hover .nav__link:not(:hover) {
+  opacity: 0.5;
+}
+.nav__clock {
+  justify-self: end;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.nav__toggle {
+  display: none;
+  justify-self: end;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  cursor: pointer;
+  padding: 8px 0;
+}
+.nav__toggle-close {
+  display: none;
+}
+.nav__mobile {
+  display: none;
+}
+
+@media (max-width: 1199.98px) {
+  .nav__bar {
+    grid-template-columns: 1fr auto;
+  }
+  .nav__links,
+  .nav__clock {
+    display: none;
+  }
+  .nav__toggle {
+    display: block;
+  }
+  .nav[data-open="true"] .nav__toggle-open { display: none; }
+  .nav[data-open="true"] .nav__toggle-close { display: inline; }
+  .nav[data-open="true"] .nav__bar { background: var(--bg); }
+  .nav[data-open="true"] .nav__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: calc(100dvh - 58px);
+    padding: 40px var(--pad-x);
+    background: var(--bg);
+  }
+  .nav__mobile-link {
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+  }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 60px 0 40px;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__heading {
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+.footer__heading:hover {
+  opacity: 0.6;
+}
+.footer__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+.footer__links a:hover {
+  opacity: 0.6;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+.section + .section {
+  padding-top: 0;
+}
+.page-top {
+  padding-top: 160px;
+}
+@media (max-width: 809.98px) {
+  .page-top { padding-top: 120px; }
+}
+.section__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Shared media tile */
+.tile {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+.tile img,
+.tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+a.tile:hover img {
+  transform: scale(1.03);
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}

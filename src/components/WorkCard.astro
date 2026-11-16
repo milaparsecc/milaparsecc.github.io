@@ -1,0 +1,33 @@
+---
+import { url, media } from "../lib/text";
+interface Props {
+  work: { title: string; slug: string; thumbnail: string; services?: string[] };
+  eager?: boolean;
+}
+const { work, eager = false } = Astro.props;
+---
+
+<a class="work-card tile reveal" href={url(`/works/${work.slug}`)} data-services={(work.services ?? []).join(" ")}>
+  <img src={media(work.thumbnail)} alt={work.title} loading={eager ? "eager" : "lazy"} />
+  <span class="work-card__title upper">{work.title}</span>
+</a>
+
+<style>
+  .work-card {
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+  .work-card__title {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  .work-card:hover .work-card__title {
+    opacity: 1;
+    transform: none;
+  }
+</style>

@@ -1,0 +1,219 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WorkCard from "../components/WorkCard.astro";
+import site from "../data/site.json";
+import works from "../data/works.json";
+import services from "../data/services.json";
+import { url, media } from "../lib/text";
+
+const featured = works.filter((w) => w.showOnHomepage);
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <h1 class="big">{site.name}</h1>
+      <p class="hero__role">{site.role}</p>
+    </div>
+  </section>
+
+  <!-- Selected works -->
+  <section class="section container" id="works">
+    <div class="section__head">
+      <h2 class="h2">Selected Works</h2>
+      <a class="upper underline small-link" href={url("/works")}>See all works</a>
+    </div>
+    <div class="works-grid">
+      {featured.map((w, i) => <WorkCard work={w} eager={i < 2} />)}
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section container" id="services">
+    <div class="section__head">
+      <h2 class="h2">Services</h2>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => (
+        <button class="service tile reveal" type="button" aria-expanded="false">
+          {s.image ? <img src={media(s.image)} alt="" loading="lazy" /> : <span class="service__pattern" />}
+          <span class="service__head">
+            <span class="h3">{s.title}</span>
+            <span class="service__plus" aria-hidden="true" />
+          </span>
+          {s.description && <span class="service__desc">{s.description}</span>}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section container about" id="about">
+    <div class="about__text">
+      <h2 class="h2">About me</h2>
+      <dl class="about__rows">
+        {site.about.rows.map((r) => (
+          <div class="about__row">
+            <dt class="small-upper">{r.label}</dt>
+            <dd>
+              {r.text && <p>{r.text}</p>}
+              {r.list && (
+                <ul>
+                  {r.list.map((li) => <li>{li}</li>)}
+                </ul>
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="about__photo tile reveal">
+      <img src={media(site.about.photo)} alt={`Portrait of ${site.name}`} loading="lazy" />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".service").forEach((card) => {
+    card.addEventListener("click", () => {
+      const open = card.getAttribute("aria-expanded") === "true";
+      card.setAttribute("aria-expanded", String(!open));
+    });
+  });
+</script>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 80px var(--pad-x);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero__role {
+    margin-top: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .small-link {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .service {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .service img {
+    position: absolute;
+    inset: 0;
+  }
+  .service__pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      #1f1f1f 0 10px,
+      #262626 10px 20px
+    );
+  }
+  .service__head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    z-index: 2;
+  }
+  .service__plus {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s;
+  }
+  .service__plus::before,
+  .service__plus::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+  }
+  .service__plus::before { left: 0; right: 0; top: 50%; height: 1px; }
+  .service__plus::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .service[aria-expanded="true"] .service__plus { transform: rotate(45deg); }
+
+  .service__desc {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    background: rgba(15, 15, 15, 0.9);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .service[aria-expanded="true"] .service__desc {
+    opacity: 1;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 1fr minmax(240px, 25%);
+    gap: 60px;
+    align-items: start;
+  }
+  .about__rows {
+    margin: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .about__row {
+    display: grid;
+    grid-template-columns: minmax(160px, 20%) minmax(0, 440px);
+    gap: 40px;
+  }
+  .about__row dd {
+    margin: 0;
+  }
+  .about__photo {
+    aspect-ratio: 4 / 5;
+  }
+
+  @media (max-width: 1199.98px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about { grid-template-columns: 1fr; }
+    .about__photo { max-width: 420px; order: -1; }
+  }
+  @media (max-width: 809.98px) {
+    .works-grid,
+    .services-grid { grid-template-columns: 1fr; }
+    .about__row { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>

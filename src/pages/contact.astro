@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import site from "../data/site.json";
+import { media } from "../lib/text";
+const c = site.contact;
+---
+
+<Layout title="Contact">
+  <section class="section container page-top contact">
+    <div class="contact__main">
+      <h1 class="h1">Contact</h1>
+      <div class="contact__cols">
+        <p class="contact__intro">{c.intro}</p>
+        <div class="contact__lists">
+          <div>
+            <p class="small-upper">Email &amp; Phone</p>
+            <a href={`mailto:${c.email}`}>{c.email}</a>
+            {c.phone && <a href={`tel:${c.phone.replace(/\s/g, "")}`}>{c.phone}</a>}
+          </div>
+          <div>
+            <p class="small-upper">Socials</p>
+            {c.socials.map((s) => (
+              <a href={s.url} target="_blank" rel="noopener">{s.name}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact__photo tile reveal">
+      <img src={media(c.photo)} alt="" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+    min-height: 80vh;
+  }
+  .contact__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+  .contact__intro { max-width: 290px; }
+  .contact__lists { display: flex; flex-direction: column; gap: 40px; }
+  .contact__lists div { display: flex; flex-direction: column; gap: 4px; }
+  .contact__lists p { margin-bottom: 2px; }
+  .contact__lists a { width: fit-content; transition: opacity .2s; }
+  .contact__lists a:hover { opacity: .6; }
+  .contact__photo { aspect-ratio: 4 / 5; }
+  @media (max-width: 1199.98px) {
+    .contact { grid-template-columns: 1fr; }
+    .contact__photo { max-width: 420px; }
+  }
+  @media (max-width: 809.98px) {
+    .contact__cols { grid-template-columns: 1fr; }
+  }
+</style>

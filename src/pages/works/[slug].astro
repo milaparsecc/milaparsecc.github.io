@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import WorkCard from "../../components/WorkCard.astro";
+import works from "../../data/works.json";
+import services from "../../data/services.json";
+import { richText, media } from "../../lib/text";
+
+export function getStaticPaths() {
+  return works.map((work) => ({ params: { slug: work.slug }, props: { work } }));
+}
+
+const { work } = Astro.props;
+const serviceNames = work.services
+  .map((slug) => services.find((s) => s.slug === slug)?.title)
+  .filter(Boolean);
+
+// "Next projects": the ones chosen in works.json, otherwise the following projects in the list.
+const idx = works.findIndex((w) => w.slug === work.slug);
+const chosen = work.nextProjects
+  .map((slug) => works.find((w) => w.slug === slug))
+  .filter((w): w is (typeof works)[number] => Boolean(w));
+const next = (chosen.length
+  ? chosen
+  : [1, 2, 3].map((n) => works[(idx + n) % works.length]).filter((w) => w.slug !== work.slug)
+).slice(0, 3);
+
+const meta = [
+  { label: "Services", value: serviceNames },
+  { label: "Client", value: work.client ? [work.client] : [] },
+  { label: "Location", value: work.location ? [work.location] : [] },
+  { label: "Year", value: work.year ? [work.year] : [] },
+].filter((m) => m.value.length);
+
+const cover = work.cover || work.thumbnail;
+const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+---
+
+<Layout title={work.title} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
+  <article class="section container page-top project">
+    <h1 class="h1">{work.title}</h1>
+
+    <div class="project__cover tile">
+      <img src={media(cover)} alt={work.title} />
+    </div>
+
+    {(meta.length > 0 || work.description) && (
+      <div class="project__info">
+        <dl class="project__meta">
+          {meta.map((m) => (
+            <div>
+              <dt class="small-upper">{m.label}</dt>
+              <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
+            </div>
+          ))}
+        </dl>
+        <div class="project__desc">
+          {work.description && (
+            <>
+              <p class="small-upper">Info</p>
+              <div class="rich" set:html={richText(work.description)} />
+            </>
+          )}
+          {work.link && (
+            <a class="underline project__link" href={work.link} target="_blank" rel="noopener">
+              {work.linkText || "See live project"}
+            </a>
+          )}
+        </div>
+      </div>
+    )}
+
+    <div class="project__gallery">
+      {work.gallery.map((src) =>
+        isVideo(src) ? (
+          <video class="reveal" src={media(src)} autoplay muted loop playsinline />
+        ) : (
+          <img class="reveal" src={media(src)} alt="" loading="lazy" />
+        )
+      )}
+    </div>
+  </article>
+
+  {next.length > 0 && (
+    <section class="section container">
+      <div class="section__head">
+        <h2 class="h2">Next projects</h2>
+      </div>
+      <div class="next-grid">
+        {next.map((w) => <WorkCard work={w} />)}
+      </div>
+    </section>
+  )}
+</Layout>
+
+<style>
+  .project__cover {
+    margin-top: 32px;
+    aspect-ratio: 16 / 9;
+  }
+  .project__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 60px 0 80px;
+  }
+  .project__meta {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .project__meta dd {
+    margin: 4px 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .project__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 560px;
+  }
+  .rich :global(p + p) {
+    margin-top: 1em;
+  }
+  .rich :global(strong) {
+    font-weight: 600;
+  }
+  .project__link {
+    align-self: flex-start;
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  .project__gallery {
+    display: flex;
+    flex-direction: column;
+  }
+  .project__gallery img,
+  .project__gallery video {
+    width: 100%;
+    height: auto;
+  }
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 809.98px) {
+    .project__info { grid-template-columns: 1fr; padding: 40px 0 48px; }
+    .next-grid { grid-template-columns: 1fr; }
+  }
+</style>

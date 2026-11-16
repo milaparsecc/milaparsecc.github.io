@@ -1,0 +1,122 @@
+---
+import site from "../data/site.json";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : site.seo.title;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const path = Astro.url.pathname.replace(base, "") || "/";
+const nav = [
+  { label: "Home", href: "/" },
+  { label: "Works", href: "/works" },
+  { label: "Contact", href: "/contact" },
+];
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? site.seo.description} />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="nav" data-open="false">
+      <div class="nav__bar container">
+        <a class="nav__logo" href={`${base}/`}>{site.logo}</a>
+        <nav class="nav__links" aria-label="Main">
+          {nav.map((l) => (
+            <a href={`${base}${l.href}`} class:list={["nav__link", { "is-active": isActive(l.href) }]}>
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <span class="nav__clock" data-clock data-location={site.location}>{site.location}</span>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="nav__toggle-open">Menu</span>
+          <span class="nav__toggle-close">Close</span>
+        </button>
+      </div>
+      <div class="nav__mobile" id="mobile-menu">
+        {nav.map((l) => (
+          <a href={`${base}${l.href}`} class="nav__mobile-link">{l.label}</a>
+        ))}
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a class="footer__heading h2" href={`${base}/contact`}>{site.footer.heading}</a>
+        <div class="footer__row">
+          <div class="footer__links">
+            <a class="upper" href={`mailto:${site.contact.email}`}>Email</a>
+            {site.contact.socials[0] && (
+              <a class="upper" href={site.contact.socials[0].url} target="_blank" rel="noopener">
+                {site.contact.socials[0].name}
+              </a>
+            )}
+          </div>
+          <span class="upper">{site.footer.copyright}</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Live clock in the navigation
+      const clock = document.querySelector<HTMLElement>("[data-clock]");
+      if (clock) {
+        const tick = () => {
+          clock.textContent = new Date().toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+        };
+        tick();
+        setInterval(tick, 1000);
+      }
+
+      // Mobile menu
+      const header = document.querySelector<HTMLElement>(".nav");
+      const toggle = document.querySelector<HTMLButtonElement>(".nav__toggle");
+      toggle?.addEventListener("click", () => {
+        const open = header?.dataset.open === "true";
+        header!.dataset.open = String(!open);
+        toggle.setAttribute("aria-expanded", String(!open));
+        document.body.style.overflow = open ? "" : "hidden";
+      });
+
+      // Fade-in on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
