@@ -32,6 +32,8 @@ const meta = [
 ].filter((m) => m.value.length);
 
 const cover = work.cover || work.thumbnail;
+// A gallery item can be a single image (full width) or a list of images shown side by side
+const hasRows = work.gallery.some((g: unknown) => Array.isArray(g));
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 ---
 
@@ -86,12 +88,18 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
       </div>
     )}
 
-    <div class="project__gallery">
-      {work.gallery.map((src) =>
-        isVideo(src) ? (
-          <video src={media(src)} autoplay muted loop playsinline />
+    <div class:list={["project__gallery", { "has-rows": hasRows }]}>
+      {work.gallery.map((item) =>
+        Array.isArray(item) ? (
+          <div class="project__row" style={`--cols: ${item.length}`}>
+            {item.map((src) => (isVideo(src)
+              ? <video src={media(src)} autoplay muted loop playsinline />
+              : <img src={media(src)} alt="" loading="lazy" />))}
+          </div>
+        ) : isVideo(item) ? (
+          <video src={media(item)} autoplay muted loop playsinline />
         ) : (
-          <img src={media(src)} alt="" loading="lazy" />
+          <img src={media(item)} alt="" loading="lazy" />
         )
       )}
     </div>
@@ -171,6 +179,20 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     width: 100%;
     height: auto;
   }
+  /* Photo cases with rows: same 20px gap as card grids. Seamless slide cases keep no gap. */
+  .project__gallery.has-rows {
+    gap: var(--gap);
+  }
+  .project__row {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: var(--gap);
+  }
+  .project__row img,
+  .project__row video {
+    height: 100%;
+    object-fit: cover;
+  }
   .next-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -181,5 +203,6 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     .project__case { grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; }
     .project__info:has(+ .project__case) { padding-bottom: 32px; }
     .next-grid { grid-template-columns: 1fr; }
+    .project__row { grid-template-columns: 1fr; }
   }
 </style>

@@ -1,5 +1,39 @@
 [
   {
+    "title": "Space Karlín",
+    "tagline": "A wayfinding system for a café and coworking space in Prague’s Karlín district.",
+    "slug": "space-karlin",
+    "showOnHomepage": false,
+    "client": "Space Karlín",
+    "year": "",
+    "location": "Prague, Karlín",
+    "services": [
+      "spaces-events"
+    ],
+    "description": "",
+    "task": "",
+    "solution": "",
+    "link": "",
+    "linkText": "See live project",
+    "thumbnail": "/media/space-karlin/thumb.jpg",
+    "cover": "/media/space-karlin/cover.jpg",
+    "gallery": [
+      "/media/space-karlin/bite.jpg",
+      [
+        "/media/space-karlin/sign.jpg",
+        "/media/space-karlin/cup.jpg",
+        "/media/space-karlin/menu-close.jpg"
+      ],
+      "/media/space-karlin/focus.jpg",
+      [
+        "/media/space-karlin/immerse.jpg",
+        "/media/space-karlin/silent.jpg"
+      ],
+      "/media/space-karlin/praha.jpg"
+    ],
+    "nextProjects": []
+  },
+  {
     "title": "WannaSurf",
     "tagline": "Brand identity for a surf school that brings people together and makes them fall in love with surfing.",
     "slug": "wannasurf",

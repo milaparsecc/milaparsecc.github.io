@@ -24,7 +24,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `description` — plain text; `**bold**`, blank line = new paragraph.
 - `task`, `solution` — Behance-style "Task / Solution" block under the info block (same text format). Hidden when empty.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
-- `gallery` — images/videos shown on the project page, in order (`.mp4` plays as video).
+- `gallery` — images/videos in order (`.mp4` plays as video). An item can also be a list of 2–3 paths →
+  a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.
 - Order of projects in the file = order on the site.
 
