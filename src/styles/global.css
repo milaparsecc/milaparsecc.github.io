@@ -20,7 +20,7 @@
 
   --pad-x: 40px;
   --section-y: 100px;
-  --gap: 8px;
+  --gap: 20px; /* space between cards everywhere */
   --max: 1920px;
 }
 
