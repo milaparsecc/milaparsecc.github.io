@@ -18,7 +18,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 ### works.json fields
 - `slug` — URL part: `/works/<slug>`. Lowercase, latin letters, hyphens.
 - `tagline` — one sentence shown on the card hover (bottom, full width). Keep it short (~100 chars).
-- `showOnHomepage` — `true` to show in "Selected Works" on the homepage.
+- `showOnHomepage` — currently unused: "Selected Works" opens on the Visual Identity category
+  (`homeCategory` in `src/pages/index.astro`), no "All works" button there; /works keeps "All works".
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).

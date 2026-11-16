@@ -1,19 +1,23 @@
 ---
 /* Category filter for a grid of WorkCards. Used on the homepage (Selected Works) and on /works.
+   showAll=false hides the "All works" button; initial = slug of the category selected on load
+   (the page must render cards outside that category with hidden={true}).
    mode "featured": "All works" shows only projects with showOnHomepage; a category shows every project in it.
    mode "all":      "All works" shows every project.
    Categories without any project are hidden. */
 import services from "../data/services.json";
 import works from "../data/works.json";
-interface Props { target: string; mode?: "featured" | "all"; }
-const { target, mode = "all" } = Astro.props;
+interface Props { target: string; mode?: "featured" | "all"; showAll?: boolean; initial?: string; }
+const { target, mode = "all", showAll = true, initial = "all" } = Astro.props;
 const used = services.filter((s) => works.some((w) => w.services.includes(s.slug)));
 ---
 
 <div class="filters" data-work-filter={target} data-mode={mode} role="group" aria-label="Filter works by service">
-  <button class="filter upper is-active" type="button" data-filter="all" aria-pressed="true">All works</button>
+  {showAll && (
+    <button class:list={["filter upper", { "is-active": initial === "all" }]} type="button" data-filter="all" aria-pressed={String(initial === "all")}>All works</button>
+  )}
   {used.map((s) => (
-    <button class="filter upper" type="button" data-filter={s.slug} aria-pressed="false">{s.title}</button>
+    <button class:list={["filter upper", { "is-active": initial === s.slug }]} type="button" data-filter={s.slug} aria-pressed={String(initial === s.slug)}>{s.title}</button>
   ))}
 </div>
 

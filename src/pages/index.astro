@@ -7,6 +7,9 @@ import works from "../data/works.json";
 import services from "../data/services.json";
 import { url, media } from "../lib/text";
 
+// Category selected in "Selected Works" when the page opens
+const homeCategory = "visual-identity";
+
 ---
 
 <Layout>
@@ -47,10 +50,10 @@ import { url, media } from "../lib/text";
       <a class="upper underline small-link" href={url("/works")}>See all works</a>
     </div>
     <div class="works-filter">
-      <WorkFilter target="works-home" mode="featured" />
+      <WorkFilter target="works-home" showAll={false} initial={homeCategory} />
     </div>
     <div class="works-grid" id="works-home">
-      {works.map((w) => <WorkCard work={w} hidden={!w.showOnHomepage} />)}
+      {works.map((w) => <WorkCard work={w} hidden={!w.services.includes(homeCategory)} />)}
     </div>
     <p class="upper muted works-empty" data-empty hidden>No works in this category yet</p>
   </section>
