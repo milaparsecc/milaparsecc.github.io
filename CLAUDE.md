@@ -37,6 +37,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
 2. Commit to `main` with a short message → GitHub Actions deploys to GitHub Pages automatically (~1–2 min).
 3. Tell the owner what changed and where to look.
 
+## Hero
+- Left half (desktop) / top block (mobile): `hero.image`, or `hero.video` if set (MP4, autoplay muted loop;
+  the image is used as the poster). Keep the video 4:5, ~1440×1800, H.264, no sound, under ~5 MB.
+
 ## Fonts
 - Google Fonts: Instrument Serif, Inter (loaded in `src/layouts/Layout.astro`).
 - Adobe Fonts (Adobe Handwriting Ernie for the hero signature): set `fonts.adobeKitId` in `site.json`
