@@ -6,6 +6,7 @@
   --text-secondary: #6e6e6e;
   --border: #ebebeb;
   --tile: #f2f2f2;
+  --overlay: rgba(255, 255, 255, 0.94); /* hover/open layer on cards */
   --accent: #3b4a8c; /* navy from the hero signature */
 
   --font-serif: "Instrument Serif", Georgia, serif;
