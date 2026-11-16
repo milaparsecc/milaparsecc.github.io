@@ -7,12 +7,28 @@
     "title": "Mila Parsec — Graphic & Brand Designer",
     "description": "Portfolio of Mila Parsec, graphic and brand designer."
   },
+  "hero": {
+    "image": "https://framerusercontent.com/images/0WZ5mNyxdjo4f3euFZNPFWNF4.jpeg",
+    "imageAlt": "Luscofusco 19 perfume bottle with a stone cap",
+    "signature": "https://framerusercontent.com/images/BScAtTQxObV38dZxelORJjijeM.png",
+    "portrait": "https://framerusercontent.com/images/ya7et1z0oR9nrsC8hGMUuRNCDM.jpeg",
+    "intro": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond."
+  },
   "about": {
     "photo": "/media/KK3IoS3Ptw5ZyLYW2o3RasyB8.jpg",
     "rows": [
-      { "label": "What I do", "text": "I help brands find clarity and express it through strong, thoughtful design." },
-      { "label": "My background", "text": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond." },
-      { "label": "My approach", "text": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look, honest, beautiful, and built to last." },
+      {
+        "label": "What I do",
+        "text": "I help brands find clarity and express it through strong, thoughtful design."
+      },
+      {
+        "label": "My background",
+        "text": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond."
+      },
+      {
+        "label": "My approach",
+        "text": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look, honest, beautiful, and built to last."
+      },
       {
         "label": "Career",
         "list": [
@@ -30,9 +46,18 @@
     "phone": "+52 55 7391 2486",
     "photo": "/media/HFh5kLnilRLgrC1PZNvmx0PRRA.jpg",
     "socials": [
-      { "name": "Instagram", "url": "https://www.instagram.com/ludoviclosco/" },
-      { "name": "Threads", "url": "https://www.threads.com/@ludoviclosco" },
-      { "name": "X (Twitter)", "url": "https://x.com/ludoviclosco" }
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/ludoviclosco/"
+      },
+      {
+        "name": "Threads",
+        "url": "https://www.threads.com/@ludoviclosco"
+      },
+      {
+        "name": "X (Twitter)",
+        "url": "https://x.com/ludoviclosco"
+      }
     ]
   },
   "footer": {

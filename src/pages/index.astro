@@ -12,9 +12,16 @@ const featured = works.filter((w) => w.showOnHomepage);
 <Layout>
   <!-- Hero -->
   <section class="hero">
-    <div class="hero__inner">
-      <h1 class="big">{site.name}</h1>
-      <p class="hero__role">{site.role}</p>
+    <div class="hero__photo">
+      <img src={media(site.hero.image)} alt={site.hero.imageAlt} fetchpriority="high" />
+    </div>
+    <div class="hero__content">
+      <div class="hero__head">
+        <h1 class="h1">{site.name}</h1>
+        <img class="hero__signature" src={media(site.hero.signature)} alt={site.role} width="600" height="78" />
+      </div>
+      <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
+      <p class="hero__intro">{site.hero.intro}</p>
     </div>
   </section>
 
@@ -84,19 +91,71 @@ const featured = works.filter((w) => w.showOnHomepage);
 </script>
 
 <style>
+  /* Hero: 50/50 split, photo bleeds to the edge, content centered in the right half */
   .hero {
-    min-height: 100vh;
-    min-height: 100svh;
     display: grid;
-    place-items: center;
-    text-align: center;
-    padding: 80px var(--pad-x);
-    border-bottom: 1px solid var(--border);
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    height: 100svh;
+    min-height: 640px;
   }
-  .hero__role {
-    margin-top: 16px;
-    font-size: 14px;
-    text-transform: uppercase;
+  .hero__photo {
+    background: var(--tile);
+    overflow: hidden;
+  }
+  .hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 58px var(--pad-x) 24px;
+    text-align: center;
+  }
+  .hero__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .hero__signature {
+    width: min(600px, 100%);
+    height: auto;
+  }
+  /* Portrait shrinks on short screens so everything fits in one screen */
+  .hero__portrait {
+    height: clamp(220px, calc(100svh - 470px), 410px);
+    width: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .hero__intro {
+    max-width: 328px;
+    text-wrap: balance;
+  }
+
+  @media (max-width: 809.98px) {
+    .hero {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: 0;
+    }
+    .hero__content {
+      order: -1;
+      padding: 110px var(--pad-x) 56px;
+    }
+    .hero__portrait {
+      height: auto;
+      width: min(328px, 100%);
+    }
+    .hero__photo {
+      aspect-ratio: 4 / 5;
+    }
   }
 
   .small-link {
@@ -117,11 +176,11 @@ const featured = works.filter((w) => w.showOnHomepage);
   }
   .service {
     display: block;
+    color: #fff;
     width: 100%;
     aspect-ratio: 4 / 5;
     padding: 0;
     border: 0;
-    color: inherit;
     font: inherit;
     letter-spacing: inherit;
     text-align: left;
@@ -136,8 +195,8 @@ const featured = works.filter((w) => w.showOnHomepage);
     inset: 0;
     background: repeating-linear-gradient(
       -45deg,
-      #1f1f1f 0 10px,
-      #262626 10px 20px
+      #f2f2f2 0 10px,
+      #ebebeb 10px 20px
     );
   }
   .service__head {
@@ -166,6 +225,11 @@ const featured = works.filter((w) => w.showOnHomepage);
   .service__plus::before { left: 0; right: 0; top: 50%; height: 1px; }
   .service__plus::after { top: 0; bottom: 0; left: 50%; width: 1px; }
   .service[aria-expanded="true"] .service__plus { transform: rotate(45deg); }
+  .service[aria-expanded="true"] .service__head,
+  .service:not(:has(img)) .service__head { color: var(--text); }
+  .service__head { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25); }
+  .service[aria-expanded="true"] .service__head,
+  .service:not(:has(img)) .service__head { text-shadow: none; }
 
   .service__desc {
     position: absolute;
@@ -174,7 +238,8 @@ const featured = works.filter((w) => w.showOnHomepage);
     display: flex;
     align-items: flex-end;
     padding: 20px;
-    background: rgba(15, 15, 15, 0.9);
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--text);
     opacity: 0;
     transition: opacity 0.35s;
   }

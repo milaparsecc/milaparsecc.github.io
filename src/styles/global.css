@@ -1,9 +1,12 @@
 /* ---------- Design tokens (taken from the Framer project) ---------- */
 :root {
-  --bg: rgb(15, 15, 15);
-  --text: rgb(255, 255, 255);
-  --text-secondary: rgb(166, 166, 166);
-  --border: rgb(26, 26, 26);
+  /* Light theme */
+  --bg: #ffffff;
+  --text: #0f0f0f;
+  --text-secondary: #6e6e6e;
+  --border: #ebebeb;
+  --tile: #f2f2f2;
+  --accent: #3b4a8c; /* navy from the hero signature */
 
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -138,7 +141,7 @@ ul {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   height: 58px;
-  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
 }
 .nav__logo {
   font-size: 15px;
@@ -269,7 +272,7 @@ ul {
 .tile {
   position: relative;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--tile);
 }
 .tile img,
 .tile video {
