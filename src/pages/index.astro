@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import WorkCard from "../components/WorkCard.astro";
+import WorkFilter from "../components/WorkFilter.astro";
 import site from "../data/site.json";
 import works from "../data/works.json";
 import services from "../data/services.json";
 import { url, media } from "../lib/text";
 
-const featured = works.filter((w) => w.showOnHomepage);
 ---
 
 <Layout>
@@ -46,9 +46,13 @@ const featured = works.filter((w) => w.showOnHomepage);
       <h2 class="h2">Selected Works</h2>
       <a class="upper underline small-link" href={url("/works")}>See all works</a>
     </div>
-    <div class="works-grid">
-      {featured.map((w, i) => <WorkCard work={w} eager={i < 2} />)}
+    <div class="works-filter">
+      <WorkFilter target="works-home" mode="featured" />
     </div>
+    <div class="works-grid" id="works-home">
+      {works.map((w) => <WorkCard work={w} hidden={!w.showOnHomepage} />)}
+    </div>
+    <p class="upper muted works-empty" data-empty hidden>No works in this category yet</p>
   </section>
 
   <!-- Services -->
@@ -225,6 +229,12 @@ const featured = works.filter((w) => w.showOnHomepage);
     margin-bottom: 10px;
   }
 
+  .works-filter {
+    margin-bottom: 24px;
+  }
+  .works-empty {
+    margin-top: 24px;
+  }
   .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

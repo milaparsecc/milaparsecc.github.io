@@ -2,79 +2,33 @@
 import Layout from "../../layouts/Layout.astro";
 import WorkCard from "../../components/WorkCard.astro";
 import works from "../../data/works.json";
-import services from "../../data/services.json";
+import WorkFilter from "../../components/WorkFilter.astro";
 ---
 
 <Layout title="Works">
   <section class="section container page-top">
     <h1 class="h1">Works</h1>
 
-    <div class="filters" role="tablist" aria-label="Filter works">
-      <button class="filter upper is-active" type="button" data-filter="all">All works</button>
-      {services.map((s) => (
-        <button class="filter upper" type="button" data-filter={s.slug}>{s.title}</button>
-      ))}
+    <div class="filters-wrap">
+      <WorkFilter target="works-all" mode="all" />
     </div>
 
-    <div class="grid">
+    <div class="grid" id="works-all">
       {works.map((w, i) => <WorkCard work={w} eager={i < 3} />)}
     </div>
-    <p class="empty upper muted" hidden>No works matching this filter</p>
+    <p class="empty upper muted" data-empty hidden>No works matching this filter</p>
   </section>
 </Layout>
 
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter");
-  const cards = document.querySelectorAll<HTMLElement>(".work-card");
-  const empty = document.querySelector<HTMLElement>(".empty")!;
-  buttons.forEach((btn) =>
-    btn.addEventListener("click", () => {
-      const f = btn.dataset.filter!;
-      buttons.forEach((b) => b.classList.toggle("is-active", b === btn));
-      let shown = 0;
-      cards.forEach((c) => {
-        const match = f === "all" || (c.dataset.services ?? "").split(" ").includes(f);
-        c.hidden = !match;
-        if (match) shown++;
-      });
-      empty.hidden = shown > 0;
-    })
-  );
-</script>
 
 <style>
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    margin: 40px 0 40px;
-  }
-  .filter {
-    background: none;
-    border: 0;
-    border-bottom: 1px solid transparent;
-    padding: 0 0 4px;
-    color: var(--text-secondary);
-    font: inherit;
-    font-size: var(--fs-ui);
-    letter-spacing: -0.04em;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-  .filter:hover,
-  .filter.is-active {
-    color: var(--text);
-  }
-  .filter.is-active {
-    border-bottom-color: var(--text);
+  .filters-wrap {
+    margin: 40px 0;
   }
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 60px var(--gap);
-  }
-  .grid :global([hidden]) {
-    display: none;
   }
   @media (max-width: 1199.98px) {
     .grid { grid-template-columns: repeat(2, 1fr); }

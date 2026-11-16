@@ -7,7 +7,9 @@
     "client": "",
     "year": "",
     "location": "",
-    "services": [],
+    "services": [
+      "visual-identity"
+    ],
     "description": "",
     "link": "",
     "linkText": "See live project",
@@ -35,7 +37,10 @@
     "client": "",
     "year": "",
     "location": "",
-    "services": [],
+    "services": [
+      "visual-identity",
+      "packaging-print"
+    ],
     "description": "",
     "link": "",
     "linkText": "See live project",
@@ -57,7 +62,9 @@
     "year": "2025",
     "location": "",
     "services": [
-      "visual-identity"
+      "visual-identity",
+      "packaging-print",
+      "spaces-events"
     ],
     "description": "Největší populárně-naučný festival v Česku vám představí 150 předních českých i zahraničních odborníků ze sedmi oblastí. **Všechny přednášky jsou komerčně nezávislé.**",
     "link": "https://mynds.cz/",
@@ -82,7 +89,9 @@
     "client": "Rubin Production",
     "year": "",
     "location": "",
-    "services": [],
+    "services": [
+      "visual-identity"
+    ],
     "description": "Největší populárně-naučný festival v Česku vám představí 150 předních českých i zahraničních odborníků ze sedmi oblastí. **Všechny přednášky jsou komerčně nezávislé.**",
     "link": "",
     "linkText": "See live project",
@@ -115,7 +124,10 @@
     "client": "",
     "year": "",
     "location": "",
-    "services": [],
+    "services": [
+      "visual-identity",
+      "packaging-print"
+    ],
     "description": "",
     "link": "",
     "linkText": "See live project",
@@ -140,7 +152,10 @@
     "client": "",
     "year": "",
     "location": "",
-    "services": [],
+    "services": [
+      "visual-identity",
+      "packaging-print"
+    ],
     "description": "",
     "link": "",
     "linkText": "See live project",

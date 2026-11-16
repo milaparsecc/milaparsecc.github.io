@@ -1,0 +1,79 @@
+---
+/* Category filter for a grid of WorkCards. Used on the homepage (Selected Works) and on /works.
+   mode "featured": "All works" shows only projects with showOnHomepage; a category shows every project in it.
+   mode "all":      "All works" shows every project.
+   Categories without any project are hidden. */
+import services from "../data/services.json";
+import works from "../data/works.json";
+interface Props { target: string; mode?: "featured" | "all"; }
+const { target, mode = "all" } = Astro.props;
+const used = services.filter((s) => works.some((w) => w.services.includes(s.slug)));
+---
+
+<div class="filters" data-work-filter={target} data-mode={mode} role="group" aria-label="Filter works by service">
+  <button class="filter upper is-active" type="button" data-filter="all" aria-pressed="true">All works</button>
+  {used.map((s) => (
+    <button class="filter upper" type="button" data-filter={s.slug} aria-pressed="false">{s.title}</button>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-work-filter]").forEach((group) => {
+    const grid = document.getElementById(group.dataset.workFilter!);
+    if (!grid) return;
+    const featuredOnly = group.dataset.mode === "featured";
+    const cards = grid.querySelectorAll<HTMLElement>(".work-card");
+    const empty = grid.parentElement?.querySelector<HTMLElement>("[data-empty]");
+    const buttons = group.querySelectorAll<HTMLButtonElement>(".filter");
+    const apply = (f: string) => {
+      let shown = 0;
+      cards.forEach((c) => {
+        const match = f === "all"
+          ? !featuredOnly || c.dataset.featured === "true"
+          : (c.dataset.services ?? "").split(" ").includes(f);
+        c.hidden = !match;
+        if (match) { shown++; c.classList.add("is-visible"); }
+      });
+      if (empty) empty.hidden = shown > 0;
+    };
+    buttons.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => {
+          b.classList.toggle("is-active", b === btn);
+          b.setAttribute("aria-pressed", String(b === btn));
+        });
+        apply(btn.dataset.filter!);
+      })
+    );
+  });
+</script>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+  .filter {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    padding: 0 0 4px;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: var(--fs-ui);
+    letter-spacing: -0.04em;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .filter:hover,
+  .filter.is-active {
+    color: var(--text);
+  }
+  .filter.is-active {
+    border-bottom-color: var(--text);
+  }
+  :global(.work-card[hidden]) {
+    display: none;
+  }
+</style>
