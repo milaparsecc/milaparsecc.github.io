@@ -151,6 +151,19 @@ ul {
   background: var(--bg);
   box-shadow: 0 1px 0 var(--border);
 }
+/* At the top of the page the nav floats over the hero video: invert it against
+   whatever is underneath so it stays readable on light and dark frames. */
+@media (min-width: 810px) {
+  .nav:not(.is-scrolled):not([data-open="true"]) {
+    mix-blend-mode: difference;
+    --text: #fff;
+    --bg: #000;
+  }
+}
+/* Phones: solid bar, the hero starts below it */
+@media (max-width: 809.98px) {
+  .nav { background: var(--bg); box-shadow: 0 1px 0 var(--border); }
+}
 html { scroll-padding-top: 72px; }
 .nav__bar {
   display: flex;
@@ -176,6 +189,7 @@ html { scroll-padding-top: 72px; }
   gap: 24px;
 }
 .nav__link {
+  color: var(--text);
   font-size: var(--fs-ui);
   text-transform: uppercase;
   transition: opacity 0.2s;
@@ -205,7 +219,7 @@ html { scroll-padding-top: 72px; }
   display: none;
   background: none;
   border: 0;
-  color: inherit;
+  color: var(--text);
   font: inherit;
   font-size: var(--fs-ui);
   text-transform: uppercase;
