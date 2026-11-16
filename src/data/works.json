@@ -1,6 +1,7 @@
 [
   {
     "title": "WannaSurf",
+    "tagline": "Brand identity for a surf school that brings people together and makes them fall in love with surfing.",
     "slug": "wannasurf",
     "showOnHomepage": false,
     "client": "",
@@ -28,6 +29,7 @@
   },
   {
     "title": "The secret garden",
+    "tagline": "Identity and stationery for a winery & hotel inspired by old botanical paintings and hidden keys.",
     "slug": "the-secret-garden",
     "showOnHomepage": false,
     "client": "",
@@ -48,6 +50,7 @@
   },
   {
     "title": "Mynds Festival",
+    "tagline": "A bright, playful identity for the largest popular-science festival in the Czech Republic.",
     "slug": "mynds",
     "showOnHomepage": true,
     "client": "First Class Publishing",
@@ -73,6 +76,7 @@
   },
   {
     "title": "Rubin Production",
+    "tagline": "A sharp, modern identity and brand guidelines for a video production studio.",
     "slug": "rubin-production",
     "showOnHomepage": true,
     "client": "Rubin Production",
@@ -105,6 +109,7 @@
   },
   {
     "title": "Iris ateliér",
+    "tagline": "An elegant identity and packaging for a Prague atelier, built around a classic toile pattern.",
     "slug": "iris-atelier",
     "showOnHomepage": true,
     "client": "",
@@ -129,6 +134,7 @@
   },
   {
     "title": "Alla Vakker",
+    "tagline": "A refined personal brand and business cards for a Europe-based photographer.",
     "slug": "alla-vakker",
     "showOnHomepage": true,
     "client": "",

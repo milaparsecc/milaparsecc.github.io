@@ -17,6 +17,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 
 ### works.json fields
 - `slug` — URL part: `/works/<slug>`. Lowercase, latin letters, hyphens.
+- `tagline` — one sentence shown on the card hover (bottom, full width). Keep it short (~100 chars).
 - `showOnHomepage` — `true` to show in "Selected Works" on the homepage.
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
