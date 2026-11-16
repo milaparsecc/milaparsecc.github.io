@@ -32,61 +32,77 @@ const meta = [
 ].filter((m) => m.value.length);
 
 const cover = work.cover || work.thumbnail;
+
+// Lead text next to the name: the task if written, otherwise the one-line tagline.
+const lead = work.task || work.tagline;
+// Everything else goes under "More information"
+const more = [
+  { label: "Info", text: work.description },
+  { label: "Task", text: work.task && lead !== work.task ? work.task : "" },
+  { label: "Solution", text: work.solution },
+].filter((m) => m.text);
+const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 // A gallery item can be a single image (full width) or a list of images shown side by side
 const hasRows = work.gallery.some((g: unknown) => Array.isArray(g));
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 ---
 
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".project__toggle");
+  const label = toggle?.querySelector<HTMLElement>(".project__toggle-label");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    if (label) label.textContent = open ? label.dataset.open! : label.dataset.closed!;
+  });
+</script>
+
 <Layout title={work.title} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
   <article class="section container page-top project">
-    <h1 class="h1">{work.title}</h1>
-
     <div class="project__cover tile">
       <img src={media(cover)} alt={work.title} />
     </div>
 
-    {(meta.length > 0 || work.description) && (
-      <div class="project__info">
-        <dl class="project__meta">
-          {meta.map((m) => (
-            <div>
-              <dt class="small-upper">{m.label}</dt>
-              <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
+    <!-- Intro: name + short task, the rest opens under "More information" -->
+    <div class="project__intro">
+      <h1 class="h2 project__title">{work.title}</h1>
+      <div class="project__body">
+        {lead && <div class="project__lead" set:html={richText(lead)} />}
+        {hasMore && (
+          <>
+            <button class="project__toggle upper" type="button" aria-expanded="false" aria-controls="project-more">
+              <span class="project__toggle-label" data-open="Less information" data-closed="More information">More information</span>
+              <span class="project__plus" aria-hidden="true" />
+            </button>
+            <div class="project__more" id="project-more">
+              <div class="project__more-inner">
+                {meta.length > 0 && (
+                  <dl class="project__meta">
+                    {meta.map((m) => (
+                      <div>
+                        <dt class="small-upper">{m.label}</dt>
+                        <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {more.map((m) => (
+                  <div class="project__block">
+                    <p class="small-upper">{m.label}</p>
+                    <div class="rich" set:html={richText(m.text)} />
+                  </div>
+                ))}
+                {work.link && (
+                  <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
+                    {work.linkText || "See live project"}
+                  </a>
+                )}
+              </div>
             </div>
-          ))}
-        </dl>
-        <div class="project__desc">
-          {work.description && (
-            <>
-              <p class="small-upper">Info</p>
-              <div class="rich" set:html={richText(work.description)} />
-            </>
-          )}
-          {work.link && (
-            <a class="underline project__link" href={work.link} target="_blank" rel="noopener">
-              {work.linkText || "See live project"}
-            </a>
-          )}
-        </div>
-      </div>
-    )}
-
-    {(work.task || work.solution) && (
-      <div class="project__case">
-        {work.task && (
-          <div>
-            <p class="small-upper">Task</p>
-            <div class="rich" set:html={richText(work.task)} />
-          </div>
-        )}
-        {work.solution && (
-          <div>
-            <p class="small-upper">Solution</p>
-            <div class="rich" set:html={richText(work.solution)} />
-          </div>
+          </>
         )}
       </div>
-    )}
+    </div>
 
     <div class:list={["project__gallery", { "has-rows": hasRows }]}>
       {work.gallery.map((item) =>
@@ -119,31 +135,94 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 
 <style>
   .project__cover {
-    margin-top: 32px;
     aspect-ratio: 16 / 9;
   }
-  .project__info {
+
+  /* Intro: name (1/3) + text (2/3), like the 12-col grid: 4 + 8 columns */
+  .project__intro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 60px 0 80px;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--gap);
+    padding: 60px 0 100px;
   }
-  .project__meta {
-    margin: 0;
+  .project__body {
+    max-width: 760px;
+  }
+  .project__lead {
+    font-family: var(--font-serif);
+    font-size: 26px; /* card-title size from the type scale */
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+  .project__lead :global(p + p) { margin-top: 0.8em; }
+
+  /* "More information" — same plus → × as the Services cards */
+  .project__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 0 0 2px;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    color: var(--text);
+    font: inherit;
+    font-size: var(--fs-ui);
+    letter-spacing: -0.04em;
+    cursor: pointer;
+  }
+  .project__plus {
+    position: relative;
+    width: 11px;
+    height: 11px;
+    transition: transform 0.35s var(--ease);
+  }
+  .project__plus::before,
+  .project__plus::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+  }
+  .project__plus::before { left: 0; right: 0; top: 50%; height: 1px; }
+  .project__plus::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .project__toggle[aria-expanded="true"] .project__plus { transform: rotate(45deg); }
+
+  .project__more {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.5s var(--ease), opacity 0.35s;
+  }
+  .project__toggle[aria-expanded="true"] + .project__more {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  .project__more-inner {
+    min-height: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
+  }
+  .project__more-inner > :first-child { margin-top: 40px; }
+
+  .project__meta {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px var(--gap);
   }
   .project__meta dd {
     margin: 4px 0 0;
     display: flex;
     flex-direction: column;
   }
-  .project__desc {
+  .project__block {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    max-width: 560px;
   }
   .rich :global(p + p) {
     margin-top: 1em;
@@ -153,22 +232,6 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   }
   .project__link {
     align-self: flex-start;
-    margin-top: 24px;
-    font-size: var(--fs-ui);
-  }
-  .project__info:has(+ .project__case) { padding-bottom: 60px; }
-  /* Task / Solution — same two columns as the info block above */
-  .project__case {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 0 0 80px;
-  }
-  .project__case > div {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-width: 560px;
   }
   .project__gallery {
     display: flex;
@@ -199,9 +262,8 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     gap: var(--gap);
   }
   @media (max-width: 809.98px) {
-    .project__info { grid-template-columns: 1fr; padding: 40px 0 48px; }
-    .project__case { grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; }
-    .project__info:has(+ .project__case) { padding-bottom: 32px; }
+    .project__intro { grid-template-columns: 1fr; gap: 16px; padding: 40px 0 56px; }
+    .project__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .next-grid { grid-template-columns: 1fr; }
     .project__row { grid-template-columns: 1fr; }
   }

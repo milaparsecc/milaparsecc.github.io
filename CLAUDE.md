@@ -22,7 +22,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (`homeCategory` in `src/pages/index.astro`), no "All works" button there; /works keeps "All works".
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
-- `task`, `solution` — Behance-style "Task / Solution" block under the info block (same text format). Hidden when empty.
+- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, serif 26px). Lead = `task`, or `tagline`
+  if no task. "More information +" expands: Services/Client/Location/Year, Info (`description`), Solution, live link.
+- `task`, `solution` — same text format as description. Empty fields are hidden.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
 - `gallery` — images/videos in order (`.mp4` plays as video). An item can also be a list of 2–3 paths →
   a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
