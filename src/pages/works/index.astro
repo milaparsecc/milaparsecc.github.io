@@ -25,15 +25,13 @@ import WorkFilter from "../../components/WorkFilter.astro";
   .filters-wrap {
     margin: 40px 0;
   }
+  /* Same grid as Selected Works on the homepage: 2 columns, 20px gap in both directions */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px var(--gap);
-  }
-  @media (max-width: 1199.98px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
   }
   @media (max-width: 809.98px) {
-    .grid { grid-template-columns: 1fr; gap: 20px; }
+    .grid { grid-template-columns: 1fr; }
   }
 </style>
