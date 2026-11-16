@@ -36,3 +36,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 1. Edit files, run `npm run build` to check it builds.
 2. Commit to `main` with a short message → GitHub Actions deploys to GitHub Pages automatically (~1–2 min).
 3. Tell the owner what changed and where to look.
+
+## Fonts
+- Google Fonts: Instrument Serif, Inter (loaded in `src/layouts/Layout.astro`).
+- Adobe Fonts (Adobe Handwriting Ernie for the hero signature): set `fonts.adobeKitId` in `site.json`
+  to the owner's Adobe Fonts web project ID. Adobe's terms forbid self-hosting these files —
+  always load them via the kit. While the ID is empty, the hero shows the signature PNG instead.
