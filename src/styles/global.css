@@ -303,6 +303,8 @@ html { scroll-padding-top: 72px; }
 .tile {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0); /* clip zoomed images cleanly at the card edge */
   background: var(--tile);
 }
 .tile img,

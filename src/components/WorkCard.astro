@@ -24,7 +24,7 @@ const { work, eager = false } = Astro.props;
      serif title top-left (same padding as service titles), link label bottom-left */
   .work-card__overlay {
     position: absolute;
-    inset: 0;
+    inset: -1px; /* 1px bleed, clipped by the card: no hairline at fractional sizes */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
