@@ -108,9 +108,10 @@ const featured = works.filter((w) => w.showOnHomepage);
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr);
     height: 100vh;
     height: 100svh;
-    min-height: 680px;
+    min-height: 640px;
   }
   .hero__photo {
     background: var(--tile);
@@ -123,6 +124,7 @@ const featured = works.filter((w) => w.showOnHomepage);
     object-fit: cover;
   }
   .hero__content {
+    min-height: 0;
     container-type: inline-size;
     display: flex;
     flex-direction: column;
@@ -164,7 +166,7 @@ const featured = works.filter((w) => w.showOnHomepage);
 
   /* Portrait takes the space left between the name and the intro */
   .hero__portrait-wrap {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 0;
     width: 100%;
     display: flex;
@@ -174,7 +176,7 @@ const featured = works.filter((w) => w.showOnHomepage);
   }
   .hero__portrait {
     height: 100%;
-    max-height: 560px;
+    max-height: 640px;
     width: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
@@ -188,6 +190,7 @@ const featured = works.filter((w) => w.showOnHomepage);
   @media (max-width: 809.98px) {
     .hero {
       grid-template-columns: 1fr;
+      grid-template-rows: auto;
       height: auto;
       min-height: 0;
     }
@@ -198,6 +201,7 @@ const featured = works.filter((w) => w.showOnHomepage);
       padding: 48px var(--pad-x) 8px;
     }
     .hero__portrait-wrap {
+      flex: none;
       margin-top: 32px;
     }
     .hero__portrait {
