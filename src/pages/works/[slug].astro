@@ -38,9 +38,12 @@ const cover = work.cover || work.thumbnail;
 // Lead next to the name: dedicated `lead`, else the task, else the tagline
 const lead = work.lead || work.task || work.tagline;
 // Everything else goes under "More information"
+const hasConceptBlock = work.gallery.some((g: any) => g && typeof g === "object" && !Array.isArray(g) && g.type === "concept");
 const more = [
   { label: "Context", text: work.description },
   { label: "Task", text: work.task && lead !== work.task ? work.task : "" },
+  // Concept goes here unless the gallery already has a concept block (then it fills that block)
+  { label: "Concept", text: hasConceptBlock ? "" : work.concept },
   { label: "Solution", text: work.solution },
 ].filter((m) => m.text);
 const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
@@ -124,7 +127,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
             <img src={media(item.image)} alt="" loading="lazy" />
             <div class="project__concept-text">
               <h2 class="h2">{item.title}</h2>
-              <div class="rich" set:html={richText(item.text)} />
+              <div class="rich" set:html={richText(work.concept || item.text)} />
             </div>
           </div>
         ) : isVideo(item) ? (
