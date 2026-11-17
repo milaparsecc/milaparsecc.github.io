@@ -43,7 +43,7 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
       <div class="hero__portrait-wrap">
         <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
       </div>
-      <p class="hero__intro">{site.hero.intro}</p>
+      <p class="hero__intro">{site.hero.intro.split("\n").map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>
     </div>
   </section>
 

@@ -66,6 +66,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Current reel: 11 works × 0.6 s, 4:5, 1080×1350 (desktop) / 720×900 (mobile), H.264 no audio, built with ffmpeg
   (center 4:5 crops; poster = first frame). Keep desktop under ~4 MB, mobile under ~1.5 MB.
 
+- `hero.intro`: `\n` = forced line break (first sentence on its own line).
+
 ## Fonts
 - Google Fonts: Instrument Serif, Inter (loaded in `src/layouts/Layout.astro`).
 - Adobe Fonts (Adobe Handwriting Ernie for the hero signature): set `fonts.adobeKitId` in `site.json`
