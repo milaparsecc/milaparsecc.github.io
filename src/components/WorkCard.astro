@@ -1,7 +1,7 @@
 ---
 import { url, media } from "../lib/text";
 interface Props {
-  work: { title: string; slug: string; thumbnail: string; tagline?: string; services?: string[]; showOnHomepage?: boolean };
+  work: { title: string; slug: string; thumbnail: string; tagline?: string; coverVideo?: string; services?: string[]; showOnHomepage?: boolean };
   eager?: boolean;
   hidden?: boolean;
   categories?: string[]; /* overrides work.services for filtering (homepage selection) */
@@ -10,7 +10,11 @@ const { work, eager = false, hidden = false, categories } = Astro.props;
 ---
 
 <a class="work-card tile reveal" href={url(`/works/${work.slug}`)} data-services={(categories ?? work.services ?? []).join(" ")} data-featured={String(!!work.showOnHomepage)} hidden={hidden}>
-  <img src={media(work.thumbnail)} alt={work.title} loading={eager ? "eager" : "lazy"} />
+  {work.coverVideo ? (
+    <video src={media(work.coverVideo)} poster={media(work.thumbnail)} autoplay muted loop playsinline preload="metadata" aria-label={work.title} />
+  ) : (
+    <img src={media(work.thumbnail)} alt={work.title} loading={eager ? "eager" : "lazy"} />
+  )}
   <span class="work-card__overlay" aria-hidden="true">
     <span class="work-card__top">
       <span class="h3">{work.title}</span>
@@ -57,11 +61,14 @@ const { work, eager = false, hidden = false, categories } = Astro.props;
     overflow: hidden;
     text-wrap: balance;
   }
-  .work-card img {
+  .work-card img,
+  .work-card video {
     transition: transform 0.6s var(--ease), opacity 0.35s;
   }
   .work-card:hover img,
-  .work-card:focus-visible img {
+  .work-card:hover video,
+  .work-card:focus-visible img,
+  .work-card:focus-visible video {
     opacity: var(--fade-to);
   }
   .work-card:hover .work-card__overlay,

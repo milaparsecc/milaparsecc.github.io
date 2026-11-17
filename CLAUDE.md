@@ -27,6 +27,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   if no task. "More information +" expands: Services/Client/Location/Year, Info (`description`), Solution, live link.
 - `task`, `solution` — same text format as description. Empty fields are hidden.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
+- `coverVideo` — optional 16:9 MP4 (no audio, ~1280×720) used instead of the image on the card and the project
+  cover; `thumbnail`/`cover` then serve as poster (use its first frame).
 - `gallery` — images/videos in order (`.mp4` plays as video). An item can also be a list of 2–3 paths →
   a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.

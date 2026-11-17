@@ -315,7 +315,8 @@ html { scroll-padding-top: 72px; }
   transition: transform 0.6s var(--ease);
   transform: scale(1.01); /* hides 1–2px edge artifacts in source files */
 }
-a.tile:hover img {
+a.tile:hover img,
+a.tile:hover video {
   transform: scale(1.04);
 }
 

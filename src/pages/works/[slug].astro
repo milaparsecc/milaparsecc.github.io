@@ -60,7 +60,11 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 <Layout title={work.title} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
   <article class="section container page-top project">
     <div class="project__cover tile">
-      <img src={media(cover)} alt={work.title} />
+      {work.coverVideo ? (
+        <video src={media(work.coverVideo)} poster={media(cover)} autoplay muted loop playsinline aria-label={work.title} />
+      ) : (
+        <img src={media(cover)} alt={work.title} />
+      )}
     </div>
 
     <!-- Intro: name + short task, the rest opens under "More information" -->

@@ -15,8 +15,9 @@
     "solution": "",
     "link": "",
     "linkText": "See live project",
-    "thumbnail": "/media/la-formula/thumb.jpg",
-    "cover": "/media/la-formula/cover.jpg",
+    "thumbnail": "/media/la-formula/cover-poster.jpg",
+    "cover": "/media/la-formula/cover-poster.jpg",
+    "coverVideo": "/media/la-formula/cover.mp4",
     "gallery": [
       [
         "/media/la-formula/gifts.jpg",
@@ -56,6 +57,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/space-karlin/thumb.jpg",
     "cover": "/media/space-karlin/cover.jpg",
+    "coverVideo": "",
     "gallery": [
       "/media/space-karlin/bite.jpg",
       [
@@ -90,6 +92,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/KHC9rjQnb35MXCQq1nkRYw2pY.jpg",
     "cover": "",
+    "coverVideo": "",
     "gallery": [
       "/media/KHC9rjQnb35MXCQq1nkRYw2pY.jpg",
       "/media/sK8hCnCF1TCVlwZVqhCdR9Qs.jpg",
@@ -123,6 +126,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/dVzJG1HAXQzdv1jtZxKFenyykE.jpg",
     "cover": "/media/dVzJG1HAXQzdv1jtZxKFenyykE.jpg",
+    "coverVideo": "",
     "gallery": [
       "/media/QoQYvAPrjTcpUyXcj0pPldHtc.jpg",
       "/media/yzjdZK3v8Lu98Ql13ZrYkv7Ho.jpg",
@@ -150,6 +154,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/etOBKLJkQquTijofV6T9bDwkAJs.gif",
     "cover": "/media/etOBKLJkQquTijofV6T9bDwkAJs.gif",
+    "coverVideo": "",
     "gallery": [
       "/media/DQSommF3nF3MyZXv5wyefOga48.png",
       "/media/MTvfs9nk6BcRIZVfjK9jDSbwyk.png",
@@ -178,6 +183,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/rhZMp48oIZFgi2VvvM0a3BLfY.gif",
     "cover": "/media/rhZMp48oIZFgi2VvvM0a3BLfY.gif",
+    "coverVideo": "",
     "gallery": [
       "/media/fQbZjEQW10YQUgo5XznJqiBgWQk.jpg",
       "/media/2Wp4eFsN0Dt3vXm9IZU5gPnMxo.gif",
@@ -216,6 +222,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/Vei6KX3zisrYhywPTOCHnfq7TBU.gif",
     "cover": "/media/ggLMiv6XDeQ5RrDg1PrBKUt2Cs.jpg",
+    "coverVideo": "",
     "gallery": [
       "/media/yFcwLkwPXH7ZZazF2MyxEBTUW7I.jpg",
       "/media/cJK2AzC5G50LUyvcUO6Xaj8WyJ4.jpg",
@@ -246,6 +253,7 @@
     "linkText": "See live project",
     "thumbnail": "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
     "cover": "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
+    "coverVideo": "",
     "gallery": [
       "/media/zEJaxGxOcJMV1evwGzdUsc722jQ.jpg",
       "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
