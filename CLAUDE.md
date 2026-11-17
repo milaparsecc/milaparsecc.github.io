@@ -57,6 +57,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Body text 18px everywhere (incl. hero intro), uppercase UI 16px, labels 14px, project lead 26px Inter.
   Serif (Instrument Serif) only for headings/names — never for running text.
 - Spacing: multiples of 4/8; card gaps 20px; page margins 40px (20px on phones).
+- Typography: no short words (a, and, of, to, the, I…) hanging at line ends. `scripts/typography.mjs` glues them
+  to the next word with &nbsp; in every built page — keep it enabled; check line breaks in screenshots.
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 
 ## Hero
