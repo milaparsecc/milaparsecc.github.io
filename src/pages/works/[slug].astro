@@ -29,6 +29,7 @@ const meta = [
   { label: "Client", value: work.client ? [work.client] : [] },
   { label: "Location", value: work.location ? [work.location] : [] },
   { label: "Year", value: work.year ? [work.year] : [] },
+  { label: "Deliverables", value: work.deliverables ? [work.deliverables] : [], wide: true },
 ].filter((m) => m.value.length);
 
 const cover = work.cover || work.thumbnail;
@@ -85,7 +86,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
                 {meta.length > 0 && (
                   <dl class="project__meta">
                     {meta.map((m) => (
-                      <div>
+                      <div class:list={{ "is-wide": m.wide }}>
                         <dt class="small-upper">{m.label}</dt>
                         <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
                       </div>
@@ -227,6 +228,9 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px var(--gap);
+  }
+  .project__meta .is-wide {
+    grid-column: 1 / -1;
   }
   .project__meta dd {
     margin: 4px 0 0;
