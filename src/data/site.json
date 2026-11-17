@@ -15,7 +15,7 @@
     "videoPoster": "/media/hero-reel-poster.jpg",
     "signature": "/media/BScAtTQxObV38dZxelORJjijeM.png",
     "portrait": "/media/ya7et1z0oR9nrsC8hGMUuRNCDM.jpeg",
-    "intro": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond.",
+    "intro": "Prague-based brand & graphic designer. Seven years of turning clear ideas into memorable brands, on screen, in print and in physical space.",
     "signatureText": "Brand & Graphic Designer"
   },
   "about": {
@@ -23,44 +23,39 @@
     "rows": [
       {
         "label": "What I do",
-        "text": "I help brands find clarity and express it through strong, thoughtful design."
+        "text": "I build complete brands, from identity and digital to print and physical space, and lead them from first concept to production-ready files. AI tools are part of my everyday workflow, always art-directed by hand."
       },
       {
         "label": "My background",
-        "text": "Originally from CDMX, I’ve been designing identities for 7+ years, working with startups, restaurants, hoteliers, and creative founders across Mexico and beyond."
+        "text": "Based in Prague, I studied graphic design and interactive graphics and have been practising for seven years. I’ve worked in-house at a publishing house, as the first employee of a fashion atelier and independently with festivals, production studios, cafés and photographers."
       },
       {
         "label": "My approach",
-        "text": "I believe good design starts with empathy. I ask questions, listen closely, and build brands that feel as good as they look, honest, beautiful, and built to last."
+        "text": "Every brand starts with one clear idea. I listen, ask questions and look for the thought that holds everything together, then make sure it works everywhere: on a phone screen, a printed label or a concrete wall."
       },
       {
         "label": "Career",
         "list": [
-          "(2017 - 2019) Junior Designer at Estudio 74",
-          "(2019 - 2021) Brand Designer at Casa Taller",
-          "(2021 – 2023) Lead Designer at Forma.mx",
-          "(2023 – now) Independent Brand Designer"
+          "(2024 – 2026) In-house Designer at First Class Publishing",
+          "(2020 – 2024) Merch & Embroidery Designer at Iris Ateliér",
+          "(2019 – now) Independent Brand & Graphic Designer"
         ]
+      },
+      {
+        "label": "Languages",
+        "text": "Russian, English, Czech"
       }
     ]
   },
   "contact": {
     "intro": "Let’s create something meaningful together. I’d love to hear about your project, big or small.",
-    "email": "hi@jorge.com",
-    "phone": "+52 55 7391 2486",
+    "email": "parsec.mila@gmail.com",
+    "phone": "",
     "photo": "/media/HFh5kLnilRLgrC1PZNvmx0PRRA.jpg",
     "socials": [
       {
         "name": "Instagram",
-        "url": "https://www.instagram.com/ludoviclosco/"
-      },
-      {
-        "name": "Threads",
-        "url": "https://www.threads.com/@ludoviclosco"
-      },
-      {
-        "name": "X (Twitter)",
-        "url": "https://x.com/ludoviclosco"
+        "url": "https://www.instagram.com/mila.parsec/"
       }
     ]
   },

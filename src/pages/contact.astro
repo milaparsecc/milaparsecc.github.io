@@ -13,7 +13,7 @@ const c = site.contact;
         <p class="contact__intro">{c.intro}</p>
         <div class="contact__lists">
           <div>
-            <p class="small-upper">Email &amp; Phone</p>
+            <p class="small-upper">{c.phone ? "Email & Phone" : "Email"}</p>
             <a href={`mailto:${c.email}`}>{c.email}</a>
             {c.phone && <a href={`tel:${c.phone.replace(/\s/g, "")}`}>{c.phone}</a>}
           </div>
