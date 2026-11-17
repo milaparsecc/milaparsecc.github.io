@@ -9,6 +9,10 @@ import { url, media } from "../lib/text";
 
 // Category selected in "Selected Works" when the page opens
 const homeCategory = "visual-identity";
+// Which projects Selected Works shows in each category (edit in site.json → homeWorks)
+const homeWorks: Record<string, string[]> = site.homeWorks;
+const homeCats = (slug: string) => Object.keys(homeWorks).filter((c) => homeWorks[c].includes(slug));
+const homeList = works.filter((w) => homeCats(w.slug).length > 0);
 
 ---
 
@@ -50,10 +54,10 @@ const homeCategory = "visual-identity";
       <a class="upper underline small-link" href={url("/works")}>See all works</a>
     </div>
     <div class="works-filter">
-      <WorkFilter target="works-home" showAll={false} initial={homeCategory} />
+      <WorkFilter target="works-home" showAll={false} initial={homeCategory} categories={Object.keys(homeWorks)} />
     </div>
     <div class="works-grid" id="works-home">
-      {works.map((w) => <WorkCard work={w} hidden={!w.services.includes(homeCategory)} />)}
+      {homeList.map((w) => <WorkCard work={w} categories={homeCats(w.slug)} hidden={!homeCats(w.slug).includes(homeCategory)} />)}
     </div>
     <p class="upper muted works-empty" data-empty hidden>No works in this category yet</p>
   </section>

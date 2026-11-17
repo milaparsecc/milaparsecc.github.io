@@ -4,11 +4,12 @@ interface Props {
   work: { title: string; slug: string; thumbnail: string; tagline?: string; services?: string[]; showOnHomepage?: boolean };
   eager?: boolean;
   hidden?: boolean;
+  categories?: string[]; /* overrides work.services for filtering (homepage selection) */
 }
-const { work, eager = false, hidden = false } = Astro.props;
+const { work, eager = false, hidden = false, categories } = Astro.props;
 ---
 
-<a class="work-card tile reveal" href={url(`/works/${work.slug}`)} data-services={(work.services ?? []).join(" ")} data-featured={String(!!work.showOnHomepage)} hidden={hidden}>
+<a class="work-card tile reveal" href={url(`/works/${work.slug}`)} data-services={(categories ?? work.services ?? []).join(" ")} data-featured={String(!!work.showOnHomepage)} hidden={hidden}>
   <img src={media(work.thumbnail)} alt={work.title} loading={eager ? "eager" : "lazy"} />
   <span class="work-card__overlay" aria-hidden="true">
     <span class="work-card__top">

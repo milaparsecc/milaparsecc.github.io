@@ -18,8 +18,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 ### works.json fields
 - `slug` — URL part: `/works/<slug>`. Lowercase, latin letters, hyphens.
 - `tagline` — one sentence shown on the card hover (bottom, full width). Keep it short (~100 chars).
-- `showOnHomepage` — currently unused: "Selected Works" opens on the Visual Identity category
-  (`homeCategory` in `src/pages/index.astro`), no "All works" button there; /works keeps "All works".
+- `showOnHomepage` — unused. Homepage "Selected Works" is curated in `site.json` → `homeWorks`
+  ({category slug: [project slugs]}); opens on Visual Identity (`homeCategory` in index.astro).
+  /works still filters by each project's `services`.
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
 - Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `task`, or `tagline`

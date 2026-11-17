@@ -7,9 +7,11 @@
    Categories without any project are hidden. */
 import services from "../data/services.json";
 import works from "../data/works.json";
-interface Props { target: string; mode?: "featured" | "all"; showAll?: boolean; initial?: string; }
-const { target, mode = "all", showAll = true, initial = "all" } = Astro.props;
-const used = services.filter((s) => works.some((w) => w.services.includes(s.slug)));
+interface Props { target: string; mode?: "featured" | "all"; showAll?: boolean; initial?: string; categories?: string[]; }
+const { target, mode = "all", showAll = true, initial = "all", categories } = Astro.props;
+const used = categories
+  ? services.filter((s) => categories.includes(s.slug))
+  : services.filter((s) => works.some((w) => w.services.includes(s.slug)));
 ---
 
 <div class="filters" data-work-filter={target} data-mode={mode} role="group" aria-label="Filter works by service">

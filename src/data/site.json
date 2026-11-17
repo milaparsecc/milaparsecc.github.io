@@ -71,5 +71,20 @@
   "fonts": {
     "adobeKitId": "pgl2jww",
     "signatureFamily": "adobe-handwriting-ernie"
+  },
+  "homeWorks": {
+    "visual-identity": [
+      "rubin-production",
+      "alla-vakker",
+      "mynds",
+      "iris-atelier"
+    ],
+    "packaging-print": [
+      "la-formula-christmas",
+      "iris-atelier"
+    ],
+    "spaces-events": [
+      "space-karlin"
+    ]
   }
 }
