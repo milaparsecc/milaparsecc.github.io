@@ -23,8 +23,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   /works still filters by each project's `services`.
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
-- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `task`, or `tagline`
-  if no task. "More information +" expands: Services/Client/Location/Year, Info (`description`), Solution, live link.
+- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `lead`, else `task`, else
+  `tagline`. "More information +" expands: Services/Client/Location/Year, Context (`description`), Task, Solution, link.
+  Owner's case text template: Tagline / Lead / Meta / Context / Task / Solution (Mynds is the reference).
 - `task`, `solution` — same text format as description. Empty fields are hidden.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
 - `coverVideo` — optional 16:9 MP4 (no audio, ~1280×720) used instead of the image on the card and the project

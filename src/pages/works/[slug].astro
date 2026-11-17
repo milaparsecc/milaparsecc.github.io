@@ -34,10 +34,11 @@ const meta = [
 const cover = work.cover || work.thumbnail;
 
 // Lead text next to the name: the task if written, otherwise the one-line tagline.
-const lead = work.task || work.tagline;
+// Lead next to the name: dedicated `lead`, else the task, else the tagline
+const lead = work.lead || work.task || work.tagline;
 // Everything else goes under "More information"
 const more = [
-  { label: "Info", text: work.description },
+  { label: "Context", text: work.description },
   { label: "Task", text: work.task && lead !== work.task ? work.task : "" },
   { label: "Solution", text: work.solution },
 ].filter((m) => m.text);
