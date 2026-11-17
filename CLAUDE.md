@@ -31,6 +31,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   cover; `thumbnail`/`cover` then serve as poster (use its first frame).
 - `gallery` — images/videos in order (`.mp4` plays as video). An item can also be a list of 2–3 paths →
   a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
+- Gallery item `{ "type": "concept", "image", "title", "text" }` → logo image left, white text block right
+  (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
+- `titleScript` — optional word after the title in Adobe Handwriting (e.g. la FORMULA + "Christmas").
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.
 - Order of projects in the file = order on the site.
 

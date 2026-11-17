@@ -1,7 +1,7 @@
 ---
 import { url, media } from "../lib/text";
 interface Props {
-  work: { title: string; slug: string; thumbnail: string; tagline?: string; coverVideo?: string; services?: string[]; showOnHomepage?: boolean };
+  work: { title: string; titleScript?: string; slug: string; thumbnail: string; tagline?: string; coverVideo?: string; services?: string[]; showOnHomepage?: boolean };
   eager?: boolean;
   hidden?: boolean;
   categories?: string[]; /* overrides work.services for filtering (homepage selection) */
@@ -17,7 +17,7 @@ const { work, eager = false, hidden = false, categories } = Astro.props;
   )}
   <span class="work-card__overlay" aria-hidden="true">
     <span class="work-card__top">
-      <span class="h3">{work.title}</span>
+      <span class="h3">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</span>
       <span class="upper underline">View project</span>
     </span>
     {work.tagline && <span class="work-card__tagline">{work.tagline}</span>}

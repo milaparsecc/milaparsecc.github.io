@@ -1,6 +1,7 @@
 [
   {
-    "title": "la FORMULA Christmas",
+    "title": "la FORMULA",
+    "titleScript": "Christmas",
     "tagline": "Label design for la FORMULA’s Christmas candle collection — Stromeček and Svařák.",
     "slug": "la-formula-christmas",
     "showOnHomepage": false,
@@ -41,6 +42,7 @@
   },
   {
     "title": "Space Karlín",
+    "titleScript": "",
     "tagline": "A wayfinding system for a café and coworking space in Prague’s Karlín district.",
     "slug": "space-karlin",
     "showOnHomepage": false,
@@ -76,6 +78,7 @@
   },
   {
     "title": "WannaSurf",
+    "titleScript": "",
     "tagline": "Brand identity for a surf school that brings people together and makes them fall in love with surfing.",
     "slug": "wannasurf",
     "showOnHomepage": false,
@@ -109,6 +112,7 @@
   },
   {
     "title": "The secret garden",
+    "titleScript": "",
     "tagline": "Identity and stationery for a winery & hotel inspired by old botanical paintings and hidden keys.",
     "slug": "the-secret-garden",
     "showOnHomepage": false,
@@ -136,6 +140,7 @@
   },
   {
     "title": "Mynds Festival",
+    "titleScript": "",
     "tagline": "A bright, playful identity for the largest popular-science festival in the Czech Republic.",
     "slug": "mynds",
     "showOnHomepage": true,
@@ -167,6 +172,7 @@
   },
   {
     "title": "Rubin Production",
+    "titleScript": "",
     "tagline": "A sharp, modern identity and brand guidelines for a video production studio.",
     "slug": "rubin-production",
     "showOnHomepage": true,
@@ -205,6 +211,7 @@
   },
   {
     "title": "Iris ateliér",
+    "titleScript": "",
     "tagline": "An elegant identity and packaging for a Prague atelier, built around a classic toile pattern.",
     "slug": "iris-atelier",
     "showOnHomepage": true,
@@ -227,7 +234,12 @@
       "/media/yFcwLkwPXH7ZZazF2MyxEBTUW7I.jpg",
       "/media/cJK2AzC5G50LUyvcUO6Xaj8WyJ4.jpg",
       "/media/HkBgKK3lhXy7LS8WbPF7v6Sdig.jpg",
-      "/media/VTLSbfs1xHutCIv6enpnBfJA2k.jpg",
+      {
+        "type": "concept",
+        "image": "/media/iris-atelier-logo.jpg",
+        "title": "Concept",
+        "text": "A typographic logo — minimalist and sophisticated. The Iris Atelier logo reflects the brand’s core values: femininity, elegance and aesthetics. It looks great on business cards, packaging and tags, and despite its simplicity it catches customers’ attention."
+      },
       "/media/ggLMiv6XDeQ5RrDg1PrBKUt2Cs.jpg",
       "/media/4ARafZAmQWD2wVV20zRixqd1SM8.jpg",
       "/media/W2OiMgzwGD4NUewvfM4CZdp6Ow.jpg"
@@ -236,6 +248,7 @@
   },
   {
     "title": "Alla Vakker",
+    "titleScript": "",
     "tagline": "A refined personal brand and business cards for a Europe-based photographer.",
     "slug": "alla-vakker",
     "showOnHomepage": true,
@@ -257,7 +270,12 @@
     "gallery": [
       "/media/zEJaxGxOcJMV1evwGzdUsc722jQ.jpg",
       "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
-      "/media/zmVtWQ9BBllMl91eGSOeFjmUx4.jpg",
+      {
+        "type": "concept",
+        "image": "/media/alla-vakker-logo.jpg",
+        "title": "Concept",
+        "text": "The mark is a monogram built from the first letters of her first and last name. The two letters mirror each other, just as a photographer reflects the model through the lens. The logo uses an elegant, feminine typeface that reflects the brand’s values and speaks to the photographer’s audience."
+      },
       "/media/ZYu40t5MZz6AtcCd1RTqgYIS0.jpg",
       "/media/LBC0s1TwFTHxAX1pbGuL8zdaSo.jpg"
     ],

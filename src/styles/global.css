@@ -333,3 +333,12 @@ a.tile:hover video {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* Handwritten accent word (Adobe Handwriting Ernie) inside serif titles, e.g. "la FORMULA Christmas" */
+.script {
+  font-family: "adobe-handwriting-ernie", cursive;
+  color: var(--accent);
+  font-size: 0.62em;
+  letter-spacing: 0;
+  white-space: nowrap;
+}

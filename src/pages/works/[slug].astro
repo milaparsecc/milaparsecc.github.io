@@ -44,6 +44,7 @@ const more = [
 const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 // A gallery item can be a single image (full width) or a list of images shown side by side
 const hasRows = work.gallery.some((g: unknown) => Array.isArray(g));
+// A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 ---
 
@@ -57,7 +58,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   });
 </script>
 
-<Layout title={work.title} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
+<Layout title={[work.title, work.titleScript].filter(Boolean).join(" ")} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
   <article class="section container page-top project">
     <div class="project__cover tile">
       {work.coverVideo ? (
@@ -69,7 +70,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 
     <!-- Intro: name + short task, the rest opens under "More information" -->
     <div class="project__intro">
-      <h1 class="h2 project__title">{work.title}</h1>
+      <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
       <div class="project__body">
         {lead && <div class="project__lead" set:html={richText(lead)} />}
         {hasMore && (
@@ -115,6 +116,14 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
             {item.map((src) => (isVideo(src)
               ? <video src={media(src)} autoplay muted loop playsinline />
               : <img src={media(src)} alt="" loading="lazy" />))}
+          </div>
+        ) : typeof item === "object" && item.type === "concept" ? (
+          <div class="project__concept">
+            <img src={media(item.image)} alt="" loading="lazy" />
+            <div class="project__concept-text">
+              <h2 class="h2">{item.title}</h2>
+              <div class="rich" set:html={richText(item.text)} />
+            </div>
           </div>
         ) : isVideo(item) ? (
           <video src={media(item)} autoplay muted loop playsinline />
@@ -250,6 +259,30 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   .project__gallery.has-rows {
     gap: var(--gap);
   }
+  /* Concept: logo image left, white text block right — same 50/50 split as the hero */
+  .project__concept {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .project__concept img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 8 / 9;
+    object-fit: cover;
+  }
+  .project__concept-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px clamp(var(--pad-x), 8%, 120px);
+    background: var(--bg);
+  }
+  .project__concept-text .rich {
+    max-width: 440px;
+    text-wrap: pretty;
+  }
   .project__row {
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
@@ -270,5 +303,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     .project__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .next-grid { grid-template-columns: 1fr; }
     .project__row { grid-template-columns: 1fr; }
+    .project__concept { grid-template-columns: 1fr; }
+    .project__concept-text { padding: 40px 0; }
   }
 </style>
