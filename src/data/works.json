@@ -25,12 +25,12 @@
     "gallery": [
       {
         "type": "set",
-        "title": "Christmas collection",
+        "title": "Miluj svého teenagera",
         "items": [
-          "/media/fc-ads/6-1.jpg",
-          "/media/fc-ads/6-2.jpg",
-          "/media/fc-ads/6-3.jpg",
-          "/media/fc-ads/6-4.jpg"
+          "/media/fc-ads/5-1.jpg",
+          "/media/fc-ads/5-2.jpg",
+          "/media/fc-ads/5-3.jpg",
+          "/media/fc-ads/5-4.jpg"
         ]
       },
       {
@@ -65,22 +65,22 @@
       },
       {
         "type": "set",
+        "title": "Christmas collection",
+        "items": [
+          "/media/fc-ads/6-1.jpg",
+          "/media/fc-ads/6-2.jpg",
+          "/media/fc-ads/6-3.jpg",
+          "/media/fc-ads/6-4.jpg"
+        ]
+      },
+      {
+        "type": "set",
         "title": "Ovládni svůj spánek",
         "items": [
           "/media/fc-ads/4-1.jpg",
           "/media/fc-ads/4-2.jpg",
           "/media/fc-ads/4-3.jpg",
           "/media/fc-ads/4-4.jpg"
-        ]
-      },
-      {
-        "type": "set",
-        "title": "Miluj svého teenagera",
-        "items": [
-          "/media/fc-ads/5-1.jpg",
-          "/media/fc-ads/5-2.jpg",
-          "/media/fc-ads/5-3.jpg",
-          "/media/fc-ads/5-4.jpg"
         ]
       }
     ],
