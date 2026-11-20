@@ -40,6 +40,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
+- Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
+  Space Karlín menu images `menu-*-placeholder-*.jpg` are temporary flat files until the owner sends mockups
+  (CZ + EN at 3:4 ~1500×2000 in the row with menu-close.jpg; Christmas at 16:9 2400×1350, full width).
 - `titleScript` — optional word after the title in Adobe Handwriting (e.g. la FORMULA + "Christmas").
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.
 - Order of projects in the file = order on the site.

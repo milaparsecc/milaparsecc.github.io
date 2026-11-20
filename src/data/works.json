@@ -98,7 +98,7 @@
     "role": "Freelance designer",
     "year": "",
     "location": "Prague, Karlín",
-    "deliverables": "Wayfinding strategy, menu wall, directional and room signage, zone pictograms and rules, QR table stickers, locker signage, kitchen signage, window graphics, production files and supervision",
+    "deliverables": "Wayfinding strategy, menu wall, printed menus (CZ / EN) and Christmas menu, directional and room signage, zone pictograms and rules, QR table stickers, locker signage, kitchen signage, window graphics, production files and supervision",
     "services": [
       "spaces-events"
     ],
@@ -112,18 +112,31 @@
     "cover": "/media/space-karlin/cover.jpg",
     "coverVideo": "",
     "gallery": [
+      {
+        "type": "heading",
+        "title": "Wayfinding & signage"
+      },
       "/media/space-karlin/bite.jpg",
       [
         "/media/space-karlin/sign.jpg",
-        "/media/space-karlin/cup.jpg",
-        "/media/space-karlin/menu-close.jpg"
+        "/media/space-karlin/cup.jpg"
       ],
       "/media/space-karlin/focus.jpg",
       [
         "/media/space-karlin/immerse.jpg",
         "/media/space-karlin/silent.jpg"
       ],
-      "/media/space-karlin/praha.jpg"
+      "/media/space-karlin/praha.jpg",
+      {
+        "type": "heading",
+        "title": "Menus"
+      },
+      [
+        "/media/space-karlin/menu-close.jpg",
+        "/media/space-karlin/menu-cz-placeholder-fe2015.jpg",
+        "/media/space-karlin/menu-en-placeholder-f9c918.jpg"
+      ],
+      "/media/space-karlin/menu-winter-placeholder-c4a23b.jpg"
     ],
     "nextProjects": []
   },

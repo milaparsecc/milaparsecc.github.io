@@ -49,7 +49,7 @@ const more = [
 ].filter((m) => m.text);
 const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 // A gallery item can be a single image (full width) or a list of images shown side by side
-const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && g.type === "set"));
+const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && (g.type === "set" || g.type === "heading")));
 // A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 // Alt texts for gallery images: "<project> — image N"
@@ -109,6 +109,8 @@ const alt = () => `${altName} — image ${++altN}`;
               ? <video src={media(src)} autoplay muted loop playsinline aria-label={alt()} />
               : <img src={media(src)} alt={alt()} loading="lazy" />))}
           </div>
+        ) : typeof item === "object" && item.type === "heading" ? (
+          <p class="small-upper project__chapter">{item.title}</p>
         ) : typeof item === "object" && item.type === "set" ? (
           <div class="project__set">
             <p class="small-upper">{item.title}</p>
@@ -250,6 +252,9 @@ const alt = () => `${altName} — image ${++altN}`;
     padding-top: 40px;
   }
   .project__set:first-child { padding-top: 0; }
+  /* Chapter label inside a gallery ({ type: "heading" }), e.g. "Wayfinding & signage" / "Menus" */
+  .project__chapter { padding-top: 40px; }
+  .project__chapter:first-child { padding-top: 0; }
   /* Stories look like phone screens: rounded corners + soft shadow, same as the case cover */
   .project__set img {
     border-radius: 16px;
