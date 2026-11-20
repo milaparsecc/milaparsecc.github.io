@@ -14,8 +14,9 @@ const nav = [
   { label: "Works", href: "/works" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#about" },
+  { label: "CV", href: site.cv.url, external: true },
 ];
-const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
+const isActive = (href: string): boolean => !href.includes("#") && path.startsWith(href);
 ---
 
 <!doctype html>
@@ -43,7 +44,7 @@ const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
           <a class="nav__logo" href={`${base}/`} style={`font-family: "${site.fonts.signatureFamily}", cursive`}>{site.logo}</a>
           <nav class="nav__links" aria-label="Main">
             {nav.map((l) => (
-              <a href={`${base}${l.href}`} class:list={["nav__link", { "is-active": isActive(l.href) }]}>
+              <a href={`${base}${l.href}`} class:list={["nav__link", { "is-active": !l.external && isActive(l.href) }]} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener" : undefined}>
                 {l.label}
               </a>
             ))}
@@ -59,7 +60,7 @@ const isActive = (href: string) => !href.includes("#") && path.startsWith(href);
       </div>
       <div class="nav__mobile" id="mobile-menu">
         {nav.map((l) => (
-          <a href={`${base}${l.href}`} class="nav__mobile-link">{l.label}</a>
+          <a href={`${base}${l.href}`} class="nav__mobile-link" target={l.external ? "_blank" : undefined} rel={l.external ? "noopener" : undefined}>{l.label}</a>
         ))}
         <a href={`${base}/contact`} class="nav__mobile-link">Get in touch</a>
       </div>

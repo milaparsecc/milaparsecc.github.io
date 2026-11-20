@@ -96,6 +96,19 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
                   {r.list.map((li) => <li>{li}</li>)}
                 </ul>
               )}
+              {r.items && (
+                <ul class="about__items">
+                  {r.items.map((it) => (
+                    <li>
+                      <span>{it.head}</span>
+                      <span class="muted">{it.note}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {r.cv && (
+                <a class="upper underline" href={url(site.cv.url)} target="_blank" rel="noopener">{site.cv.label}</a>
+              )}
             </dd>
           </div>
         ))}
@@ -351,6 +364,16 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     display: grid;
     grid-template-columns: minmax(160px, 20%) minmax(0, 520px);
     gap: 40px;
+  }
+  .about__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .about__items li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   .about__row dd {
     margin: 0;

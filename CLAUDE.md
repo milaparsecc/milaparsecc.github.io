@@ -52,6 +52,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - When replacing an image, ALWAYS use a new file name (e.g. add a short hash): browsers and GitHub Pages
   cache files by name for a while, so reusing a name makes the change invisible to the owner.
 
+- CV: `public/cv/Mila-Parsec-Brand-Designer-CV.pdf` (`site.json` → `cv`). Linked in nav (opens new tab), About
+  (last row) and Contact. To update: replace the file keep the same name so shared links keep working (GitHub Pages may cache it ~10 min) and bump the date in `cv.label`.
+
 ## Workflow
 1. Edit files, run `npm run build` to check it builds.
 2. Commit to `main` with a short message → GitHub Actions deploys to GitHub Pages automatically (~1–2 min).
