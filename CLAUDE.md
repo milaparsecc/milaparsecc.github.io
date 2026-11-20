@@ -90,6 +90,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
 
 - `hero.intro`: `\n` = forced line break (first sentence on its own line).
 
+## Analytics
+- Google Analytics 4: `site.json` → `analytics.gaId` (G-EHQ1K4ZLZ2). Loaded only after the visitor clicks Accept in the
+  cookie banner (Layout.astro; choice in localStorage `mp-cookie-consent`); "Cookies" button in the footer reopens it.
+
 ## Fonts
 - Google Fonts: Instrument Serif, Inter (loaded in `src/layouts/Layout.astro`).
 - Adobe Fonts (Adobe Handwriting Ernie for the hero signature): set `fonts.adobeKitId` in `site.json`

@@ -123,5 +123,8 @@
     "url": "/cv/Mila-Parsec-Brand-Designer-CV.pdf",
     "label": "Open PDF, updated Nov 2026",
     "enabled": false
+  },
+  "analytics": {
+    "gaId": "G-EHQ1K4ZLZ2"
   }
 }

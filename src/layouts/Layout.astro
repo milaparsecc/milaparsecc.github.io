@@ -97,10 +97,65 @@ const isActive = (href: string): boolean => !href.includes("#") && path.startsWi
               </a>
             )}
           </div>
-          <span class="upper">{site.footer.copyright}</span>
+          <div class="footer__links">
+            {site.analytics?.gaId && <button class="upper footer__cookies" type="button" data-cookie-settings>Cookies</button>}
+            <span class="upper">{site.footer.copyright}</span>
+          </div>
         </div>
       </div>
     </footer>
+
+    {site.analytics?.gaId && (
+      <>
+        <!-- Cookie consent: Google Analytics loads only after "Accept" (choice kept in localStorage) -->
+        <div class="cookie" id="cookie-banner" role="dialog" aria-label="Cookies" hidden>
+          <p class="cookie__text">I use Google Analytics cookies to see which projects visitors look at. You can change your choice anytime under “Cookies” at the bottom of the page.</p>
+          <div class="cookie__actions">
+            <button class="nav__cta" type="button" data-cookie="yes">Accept</button>
+            <button class="upper cookie__decline" type="button" data-cookie="no">Decline</button>
+          </div>
+        </div>
+        <script is:inline define:vars={{ gaId: site.analytics.gaId }}>
+          (() => {
+            const KEY = "mp-cookie-consent";
+            const banner = document.getElementById("cookie-banner");
+            const get = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
+            const set = (v) => { try { localStorage.setItem(KEY, v); } catch {} };
+            const loadGA = () => {
+              if (window.__gaLoaded) return;
+              window.__gaLoaded = true;
+              const s = document.createElement("script");
+              s.async = true;
+              s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+              document.head.appendChild(s);
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () { window.dataLayer.push(arguments); };
+              window.gtag("js", new Date());
+              window.gtag("config", gaId);
+            };
+            const choice = get();
+            if (choice === "yes") loadGA();
+            else if (!choice) banner.hidden = false;
+            banner.querySelectorAll("[data-cookie]").forEach((b) =>
+              b.addEventListener("click", () => {
+                const v = b.dataset.cookie;
+                const was = get();
+                set(v);
+                banner.hidden = true;
+                if (v === "yes") loadGA();
+                else if (was === "yes") {
+                  // Withdrawn consent: remove GA cookies and reload without analytics
+                  document.cookie.split(";").map((c) => c.trim().split("=")[0]).filter((n) => n.startsWith("_ga"))
+                    .forEach((n) => { document.cookie = n + "=; Max-Age=0; path=/"; document.cookie = n + "=; Max-Age=0; path=/; domain=." + location.hostname; });
+                  location.reload();
+                }
+              })
+            );
+            document.querySelectorAll("[data-cookie-settings]").forEach((b) => b.addEventListener("click", () => (banner.hidden = false)));
+          })();
+        </script>
+      </>
+    )}
 
     <script>
       // Solid background once the page is scrolled
