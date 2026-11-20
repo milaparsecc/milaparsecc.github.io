@@ -48,7 +48,7 @@ const more = [
 ].filter((m) => m.text);
 const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 // A gallery item can be a single image (full width) or a list of images shown side by side
-const hasRows = work.gallery.some((g: unknown) => Array.isArray(g));
+const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && g.type === "set"));
 // A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 ---
@@ -121,6 +121,13 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
             {item.map((src) => (isVideo(src)
               ? <video src={media(src)} autoplay muted loop playsinline />
               : <img src={media(src)} alt="" loading="lazy" />))}
+          </div>
+        ) : typeof item === "object" && item.type === "set" ? (
+          <div class="project__set">
+            <p class="small-upper">{item.title}</p>
+            <div class="project__row" style={`--cols: ${item.items.length}`}>
+              {item.items.map((src: string) => <img src={media(src)} alt={item.title} loading="lazy" />)}
+            </div>
           </div>
         ) : typeof item === "object" && item.type === "concept" ? (
           <div class="project__concept">
@@ -291,6 +298,14 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     max-width: 440px;
     text-wrap: pretty;
   }
+  /* Set: a labelled row (e.g. one ad campaign per book) */
+  .project__set {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 40px;
+  }
+  .project__set:first-child { padding-top: 0; }
   .project__row {
     display: grid;
     grid-template-columns: repeat(var(--cols), 1fr);
@@ -311,6 +326,8 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
     .project__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .next-grid { grid-template-columns: 1fr; }
     .project__row { grid-template-columns: 1fr; }
+    .project__set .project__row { grid-template-columns: repeat(2, 1fr); }
+    .project__set { padding-top: 24px; }
     .project__concept { grid-template-columns: 1fr; }
     .project__concept-text { padding: 40px 0; }
   }
