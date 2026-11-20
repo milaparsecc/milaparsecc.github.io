@@ -4,7 +4,8 @@
    (the page must render cards outside that category with hidden={true}).
    mode "featured": "All works" shows only projects with showOnHomepage; a category shows every project in it.
    mode "all":      "All works" shows every project.
-   Categories without any project are hidden. */
+   Categories without any project are hidden.
+   ?work=<slug or its start> in the URL opens that tab (e.g. /?work=social, /works?work=packaging). */
 import services from "../data/services.json";
 import works from "../data/works.json";
 interface Props { target: string; mode?: "featured" | "all"; showAll?: boolean; initial?: string; categories?: string[]; }
@@ -42,15 +43,32 @@ const used = categories
       });
       if (empty) empty.hidden = shown > 0;
     };
+    const select = (btn: HTMLButtonElement) => {
+      buttons.forEach((b) => {
+        b.classList.toggle("is-active", b === btn);
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+      apply(btn.dataset.filter!);
+    };
     buttons.forEach((btn) =>
       btn.addEventListener("click", () => {
-        buttons.forEach((b) => {
-          b.classList.toggle("is-active", b === btn);
-          b.setAttribute("aria-pressed", String(b === btn));
-        });
-        apply(btn.dataset.filter!);
+        select(btn);
+        // Keep the chosen tab in the address, so a link like /?work=social opens it
+        const url = new URL(location.href);
+        url.searchParams.set("work", btn.dataset.filter!);
+        history.replaceState(null, "", url);
       })
     );
+    // ?work=<service slug or its first word>: e.g. ?work=social, ?work=packaging, ?work=spaces
+    const wanted = new URLSearchParams(location.search).get("work")?.toLowerCase().trim();
+    if (wanted) {
+      const btn = [...buttons].find((b) => b.dataset.filter === wanted)
+        ?? [...buttons].find((b) => b.dataset.filter!.startsWith(wanted));
+      if (btn) {
+        select(btn);
+        if (!location.hash) group.closest("section")?.scrollIntoView();
+      }
+    }
   });
 </script>
 

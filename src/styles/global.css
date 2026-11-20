@@ -321,17 +321,18 @@ a.tile:hover video {
 }
 
 /* Reveal animation */
-.reveal {
+/* Hidden only when JS runs (html.js), so content never stays blank without it */
+.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+@media (prefers-reduced-motion: reduce), print {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Handwritten accent word (Adobe Handwriting Ernie) inside serif titles, e.g. "la FORMULA Christmas" */

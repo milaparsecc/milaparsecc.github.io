@@ -1,11 +1,12 @@
 {
   "name": "Mila Parsec",
   "logo": "Parsec",
-  "role": "Graphic & brand designer",
-  "location": "CDMX",
+  "role": "Brand & graphic designer",
+  "location": "Prague",
   "seo": {
-    "title": "Mila Parsec — Graphic & Brand Designer",
-    "description": "Portfolio of Mila Parsec, graphic and brand designer."
+    "title": "Mila Parsec — Brand & Graphic Designer",
+    "description": "Mila Parsec is a Prague-based brand & graphic designer: visual identities, social media and ad campaigns, packaging, print and wayfinding.",
+    "image": "/media/og-mila-parsec-627103.jpg"
   },
   "hero": {
     "image": "/media/0WZ5mNyxdjo4f3euFZNPFWNF4.jpeg",
@@ -106,7 +107,8 @@
     ],
     "social-media-design": [
       "first-class-social-ads",
-      "tomas-arsov"
+      "tomas-arsov",
+      "rubin-production"
     ],
     "packaging-print": [
       "la-formula-christmas",

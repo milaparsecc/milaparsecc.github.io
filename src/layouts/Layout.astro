@@ -5,10 +5,15 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  /** Preview image for links shared in messengers / LinkedIn ("/media/..."); defaults to seo.image */
+  image?: string;
 }
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.seo.title;
+const pageDescription = description ?? site.seo.description;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const absolute = (p: string) => (/^https?:/.test(p) ? p : new URL(base + p, Astro.site).href);
+const ogImage = absolute(image || site.seo.image);
 const path = Astro.url.pathname.replace(base, "") || "/";
 const nav = [
   { label: "Works", href: "/works" },
@@ -23,9 +28,19 @@ const isActive = (href: string): boolean => !href.includes("#") && path.startsWi
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Reveal animations only run with JS; without it (and when printing) everything is visible -->
+    <script is:inline>document.documentElement.classList.add("js");</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={description ?? site.seo.description} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,6 +131,9 @@ const isActive = (href: string): boolean => !href.includes("#") && path.startsWi
         { threshold: 0.1 }
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      addEventListener("beforeprint", () =>
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"))
+      );
     </script>
   </body>
 </html>

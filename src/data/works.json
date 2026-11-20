@@ -3,7 +3,7 @@
     "title": "First Class",
     "titleScript": "Social Ads",
     "tagline": "Facebook and Instagram ad campaigns for book launches at First Class Publishing.",
-    "lead": "",
+    "lead": "Concepts and design for paid and organic campaigns at First Class Publishing, created in-house: new books, events and seasonal occasions, running on Meta with a monthly ad spend of €5,000–10,000.",
     "slug": "first-class-social-ads",
     "showOnHomepage": false,
     "client": "First Class Publishing",
@@ -83,6 +83,45 @@
           "/media/fc-ads/4-4.jpg"
         ]
       }
+    ],
+    "nextProjects": []
+  },
+  {
+    "title": "Space Karlín",
+    "titleScript": "",
+    "tagline": "Wayfinding system for a café and coworking space in Prague’s Karlín district.",
+    "lead": "A café that was hiding its own coworking floor. A wayfinding system in metal and glass now makes every service visible and every room easy to find, without disturbing a deliberately minimal interior.",
+    "slug": "space-karlin",
+    "showOnHomepage": false,
+    "client": "Space Cafe",
+    "year": "",
+    "location": "Prague, Karlín",
+    "deliverables": "Wayfinding strategy, menu wall, directional and room signage, zone pictograms and rules, QR table stickers, locker signage, kitchen signage, window graphics, production files and supervision",
+    "services": [
+      "spaces-events"
+    ],
+    "description": "Space Cafe combines a café with coworking at two Prague locations. Most guests are office workers buying coffee to go; a smaller group stays to work, using day coworking, meeting rooms and a podcast studio on the second floor.",
+    "task": "The interior — raw concrete, glass and many identical doors — gave no cues about where to go, and many guests never discovered that coworking existed. The system had to make these services visible from the café, guide visitors through the upper floor and explain how each zone works, using as little text as possible.",
+    "concept": "",
+    "solution": "The wayfinding was planned as a sequence that follows the visitor: awareness at the bar, direction on the stairs and in the corridors, rules at each door. Materials were chosen to belong to the architecture — metal lettering mounted directly on concrete, vinyl on glass — and the café’s own typeface ties everything together. The project covered the full process, from navigation logic and on-site measurements to production files and coordination with the workshop.",
+    "link": "",
+    "linkText": "See live project",
+    "thumbnail": "/media/space-karlin/thumb.jpg",
+    "cover": "/media/space-karlin/cover.jpg",
+    "coverVideo": "",
+    "gallery": [
+      "/media/space-karlin/bite.jpg",
+      [
+        "/media/space-karlin/sign.jpg",
+        "/media/space-karlin/cup.jpg",
+        "/media/space-karlin/menu-close.jpg"
+      ],
+      "/media/space-karlin/focus.jpg",
+      [
+        "/media/space-karlin/immerse.jpg",
+        "/media/space-karlin/silent.jpg"
+      ],
+      "/media/space-karlin/praha.jpg"
     ],
     "nextProjects": []
   },
@@ -167,45 +206,6 @@
         "/media/la-formula/garland.jpg",
         "/media/la-formula/in-hand.jpg"
       ]
-    ],
-    "nextProjects": []
-  },
-  {
-    "title": "Space Karlín",
-    "titleScript": "",
-    "tagline": "Wayfinding system for a café and coworking space in Prague’s Karlín district.",
-    "lead": "A café that was hiding its own coworking floor. A wayfinding system in metal and glass now makes every service visible and every room easy to find, without disturbing a deliberately minimal interior.",
-    "slug": "space-karlin",
-    "showOnHomepage": false,
-    "client": "Space Cafe",
-    "year": "",
-    "location": "Prague, Karlín",
-    "deliverables": "Wayfinding strategy, menu wall, directional and room signage, zone pictograms and rules, QR table stickers, locker signage, kitchen signage, window graphics, production files and supervision",
-    "services": [
-      "spaces-events"
-    ],
-    "description": "Space Cafe combines a café with coworking at two Prague locations. Most guests are office workers buying coffee to go; a smaller group stays to work, using day coworking, meeting rooms and a podcast studio on the second floor.",
-    "task": "The interior — raw concrete, glass and many identical doors — gave no cues about where to go, and many guests never discovered that coworking existed. The system had to make these services visible from the café, guide visitors through the upper floor and explain how each zone works, using as little text as possible.",
-    "concept": "",
-    "solution": "The wayfinding was planned as a sequence that follows the visitor: awareness at the bar, direction on the stairs and in the corridors, rules at each door. Materials were chosen to belong to the architecture — metal lettering mounted directly on concrete, vinyl on glass — and the café’s own typeface ties everything together. The project covered the full process, from navigation logic and on-site measurements to production files and coordination with the workshop.",
-    "link": "",
-    "linkText": "See live project",
-    "thumbnail": "/media/space-karlin/thumb.jpg",
-    "cover": "/media/space-karlin/cover.jpg",
-    "coverVideo": "",
-    "gallery": [
-      "/media/space-karlin/bite.jpg",
-      [
-        "/media/space-karlin/sign.jpg",
-        "/media/space-karlin/cup.jpg",
-        "/media/space-karlin/menu-close.jpg"
-      ],
-      "/media/space-karlin/focus.jpg",
-      [
-        "/media/space-karlin/immerse.jpg",
-        "/media/space-karlin/silent.jpg"
-      ],
-      "/media/space-karlin/praha.jpg"
     ],
     "nextProjects": []
   },
@@ -303,7 +303,7 @@
       "packaging-print",
       "spaces-events"
     ],
-    "description": "Mynds is designed to bring together 150+ Czech and international experts across seven areas of life: body, mind, work, learning, family, love and soul. All talks are commercially independent. The audience is unusually broad, from secondary-school students and their teachers to parents, working adults and older visitors.",
+    "description": "Mynds brings 150+ Czech and international experts and 10,000+ visitors together around seven areas of life: body, mind, work, learning, family, love and soul. All talks are commercially independent. The audience is unusually broad, from secondary-school students and their teachers to parents, working adults and older visitors.",
     "task": "Create a complete identity from zero, including a distinct look for each of the seven areas. It had to feel bold, modern, energetic and authentic, speak equally to teenagers and their grandparents, and keep seven very different topics together as one festival. The working title, BOLD, was dropped mid-process when a festival of the same name turned up in Brno.",
     "concept": "",
     "solution": "A flexible system: a logo in two versions (with and without descriptor), a mint core palette with black, white and grey, seven area colours and pictograms, and two typefaces. It extends to posters, the programme, tickets, wristbands, social media and merchandise, as well as festival visualisations for the website and investor presentations.",
@@ -325,7 +325,7 @@
   {
     "title": "Rubin Production",
     "titleScript": "",
-    "tagline": "Brand identity and digital presence for a Prague photo and video production studio.",
+    "tagline": "Brand identity and digital presence for a Prague video and photo production studio.",
     "lead": "A production studio needed a brand as considered as the footage it delivers. The answer is a geometric mark designed for motion from day one, and a visual language borrowed directly from the camera.",
     "slug": "rubin-production",
     "showOnHomepage": true,
@@ -338,7 +338,7 @@
       "social-media-design",
       "web-design"
     ],
-    "description": "Rubin Production is a Prague studio producing video, photography and live streams for small and medium-sized businesses, bloggers and public figures. The name comes from the founder’s surname; in Czech and Russian, rubín is the deep red gemstone. The partnership continued over several years as the studio grew.",
+    "description": "Rubin Production is a Prague studio producing video, photography and live streams for small and medium-sized businesses, bloggers and public figures. The name comes from the founder’s surname; in Czech and Russian, rubín is the deep red gemstone. Rubin has been a client since 2020, and the brand has grown with the studio.",
     "task": "Create an identity from scratch, starting from a client moodboard. The mark had to signal the studio’s field without category clichés such as film reels or clapperboards, and be ready for animation. The brand needed to make an immediate impression: professional and reliable to business clients, creative and contemporary to everyone else.",
     "concept": "",
     "solution": "The identity rests on two decisions. The first is a compact geometric mark built from simple planes, so it holds at small sizes and animates naturally on screen. The second is a framing device taken from the studio’s own equipment, the camera viewfinder, which turns every layout, from business card to Instagram post, into a frame from a Rubin shoot. A red-to-burgundy gradient on black sets a cinematic, premium tone.",

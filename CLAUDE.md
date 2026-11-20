@@ -42,6 +42,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.
 - Order of projects in the file = order on the site.
 
+## Links & sharing
+- `?work=<service slug or its start>` opens that tab on the homepage or /works (e.g. `/?work=social`, `/works?work=packaging`).
+- Link previews (Open Graph): `site.json` → `seo.image` (1200×630) for most pages; project pages use `cover`/`thumbnail` (non-GIF) and `tagline`.
+
 ## Images
 - New images: put files in `public/media/` and reference them as `/media/file.jpg`.
   Compress large photos first (max ~2400px wide, JPEG/WebP).

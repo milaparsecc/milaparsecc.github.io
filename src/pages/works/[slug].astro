@@ -51,6 +51,10 @@ const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && g.type === "set"));
 // A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+// Alt texts for gallery images: "<project> — image N"
+const altName = [work.title, work.titleScript].filter(Boolean).join(" ");
+let altN = 0;
+const alt = () => `${altName} — image ${++altN}`;
 ---
 
 <script>
@@ -63,7 +67,7 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
   });
 </script>
 
-<Layout title={[work.title, work.titleScript].filter(Boolean).join(" ")} description={work.description.replace(/\*\*/g, "").slice(0, 160) || undefined}>
+<Layout title={[work.title, work.titleScript].filter(Boolean).join(" ")} description={work.tagline || work.description.replace(/\*\*/g, "").slice(0, 160) || undefined} image={[work.cover, work.thumbnail].find((s) => s && !s.endsWith(".gif"))}>
   <article class="section container page-top project">
     <div class="project__cover tile">
       {work.coverVideo ? (
@@ -119,28 +123,28 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
         Array.isArray(item) ? (
           <div class="project__row" style={`--cols: ${item.length}`}>
             {item.map((src) => (isVideo(src)
-              ? <video src={media(src)} autoplay muted loop playsinline />
-              : <img src={media(src)} alt="" loading="lazy" />))}
+              ? <video src={media(src)} autoplay muted loop playsinline aria-label={alt()} />
+              : <img src={media(src)} alt={alt()} loading="lazy" />))}
           </div>
         ) : typeof item === "object" && item.type === "set" ? (
           <div class="project__set">
             <p class="small-upper">{item.title}</p>
             <div class="project__row" style={`--cols: ${item.items.length}`}>
-              {item.items.map((src: string) => <img src={media(src)} alt={item.title} loading="lazy" />)}
+              {item.items.map((src: string, i: number) => <img src={media(src)} alt={`${item.title} — ad ${i + 1}`} loading="lazy" />)}
             </div>
           </div>
         ) : typeof item === "object" && item.type === "concept" ? (
           <div class="project__concept">
-            <img src={media(item.image)} alt="" loading="lazy" />
+            <img src={media(item.image)} alt={`${altName} logo`} loading="lazy" />
             <div class="project__concept-text">
               <h2 class="h2">{item.title}</h2>
               <div class="rich" set:html={richText(work.concept || item.text)} />
             </div>
           </div>
         ) : isVideo(item) ? (
-          <video src={media(item)} autoplay muted loop playsinline />
+          <video src={media(item)} autoplay muted loop playsinline aria-label={alt()} />
         ) : (
-          <img src={media(item)} alt="" loading="lazy" />
+          <img src={media(item)} alt={alt()} loading="lazy" />
         )
       )}
     </div>
