@@ -25,6 +25,16 @@
     "gallery": [
       {
         "type": "set",
+        "title": "Christmas collection",
+        "items": [
+          "/media/fc-ads/6-1.jpg",
+          "/media/fc-ads/6-2.jpg",
+          "/media/fc-ads/6-3.jpg",
+          "/media/fc-ads/6-4.jpg"
+        ]
+      },
+      {
+        "type": "set",
         "title": "Mozek v menopauze",
         "items": [
           "/media/fc-ads/1-1.jpg",
