@@ -18,7 +18,7 @@
     "portrait": "/media/ya7et1z0oR9nrsC8hGMUuRNCDM.jpeg",
     "intro": "Brand & graphic designer working remotely across Europe and beyond.\nSeven years of turning clear ideas into memorable brands, on screen, in print and in physical space.",
     "signatureText": "Brand & Graphic Designer",
-    "availability": "Open to new roles & freelance work"
+    "availability": ""
   },
   "about": {
     "photo": "/media/about-mila.jpg",
@@ -121,6 +121,7 @@
   },
   "cv": {
     "url": "/cv/Mila-Parsec-Brand-Designer-CV.pdf",
-    "label": "Open PDF, updated Nov 2026"
+    "label": "Open PDF, updated Nov 2026",
+    "enabled": false
   }
 }

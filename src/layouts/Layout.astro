@@ -19,7 +19,7 @@ const nav = [
   { label: "Works", href: "/works" },
   { label: "Expertise", href: "/#services" },
   { label: "About", href: "/#about" },
-  { label: "CV", href: site.cv.url, external: true },
+  ...(site.cv.enabled ? [{ label: "CV", href: site.cv.url, external: true }] : []),
 ];
 const isActive = (href: string): boolean => !href.includes("#") && path.startsWith(href);
 ---

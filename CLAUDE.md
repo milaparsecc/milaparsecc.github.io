@@ -61,6 +61,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - When replacing an image, ALWAYS use a new file name (e.g. add a short hash): browsers and GitHub Pages
   cache files by name for a while, so reusing a name makes the change invisible to the owner.
 
+- CV is HIDDEN for now (Nov 2026, owner's request): `site.json` → `cv.enabled: false` hides the nav link, About row and
+  Contact block, and the PDF was removed from `public/cv/`. To bring it back: restore the file from git history
+  (`git checkout 281e0d9 -- public/cv/Mila-Parsec-Brand-Designer-CV.pdf`) and set `cv.enabled: true`.
 - CV: `public/cv/Mila-Parsec-Brand-Designer-CV.pdf` (`site.json` → `cv`). Linked in nav (opens new tab), About
   (last row) and Contact. To update: replace the file keep the same name so shared links keep working (GitHub Pages may cache it ~10 min) and bump the date in `cv.label`.
 
@@ -79,7 +82,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 
 ## Hero
-- `hero.availability` — "Open to …" job line under the intro (small label with an accent dot). Keep it to one line on phones.
+- `hero.availability` — currently empty (hidden at owner's request; last text: "Open to new roles & freelance work"). "Open to …" job line under the intro (small label with an accent dot). Keep it to one line on phones.
 - Homepage section "Expertise" (nav label too) shows `services.json`; its anchor stays `#services`.
 - Left half (desktop) / top block (mobile): `hero.video` (+ `videoMobile`, `videoPoster`) if set, else `hero.image`.
   Current reel: 11 works × 0.6 s, 4:5, 1080×1350 (desktop) / 720×900 (mobile), H.264 no audio, built with ffmpeg
