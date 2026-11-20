@@ -211,6 +211,20 @@
     "cover": "/media/la-formula/cover-poster.jpg",
     "coverVideo": "/media/la-formula/cover.mp4",
     "gallery": [
+      {
+        "type": "heading",
+        "title": "Moodboard"
+      },
+      "/media/la-formula/moodboard-3d5ab3.jpg",
+      {
+        "type": "heading",
+        "title": "Illustrations"
+      },
+      "/media/la-formula/illustrations-0fdde7.jpg",
+      {
+        "type": "heading",
+        "title": "Labels"
+      },
       [
         "/media/la-formula/gifts.jpg",
         "/media/la-formula/nutcracker.jpg"
