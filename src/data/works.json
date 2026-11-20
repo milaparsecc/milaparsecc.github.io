@@ -146,16 +146,26 @@
     "cover": "",
     "coverVideo": "",
     "gallery": [
-      "/media/KHC9rjQnb35MXCQq1nkRYw2pY.jpg",
-      "/media/sK8hCnCF1TCVlwZVqhCdR9Qs.jpg",
-      "/media/ip2Lbemer2mbus0UPyRu5ClgbU.jpg",
-      "/media/slZiv2Dl5mbE0PNlmqeuyUDii80.jpg",
-      "/media/zVgii4r1DNE7bCiNuePWj62xxSY.jpg",
-      "/media/UatXHcIlUBbM4qg5ww5i2qlUgiA.jpg",
-      "/media/LhFmODp6JbY5upIPtqhbMkZsFTw.jpg",
-      "/media/ZSUVVlRfzhgnOPIVv9yXZAT3sA.jpg",
-      "/media/2NRv6u5mkhEHMpJGrZbfG2g.jpg",
-      "/media/Uc1pzgAezolPoKfkvVrTvXz4Og.jpg"
+      [
+        "/media/KHC9rjQnb35MXCQq1nkRYw2pY.jpg",
+        "/media/sK8hCnCF1TCVlwZVqhCdR9Qs.jpg"
+      ],
+      [
+        "/media/ip2Lbemer2mbus0UPyRu5ClgbU.jpg",
+        "/media/slZiv2Dl5mbE0PNlmqeuyUDii80.jpg"
+      ],
+      [
+        "/media/zVgii4r1DNE7bCiNuePWj62xxSY.jpg",
+        "/media/UatXHcIlUBbM4qg5ww5i2qlUgiA.jpg"
+      ],
+      [
+        "/media/LhFmODp6JbY5upIPtqhbMkZsFTw.jpg",
+        "/media/ZSUVVlRfzhgnOPIVv9yXZAT3sA.jpg"
+      ],
+      [
+        "/media/2NRv6u5mkhEHMpJGrZbfG2g.jpg",
+        "/media/Uc1pzgAezolPoKfkvVrTvXz4Og.jpg"
+      ]
     ],
     "nextProjects": []
   },
