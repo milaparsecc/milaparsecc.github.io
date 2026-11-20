@@ -47,6 +47,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   and committed automatically by the deploy workflow (`scripts/localize-images.mjs`).
   After a deploy, run `git pull` before editing the JSON files.
 
+- When replacing an image, ALWAYS use a new file name (e.g. add a short hash): browsers and GitHub Pages
+  cache files by name for a while, so reusing a name makes the change invisible to the owner.
+
 ## Workflow
 1. Edit files, run `npm run build` to check it builds.
 2. Commit to `main` with a short message → GitHub Actions deploys to GitHub Pages automatically (~1–2 min).
