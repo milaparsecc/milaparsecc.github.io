@@ -44,6 +44,7 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
         <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
       </div>
       <p class="hero__intro">{site.hero.intro.split("\n").map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>
+      {site.hero.availability && <p class="hero__open small-upper"><span class="hero__dot" aria-hidden="true" />{site.hero.availability}</p>}
     </div>
   </section>
 
@@ -62,10 +63,10 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     <p class="upper muted works-empty" data-empty hidden>No works in this category yet</p>
   </section>
 
-  <!-- Services -->
+  <!-- Expertise (id stays "services" so old links keep working) -->
   <section class="section container" id="services">
     <div class="section__head">
-      <h2 class="h2">Services</h2>
+      <h2 class="h2">Expertise</h2>
     </div>
     <div class="services-grid">
       {services.map((s) => (
@@ -217,6 +218,21 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     margin-top: 28px;
     max-width: 440px;
     text-wrap: balance; /* body text: inherits 18px / 120% / -4% */
+  }
+
+  /* "Open to …" job line under the intro: label size, small accent dot */
+  .hero__open {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+  .hero__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   @media (max-width: 809.98px) {

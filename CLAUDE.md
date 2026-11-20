@@ -23,8 +23,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
   /works still filters by each project's `services`.
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
-- Project page intro (andwalsh-style): name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `lead`, else `task`, else
-  `tagline`. "More information +" expands: Services/Client/Location/Year, Context (`description`), Task, Solution, link.
+- Project page intro: name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `lead`, else `task`, else
+  `tagline`. Below it, always open (no toggle since Nov 2026): Role/Client/Year/Location/Services, Deliverables,
+  Context (`description`), Task, Solution, link.
+- `role` — the owner's role on the project (shown first in the meta row), e.g. "In-house designer", "Freelance designer".
   Owner's case text template: Tagline / Lead / Meta / Context / Task / Solution (Mynds is the reference).
 - `concept` — shown in More information after Task; if the gallery has a concept block, it fills that block instead.
 - `deliverables` — optional, shown full-width in the meta row.
@@ -74,6 +76,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 
 ## Hero
+- `hero.availability` — "Open to …" job line under the intro (small label with an accent dot). Keep it to one line on phones.
+- Homepage section "Expertise" (nav label too) shows `services.json`; its anchor stays `#services`.
 - Left half (desktop) / top block (mobile): `hero.video` (+ `videoMobile`, `videoPoster`) if set, else `hero.image`.
   Current reel: 11 works × 0.6 s, 4:5, 1080×1350 (desktop) / 720×900 (mobile), H.264 no audio, built with ffmpeg
   (center 4:5 crops; poster = first frame). Keep desktop under ~4 MB, mobile under ~1.5 MB.

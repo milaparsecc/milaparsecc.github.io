@@ -25,10 +25,11 @@ const next = (chosen.length
 ).slice(0, 3);
 
 const meta = [
-  { label: "Services", value: serviceNames },
+  { label: "Role", value: (work as any).role ? [(work as any).role] : [] },
   { label: "Client", value: work.client ? [work.client] : [] },
-  { label: "Location", value: work.location ? [work.location] : [] },
   { label: "Year", value: work.year ? [work.year] : [] },
+  { label: "Location", value: work.location ? [work.location] : [] },
+  { label: "Services", value: serviceNames },
   { label: "Deliverables", value: work.deliverables ? [work.deliverables] : [], wide: true },
 ].filter((m) => m.value.length);
 
@@ -37,7 +38,7 @@ const cover = work.cover || work.thumbnail;
 // Lead text next to the name: the task if written, otherwise the one-line tagline.
 // Lead next to the name: dedicated `lead`, else the task, else the tagline
 const lead = work.lead || work.task || work.tagline;
-// Everything else goes under "More information"
+// Everything else is shown under the lead
 const hasConceptBlock = work.gallery.some((g: any) => g && typeof g === "object" && !Array.isArray(g) && g.type === "concept");
 const more = [
   { label: "Context", text: work.description },
@@ -57,16 +58,6 @@ let altN = 0;
 const alt = () => `${altName} — image ${++altN}`;
 ---
 
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>(".project__toggle");
-  const label = toggle?.querySelector<HTMLElement>(".project__toggle-label");
-  toggle?.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") !== "true";
-    toggle.setAttribute("aria-expanded", String(open));
-    if (label) label.textContent = open ? label.dataset.open! : label.dataset.closed!;
-  });
-</script>
-
 <Layout title={[work.title, work.titleScript].filter(Boolean).join(" ")} description={work.tagline || work.description.replace(/\*\*/g, "").slice(0, 160) || undefined} image={[work.cover, work.thumbnail].find((s) => s && !s.endsWith(".gif"))}>
   <article class="section container page-top project">
     <div class="project__cover tile">
@@ -77,43 +68,35 @@ const alt = () => `${altName} — image ${++altN}`;
       )}
     </div>
 
-    <!-- Intro: name + short task, the rest opens under "More information" -->
+    <!-- Intro: name + lead, then details and Context / Task / Solution, all open -->
     <div class="project__intro">
       <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
       <div class="project__body">
         {lead && <div class="project__lead" set:html={richText(lead)} />}
         {hasMore && (
-          <>
-            <button class="project__toggle upper" type="button" aria-expanded="false" aria-controls="project-more">
-              <span class="project__toggle-label" data-open="Less information" data-closed="More information">More information</span>
-              <span class="project__plus" aria-hidden="true" />
-            </button>
-            <div class="project__more" id="project-more">
-              <div class="project__more-inner">
-                {meta.length > 0 && (
-                  <dl class="project__meta">
-                    {meta.map((m) => (
-                      <div class:list={{ "is-wide": m.wide }}>
-                        <dt class="small-upper">{m.label}</dt>
-                        <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                {more.map((m) => (
-                  <div class="project__block">
-                    <p class="small-upper">{m.label}</p>
-                    <div class="rich" set:html={richText(m.text)} />
-                  </div>
-                ))}
-                {work.link && (
-                  <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
-                    {work.linkText || "See live project"}
-                  </a>
-                )}
-              </div>
+        <div class="project__more">
+          {meta.length > 0 && (
+            <dl class="project__meta">
+              {meta.map((m) => (
+                <div class:list={{ "is-wide": m.wide }}>
+                  <dt class="small-upper">{m.label}</dt>
+                  <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+          {more.map((m) => (
+            <div class="project__block">
+              <p class="small-upper">{m.label}</p>
+              <div class="rich" set:html={richText(m.text)} />
             </div>
-          </>
+          ))}
+          {work.link && (
+            <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
+              {work.linkText || "See live project"}
+            </a>
+          )}
+        </div>
         )}
       </div>
     </div>
@@ -186,56 +169,13 @@ const alt = () => `${altName} — image ${++altN}`;
   }
   .project__lead :global(p + p) { margin-top: 0.8em; }
 
-  /* "More information" — same plus → × as the Services cards */
-  .project__toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 28px;
-    padding: 0 0 2px;
-    background: none;
-    border: 0;
-    border-bottom: 1px solid currentColor;
-    color: var(--text);
-    font: inherit;
-    font-size: var(--fs-ui);
-    letter-spacing: -0.04em;
-    cursor: pointer;
-  }
-  .project__plus {
-    position: relative;
-    width: 11px;
-    height: 11px;
-    transition: transform 0.35s var(--ease);
-  }
-  .project__plus::before,
-  .project__plus::after {
-    content: "";
-    position: absolute;
-    background: currentColor;
-  }
-  .project__plus::before { left: 0; right: 0; top: 50%; height: 1px; }
-  .project__plus::after { top: 0; bottom: 0; left: 50%; width: 1px; }
-  .project__toggle[aria-expanded="true"] .project__plus { transform: rotate(45deg); }
-
+  /* Details and case texts under the lead (always open) */
   .project__more {
-    display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    transition: grid-template-rows 0.5s var(--ease), opacity 0.35s;
-  }
-  .project__toggle[aria-expanded="true"] + .project__more {
-    grid-template-rows: 1fr;
-    opacity: 1;
-  }
-  .project__more-inner {
-    min-height: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-top: 40px;
   }
-  .project__more-inner > :first-child { margin-top: 40px; }
 
   .project__meta {
     margin: 0;
