@@ -47,7 +47,6 @@ const more = [
   { label: "Concept", text: hasConceptBlock ? "" : work.concept },
   { label: "Solution", text: work.solution },
 ].filter((m) => m.text);
-const hasMore = meta.length > 0 || more.length > 0 || Boolean(work.link);
 // A gallery item can be a single image (full width) or a list of images shown side by side
 const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && (g.type === "set" || g.type === "heading")));
 // A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
@@ -70,33 +69,37 @@ const alt = () => `${altName} — image ${++altN}`;
 
     <!-- Intro: name + lead, then details and Context / Task / Solution, all open -->
     <div class="project__intro">
-      <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
+      <!-- Left: name + facts (Role, Client, Year, Location, Services, Deliverables) -->
+      <div class="project__side">
+        <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
+        {meta.length > 0 && (
+          <dl class="project__meta">
+            {meta.map((m) => (
+              <div class:list={{ "is-wide": m.wide }}>
+                <dt class="small-upper">{m.label}</dt>
+                <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </div>
+      <!-- Right: lead, then Context / Task / Solution -->
       <div class="project__body">
         {lead && <div class="project__lead" set:html={richText(lead)} />}
-        {hasMore && (
-        <div class="project__more">
-          {meta.length > 0 && (
-            <dl class="project__meta">
-              {meta.map((m) => (
-                <div class:list={{ "is-wide": m.wide }}>
-                  <dt class="small-upper">{m.label}</dt>
-                  <dd>{m.value.map((v) => <span>{v}</span>)}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-          {more.map((m) => (
-            <div class="project__block">
-              <p class="small-upper">{m.label}</p>
-              <div class="rich" set:html={richText(m.text)} />
-            </div>
-          ))}
-          {work.link && (
-            <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
-              {work.linkText || "See live project"}
-            </a>
-          )}
-        </div>
+        {(more.length > 0 || work.link) && (
+          <div class="project__more">
+            {more.map((m) => (
+              <div class="project__block">
+                <p class="small-upper">{m.label}</p>
+                <div class="rich" set:html={richText(m.text)} />
+              </div>
+            ))}
+            {work.link && (
+              <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
+                {work.linkText || "See live project"}
+              </a>
+            )}
+          </div>
         )}
       </div>
     </div>
@@ -179,14 +182,18 @@ const alt = () => `${altName} — image ${++altN}`;
     margin-top: 40px;
   }
 
+  /* Facts under the name, one per line, in the left column */
+  .project__side {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-right: 40px;
+  }
   .project__meta {
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px var(--gap);
-  }
-  .project__meta .is-wide {
-    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   .project__meta dd {
     margin: 4px 0 0;
@@ -276,8 +283,10 @@ const alt = () => `${altName} — image ${++altN}`;
     gap: var(--gap);
   }
   @media (max-width: 809.98px) {
-    .project__intro { grid-template-columns: 1fr; gap: 16px; padding: 40px 0 56px; }
-    .project__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project__intro { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 56px; }
+    .project__side { gap: 24px; padding-right: 0; }
+    .project__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px var(--gap); }
+    .project__meta .is-wide { grid-column: 1 / -1; }
     .next-grid { grid-template-columns: 1fr; }
     .project__row { grid-template-columns: 1fr; }
     .project__set .project__row { grid-template-columns: repeat(2, 1fr); }

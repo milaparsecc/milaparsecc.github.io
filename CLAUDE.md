@@ -23,9 +23,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   /works still filters by each project's `services`.
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
-- Project page intro: name (left 1/3) + lead text (right 2/3, Inter 26px). Lead = `lead`, else `task`, else
-  `tagline`. Below it, always open (no toggle since Nov 2026): Role/Client/Year/Location/Services, Deliverables,
-  Context (`description`), Task, Solution, link.
+- Project page intro: left 1/3 = name + facts stacked under it (Role/Client/Year/Location/Services/Deliverables;
+  2 columns on phones); right 2/3 = lead (Inter 26px; `lead`, else `task`, else `tagline`), then Context
+  (`description`), Task, Solution, link — all open, no toggle.
 - `role` — the owner's role on the project (shown first in the meta row), e.g. "In-house designer", "Freelance designer".
   Owner's case text template: Tagline / Lead / Meta / Context / Task / Solution (Mynds is the reference).
 - `concept` — shown in More information after Task; if the gallery has a concept block, it fills that block instead.
