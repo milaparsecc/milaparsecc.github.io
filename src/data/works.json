@@ -454,7 +454,13 @@
       "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg",
       "/media/D4xrVZwWVuKVNIH4Areuz853LM.jpg",
       "/media/2ayNofJqiP7m2Hly0iDOJHuvtw.gif",
-      "/media/K63czcHbDSyj66ewP1vWLt40cU.jpg"
+      {
+        "type": "site",
+        "image": "/media/rubin/site-home-55fe3e.jpg",
+        "address": "rubinproduction.eu",
+        "url": "/rubin-site/",
+        "button": "Explore the website"
+      }
     ],
     "nextProjects": [
       "alla-vakker",

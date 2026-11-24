@@ -164,6 +164,16 @@ const alt = () => `${altName} — image ${++altN}`;
               <p>{[item.caption, item.site].filter(Boolean).join(" · ")}</p>
             </div>
           </div>
+        ) : typeof item === "object" && item.type === "site" ? (
+          <div class="site-preview">
+            <a class="site-preview__window" href={media(item.url)} target="_blank" rel="noopener" aria-label={item.button}>
+              <span class="site-preview__bar" aria-hidden="true"><i /><i /><i /><span>{item.address}</span></span>
+              <span class="site-preview__screen">
+                <img src={media(item.image)} alt={`${altName} — website`} loading="lazy" />
+              </span>
+            </a>
+            <a class="site-preview__button upper" href={media(item.url)} target="_blank" rel="noopener">{item.button} <span aria-hidden="true">↗</span></a>
+          </div>
         ) : typeof item === "object" && item.type === "feature" ? (
           <div class="project__concept project__feature">
             <img src={media(item.image)} alt={`${altName} — ${item.title}`} loading="lazy" />
@@ -369,6 +379,78 @@ const alt = () => `${altName} — image ${++altN}`;
     max-width: 440px;
     text-wrap: pretty;
   }
+  /* Website preview: browser window, the page scrolls by itself (pauses on hover), button opens the live prototype */
+  .site-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 80px var(--pad-x);
+    background: #f2f2f0;
+  }
+  .site-preview__window {
+    display: block;
+    width: min(100%, 1120px);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+    transition: transform 0.4s ease;
+  }
+  .site-preview__window:hover { transform: translateY(-4px); }
+  .site-preview__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-preview__bar i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+  }
+  .site-preview__bar span {
+    flex: 1;
+    margin-right: 52px;
+    text-align: center;
+    font-size: var(--fs-label);
+    color: #888;
+  }
+  .site-preview__screen {
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    container-type: inline-size;
+  }
+  .site-preview__screen img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    animation: site-scroll 36s ease-in-out infinite alternate;
+  }
+  .site-preview__window:hover img { animation-play-state: paused; }
+  @keyframes site-scroll {
+    0%, 6% { transform: translateY(0); }
+    94%, 100% { transform: translateY(calc(-100% + 62.5cqw)); }
+  }
+  .site-preview__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .site-preview__button:hover { background: var(--text); color: var(--bg); }
+  @media (prefers-reduced-motion: reduce) {
+    .site-preview__screen img { animation: none; }
+  }
   /* Set: a labelled row (e.g. one ad campaign per book) */
   .project__set {
     display: flex;
@@ -414,6 +496,9 @@ const alt = () => `${altName} — image ${++altN}`;
     .project__set { padding-top: 24px; }
     .project__set img { border-radius: 12px; }
     .project__concept { grid-template-columns: 1fr; }
+    .site-preview { padding: 40px 20px; gap: 24px; }
+    .site-preview__bar { height: 28px; }
+    .site-preview__bar i { width: 8px; height: 8px; }
     .project__about { grid-template-columns: 1fr 1fr; padding: 0 0 48px; }
     .project__concept-text { padding: 40px 0; }
   }
