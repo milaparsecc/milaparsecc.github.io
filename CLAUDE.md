@@ -24,8 +24,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `services` — list of service `slug`s from `services.json` (used for filters).
 - `description` — plain text; `**bold**`, blank line = new paragraph.
 - Project page intro (grid 1/3 + 2/3), reading order: row 1 = name | lead (Inter 26px, lh 1.35; `lead`, else `task`,
-  else `tagline`); row 2 = facts (16px, sticky; Role/Client/Year/Location/Services/Deliverables — deliverables split
-  on commas into lines; 2 columns on phones) | Context (`description`), Task, Solution: 18px, line-height 1.5,
+  else `tagline`); row 2 = "project passport" (sticky): Role/Client/Year/Location as label|value rows with hairlines,
+  Services as outlined pill links to /works?work=<slug>, Deliverables split on commas into grey-outlined pills | Context (`description`), Task, Solution: 18px, line-height 1.5,
   max 760px, hairline + label above each, 32px between (owner found more air too much scrolling). All open, no toggle.
 - `role` — the owner's role on the project (shown first in the meta row), e.g. "In-house designer", "Freelance designer".
   Owner's case text template: Tagline / Lead / Meta / Context / Task / Solution (Mynds is the reference).
