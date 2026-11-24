@@ -417,12 +417,11 @@
     "solution": "The identity rests on two decisions. The first is a compact geometric mark built from simple planes, so it holds at small sizes and animates naturally on screen. The second is a framing device taken from the studio’s own equipment, the camera viewfinder, which turns every layout, from business card to Instagram post, into a frame from a Rubin shoot. A red-to-burgundy gradient on black sets a cinematic, premium tone.",
     "link": "",
     "linkText": "See live project",
-    "thumbnail": "/media/rubin/cover-poster.jpg",
-    "cover": "/media/rubin/cover-poster.jpg",
-    "coverVideo": "/media/rubin/cover.mp4",
+    "thumbnail": "/media/rubin/cover-poster-e216f7.jpg",
+    "cover": "/media/rubin/cover-poster-e216f7.jpg",
+    "coverVideo": "/media/rubin/cover-e216f7.mp4",
     "gallery": [
       "/media/2Wp4eFsN0Dt3vXm9IZU5gPnMxo.gif",
-      "/media/rubin/video-49b337.mp4",
       {
         "type": "feature",
         "image": "/media/rubin/mark-00a483.jpg",
