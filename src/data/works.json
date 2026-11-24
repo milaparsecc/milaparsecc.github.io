@@ -85,7 +85,11 @@
         ]
       }
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "tomas-arsov",
+      "wannasurf",
+      "mynds"
+    ]
   },
   {
     "title": "Space Karlín",
@@ -143,7 +147,11 @@
       ],
       "/media/space-karlin/menu-winter-placeholder-c4a23b.jpg"
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "mynds",
+      "la-formula-christmas",
+      "the-secret-garden"
+    ]
   },
   {
     "title": "Tomas Arsov",
@@ -183,7 +191,11 @@
         "/media/ZS6aZVHrVHVYaqppQkqkU0TQ0.png"
       ]
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "first-class-social-ads",
+      "wannasurf",
+      "rubin-production"
+    ]
   },
   {
     "title": "la FORMULA",
@@ -243,7 +255,11 @@
         "/media/la-formula/in-hand.jpg"
       ]
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "the-secret-garden",
+      "iris-atelier",
+      "space-karlin"
+    ]
   },
   {
     "title": "WannaSurf",
@@ -291,7 +307,11 @@
         "/media/Uc1pzgAezolPoKfkvVrTvXz4Og.jpg"
       ]
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "first-class-social-ads",
+      "tomas-arsov",
+      "alla-vakker"
+    ]
   },
   {
     "title": "The Secret Garden",
@@ -323,7 +343,11 @@
       "/media/yzjdZK3v8Lu98Ql13ZrYkv7Ho.jpg",
       "/media/zjqC3CtOsJvwLNU1tmiQNnY8.jpg"
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "iris-atelier",
+      "la-formula-christmas",
+      "alla-vakker"
+    ]
   },
   {
     "title": "Mynds Festival",
@@ -359,7 +383,11 @@
       "/media/zTFC40GRHIMU2zGBQuBBr9iDXxs.png",
       "/media/TsvEIcGm0FJNXUnVdQ0poQsExM.png"
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "rubin-production",
+      "space-karlin",
+      "first-class-social-ads"
+    ]
   },
   {
     "title": "Rubin Production",
@@ -403,7 +431,9 @@
       "/media/K63czcHbDSyj66ewP1vWLt40cU.jpg"
     ],
     "nextProjects": [
-      "mynds"
+      "alla-vakker",
+      "mynds",
+      "tomas-arsov"
     ]
   },
   {
@@ -446,7 +476,11 @@
       "/media/4ARafZAmQWD2wVV20zRixqd1SM8.jpg",
       "/media/W2OiMgzwGD4NUewvfM4CZdp6Ow.jpg"
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "alla-vakker",
+      "the-secret-garden",
+      "la-formula-christmas"
+    ]
   },
   {
     "title": "Alla Vakker",
@@ -486,6 +520,10 @@
       "/media/ZYu40t5MZz6AtcCd1RTqgYIS0.jpg",
       "/media/LBC0s1TwFTHxAX1pbGuL8zdaSo.jpg"
     ],
-    "nextProjects": []
+    "nextProjects": [
+      "rubin-production",
+      "iris-atelier",
+      "the-secret-garden"
+    ]
   }
 ]

@@ -25,10 +25,11 @@ const idx = works.findIndex((w) => w.slug === work.slug);
 const chosen = work.nextProjects
   .map((slug) => works.find((w) => w.slug === slug))
   .filter((w): w is (typeof works)[number] => Boolean(w));
-const next = (chosen.length
-  ? chosen
-  : [1, 2, 3].map((n) => works[(idx + n) % works.length]).filter((w) => w.slug !== work.slug)
-).slice(0, 3);
+// Always 3 cards: hand-picked ones first, then filled up with the next projects in the list
+const next = [
+  ...chosen,
+  ...[1, 2, 3, 4, 5].map((n) => works[(idx + n) % works.length]),
+].filter((w, i, all) => w.slug !== work.slug && all.findIndex((x) => x.slug === w.slug) === i).slice(0, 3);
 
 // "a, b (x, y), c" -> ["A", "B (x, y)", "C"]: commas inside brackets stay
 function splitList(s: string) {

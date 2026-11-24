@@ -45,7 +45,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Space Karlín menu images `menu-*-placeholder-*.jpg` are temporary flat files until the owner sends mockups
   (CZ + EN at 3:4 ~1500×2000 in the row with menu-close.jpg; Christmas at 16:9 2400×1350, full width).
 - `titleScript` — optional word after the title in Adobe Handwriting (e.g. la FORMULA + "Christmas").
-- `nextProjects` — optional list of slugs; otherwise the next projects in the list are shown.
+- `nextProjects` — "You might also like": 3 hand-picked slugs per project, chosen by theme and mood (set for all
+  10 in Nov 2026 — update when adding a project). If fewer than 3, it's topped up with the next projects in the list.
 - Order of projects in the file = order on the site.
 
 ## Links & sharing
