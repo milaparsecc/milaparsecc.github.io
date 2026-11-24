@@ -418,7 +418,10 @@
       {
         "type": "about",
         "image": "/media/rubin-production-about-00e600.jpg",
-        "title": "About the client"
+        "title": "The client",
+        "name": "Rubin Production",
+        "caption": "Video & photo production studio, Prague",
+        "site": "rubinproduction.eu"
       },
       "/media/2Wp4eFsN0Dt3vXm9IZU5gPnMxo.gif",
       "/media/A3C7H6JjlpetLdEN76fdvaFSVGc.jpg",
@@ -469,7 +472,10 @@
       {
         "type": "about",
         "image": "/media/iris-atelier-about-de47fc.jpg",
-        "title": "About the client"
+        "title": "The client",
+        "name": "Iris ateliér",
+        "caption": "Couture atelier, Prague",
+        "site": "irisboutique.cz"
       },
       "/media/cJK2AzC5G50LUyvcUO6Xaj8WyJ4.jpg",
       "/media/HkBgKK3lhXy7LS8WbPF7v6Sdig.jpg",
@@ -519,7 +525,10 @@
       {
         "type": "about",
         "image": "/media/alla-vakker-about-b556ff.jpg",
-        "title": "About the client"
+        "title": "The client",
+        "name": "Alla Vakker",
+        "caption": "Portrait & brand photographer, Prague",
+        "site": "allavakker.com"
       },
       "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
       {

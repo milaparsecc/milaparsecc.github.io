@@ -39,8 +39,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
 - Gallery item `{ "type": "concept", "image", "title", "text" }` → logo image left, white text block right
   (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
-- Gallery item `{ "type": "about", "image", "title" }` → client photo left (8:9), Context (`description`) right, 50/50;
-  Context is then not shown at the top. Used first in Rubin, Alla Vakker, Iris (owner likes showing the real people).
+- Gallery item `{ "type": "about", "image", "title", "name", "caption", "site" }` → client card: photo of the real people
+  left (8:9), right: label "The client", serif name, one-line caption, website (as text). Context stays at the top —
+  never repeat it here. Used first in Rubin, Alla Vakker, Iris (owner likes showing the real people).
   The old Czech intro slides (photo + text) were removed from galleries; about images are their right halves.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
