@@ -43,6 +43,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   left (8:9), right: label "The client", serif name, one-line caption, website (as text). Context stays at the top —
   never repeat it here. Used first in Rubin, Alla Vakker, Iris (owner likes showing the real people).
   The old Czech intro slides (photo + text) were removed from galleries; about images are their right halves.
+- Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → visual left (8:9), right: small label,
+  serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
+  baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").

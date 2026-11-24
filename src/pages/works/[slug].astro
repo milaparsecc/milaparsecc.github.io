@@ -165,6 +165,16 @@ const alt = () => `${altName} — image ${++altN}`;
               {item.site && <p class="small-upper project__about-site">{item.site}</p>}
             </div>
           </div>
+        ) : typeof item === "object" && item.type === "feature" ? (
+          <div class="project__concept project__feature">
+            <img src={media(item.image)} alt={`${altName} — ${item.title}`} loading="lazy" />
+            <div class="project__concept-text">
+              {item.label && <p class="small-upper">{item.label}</p>}
+              <h2 class="h2">{item.title}</h2>
+              <div class="rich" set:html={richText(item.text)} />
+              {item.detail && <img class="project__feature-detail" src={media(item.detail)} alt="" loading="lazy" />}
+            </div>
+          </div>
         ) : typeof item === "object" && item.type === "concept" ? (
           <div class="project__concept">
             <img src={media(item.image)} alt={`${altName} logo`} loading="lazy" />
@@ -339,6 +349,17 @@ const alt = () => `${altName} — image ${++altN}`;
     background: var(--bg);
   }
   .project__about .project__concept-text { gap: 12px; }
+  .project__feature .project__concept-text { gap: 16px; }
+  .project__feature .rich { line-height: 1.5; }
+  /* Small visual under the text (formula, highlights, sub-logo): cropped from the old slide, dark chip */
+  .project__feature-detail {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 360px;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    border-radius: 8px;
+  }
   .project__about .h2 { margin-bottom: 4px; }
   .project__about-site { margin-top: 16px; }
   .project__concept-text .rich {

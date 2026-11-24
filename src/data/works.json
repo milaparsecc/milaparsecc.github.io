@@ -429,13 +429,34 @@
         "site": "rubinproduction.eu"
       },
       "/media/2Wp4eFsN0Dt3vXm9IZU5gPnMxo.gif",
-      "/media/A3C7H6JjlpetLdEN76fdvaFSVGc.jpg",
+      {
+        "type": "feature",
+        "image": "/media/rubin/mark-00a483.jpg",
+        "label": "Concept",
+        "title": "The mark",
+        "text": "The mark combines three symbols: the letter R, a ruby, the gem behind the studio’s name, and a play button for its work in photo, video and animation. A clean geometric form keeps it precise, versatile and ready for motion.",
+        "detail": "/media/rubin/formula-3235d0.jpg"
+      },
       "/media/YzZlOQWjrowdkIbQAVnqmqM7UQ.jpg",
       "/media/16dfDwmwEdM1QBp2E4VXYjHMvrY.jpg",
       "/media/Gx2Cx3h2dA2MZiOgMmQ16DnFlHk.png",
-      "/media/osQ4Bo76yYeIDnbWk7yzY1xCtE.jpg",
+      {
+        "type": "feature",
+        "image": "/media/rubin/ig-phones-b36dcd.jpg",
+        "label": "@rubinproduction.eu",
+        "title": "Instagram",
+        "text": "Story highlight covers and post templates that introduce the studio, its services, studio rental and prices at a glance, in the same dark palette with red accents as the rest of the brand.",
+        "detail": "/media/rubin/ig-highlights-066d31.jpg"
+      },
       "/media/2ayNofJqiP7m2Hly0iDOJHuvtw.gif",
-      "/media/Rv9t97fAj3tSRmqf3h0T4DybCP4.jpg",
+      {
+        "type": "feature",
+        "image": "/media/rubin/catering-phones-06439a.jpg",
+        "label": "@rubincatering",
+        "title": "Rubin Catering",
+        "text": "A sub-brand for the studio’s catering: the R becomes a C, while the geometry, colours and Instagram system stay the same, so both brands read as one family.",
+        "detail": "/media/rubin/catering-logo-2d51e7.jpg"
+      },
       "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg",
       "/media/D4xrVZwWVuKVNIH4Areuz853LM.jpg",
       "/media/2ayNofJqiP7m2Hly0iDOJHuvtw.gif",
