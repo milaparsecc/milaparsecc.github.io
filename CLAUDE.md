@@ -48,7 +48,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `public/rubin-site/` — live HTML prototype of the owner's Rubin Production homepage (desktop), rebuilt from Figma
   file fD2eQpiDJRQ1bz3flg6Deu, Frame 35 (node 3006:17). Static HTML, sizes in design px × --u, self-hosted Montserrat +
   Permanent Marker. Grunges lettering ("the best", "our", "about your project"), the grey heading and CLICK are
-  outlines/rasters exported from the owner's RubinMain.svg (positions = SVG coords − 10px offset). Menu: no language switch. Old site, company has since rebranded → present as a past website.
+  outlines/rasters exported from the owner's RubinMain.svg (positions = SVG coords − 10px offset). Menu: no language switch.
+  Motion: hero intro on load (line masks, mark rotates in, button wipe, bg settles), scroll reveals by position
+  (.rv fade-up, .rv-wipe lettering, .rv-mask photos, .rv-draw lines, .rv-spin badge — one-time, never looping), 90 ms stagger,
+  light parallax on hero and showreel photos. Old site, company has since rebranded → present as a past website.
   Still to do: mobile version and the 4 case pages (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;

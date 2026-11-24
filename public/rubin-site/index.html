@@ -98,7 +98,7 @@ section { position: relative; }
   font-weight: 700; font-size: calc(119 * var(--u)); line-height: 1.221; letter-spacing: calc(3.57 * var(--u));
   text-transform: uppercase; white-space: pre;
 }
-.wordmark h1 span { color: var(--red); }
+.wordmark h1 em { font-style: normal; color: var(--red); }
 .hero .btn { left: calc(756 * var(--u)); top: calc(305 * var(--u)); }
 .hero .btn__box { width: calc(400 * var(--u)); padding-left: calc(47 * var(--u)); }
 .hero .btn__arrow { width: calc(95 * var(--u)); margin-left: calc(-50 * var(--u)); }
@@ -148,7 +148,7 @@ section { position: relative; }
 
 /* ---------- 3 · Showreel ---------- */
 .reel { height: calc(900 * var(--u)); background: var(--ink) url(assets/camera.jpg) center / cover; overflow: hidden; cursor: pointer; }
-.reel::before { content: ""; position: absolute; inset: 0; background: url(assets/camera.jpg) center / cover; transition: transform 6s ease-out; }
+.reel::before { content: ""; position: absolute; inset: -6% 0; background: url(assets/camera.jpg) center / cover; translate: 0 var(--py, 0); transition: transform 6s ease-out; }
 .reel:hover::before { transform: scale(1.04); }
 .reel > * { z-index: 1; }
 .lockup { left: calc(204 * var(--u)); top: calc(380 * var(--u)); display: flex; align-items: center; gap: calc(40 * var(--u)); }
@@ -232,12 +232,51 @@ form .btn { margin-top: calc(60 * var(--u)); }
 .talk-arrow { left: calc(173.5 * var(--u)); top: calc(1754 * var(--u)); width: calc(482.5 * var(--u)); height: calc(2 * var(--u)); background: #fff; }
 .talk-arrow::after { content: ""; position: absolute; right: 0; top: 50%; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid #fff; border-right: calc(2 * var(--u)) solid #fff; transform: translateY(-50%) rotate(45deg); }
 
+
+/* ---------- Motion: cinematic, like cuts and camera moves ---------- */
+:root { --ease: cubic-bezier(.7, 0, .2, 1); --out: cubic-bezier(.2, .7, .2, 1); }
+/* line masks: text slides up from behind an invisible edge */
+.ln { display: block; overflow: hidden; padding-bottom: .04em; }
+.ln > span { display: block; transform: translateY(105%); transition: transform 1.1s var(--out) var(--d, 0s); }
+.is-loaded .wordmark .ln > span, .rv-group.in .ln > span { transform: none; }
+/* hero intro on page load */
+.intro { opacity: 0; translate: 0 calc(20 * var(--u)); transition: opacity .9s ease var(--d, 0s), translate .9s var(--out) var(--d, 0s); }
+.is-loaded .intro { opacity: 1; translate: 0 0; }
+.intro--mark { translate: 0; transform: rotate(-25deg) scale(.6); transition: opacity .8s ease .1s, transform 1.2s var(--out) .1s; }
+.is-loaded .intro--mark { transform: none; }
+.intro--wipe { translate: 0; clip-path: inset(0 100% 0 0); transition: opacity .1s linear var(--d), clip-path 1s var(--ease) var(--d); }
+.is-loaded .intro--wipe { clip-path: inset(0 -20% 0 0); }
+.hero { background-size: 112%; transition: background-size 2.6s var(--out); }
+.is-loaded .hero { background-size: 100%; }
+/* lettering wipes in left to right */
+.rv-wipe { clip-path: inset(-10% 100% -10% 0); transition: clip-path 1.2s var(--ease) var(--d, 0s); }
+.rv-wipe.in { clip-path: inset(-10% -5% -10% 0); }
+/* photos: shutter opens from the bottom, image settles from a slight zoom */
+.rv-mask { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s var(--ease) var(--d, 0s); }
+.rv-mask.in { clip-path: inset(0 0 0 0); }
+.rv-mask > img:first-child { scale: 1.18; transition: scale 1.8s var(--out) var(--d, 0s), transform .8s cubic-bezier(.2,.7,.2,1), filter .5s; }
+.rv-mask.in > img:first-child { scale: 1; }
+/* lines draw themselves */
+.down.rv-draw { transform-origin: top; scale: 1 0; transition: scale 1s var(--ease) .3s; }
+.talk-arrow.rv-draw { transform-origin: left; scale: 0 1; transition: scale 1.1s var(--ease) .3s; }
+.rv-draw.in { scale: 1 1; }
+/* badge rolls in once */
+.rv-spin { opacity: 0; rotate: -140deg; transition: opacity .8s ease, rotate 1.8s var(--out); }
+.rv-spin.in { opacity: 1; rotate: 0deg; }
+/* the render bar only starts when it is seen */
+.render .bar i { animation-play-state: paused; }
+.render.in .bar i { animation-play-state: running; }
+
 /* ---------- Reveal on scroll ---------- */
 .rv { opacity: 0; translate: 0 calc(30 * var(--u)); transition: opacity .9s ease, translate .9s ease; }
 .rv.in { opacity: 1; translate: 0 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .rv { opacity: 1; translate: none; }
+  .rv, .intro { opacity: 1; translate: none; }
+  .rv-wipe, .rv-mask, .intro--wipe { clip-path: none; }
+  .ln > span, .intro--mark { transform: none; }
+  .rv-spin { opacity: 1; rotate: 0deg; }
+  .rv-draw { scale: 1 1 !important; }
 }
 
 /* ---------- Prototype badge (back to the portfolio) ---------- */
@@ -263,27 +302,26 @@ form .btn { margin-top: calc(60 * var(--u)); }
 
   <!-- 1 · Hero -->
   <section class="hero" id="top">
-    <a class="abs logo" href="#top" aria-label="Rubin Production"><img src="assets/logomark.png" alt=""></a>
-    <nav class="abs menu">
+    <a class="abs logo intro" style="--d:.05s" href="#top" aria-label="Rubin Production"><img src="assets/logomark.png" alt=""></a>
+    <nav class="abs menu intro" style="--d:.15s">
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
     </nav>
-    <div class="abs social">
+    <div class="abs social intro" style="--d:.3s">
       <a href="#" onclick="return false">Youtube</a>
       <a href="#" onclick="return false">Behance</a>
       <a href="#" onclick="return false">Instagram</a>
     </div>
-    <div class="abs wordmark rv">
-      <img src="assets/logomark.png" alt="">
-      <h1>   <span>ubin</span>
-production</h1>
+    <div class="abs wordmark">
+      <img class="intro intro--mark" src="assets/logomark.png" alt="">
+      <h1 aria-label="Rubin Production"><span class="ln"><span style="--d:.25s">   <em>ubin</em></span></span><span class="ln"><span style="--d:.4s">production</span></span></h1>
     </div>
-    <a class="abs btn rv" href="#contact"><span class="btn__box">Work together</span><span class="btn__arrow"></span></a>
-    <div class="abs contact rv">
+    <a class="abs btn intro intro--wipe" style="--d:.75s" href="#contact"><span class="btn__box">Work together</span><span class="btn__arrow"></span></a>
+    <div class="abs contact intro" style="--d:.9s">
       <a href="#contact">+420 111 222 333</a><br>
       <a href="#contact">email@gmail.com</a>
     </div>
-    <p class="abs text14 rv">We bring ideas to life on the screen - from concept to final edit, our commitment to precision and creativity ensures that every project surpasses expectations.</p>
+    <p class="abs text14 intro" style="--d:1s">We bring ideas to life on the screen - from concept to final edit, our commitment to precision and creativity ensures that every project surpasses expectations.</p>
   </section>
 
   <!-- 2 · About -->
@@ -294,21 +332,21 @@ production</h1>
       <span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span>
       <span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span>
     </div></div>
-    <div class="abs since"><img src="assets/since2018.png" alt="Since 2018"></div>
+    <div class="abs since rv-spin"><img src="assets/since2018.png" alt="Since 2018"></div>
     <h2 class="sr">Creating the best videos for you</h2>
-    <img class="abs h-creating rv" src="assets/h-creating.svg" alt="">
-    <img class="abs h-thebest rv" src="assets/h-thebest.png" alt="">
+    <img class="abs h-creating rv-wipe" src="assets/h-creating.svg" alt="">
+    <img class="abs h-thebest rv-wipe" src="assets/h-thebest.png" alt="">
     <p class="abs clients-label rv">OUR CLIENTS</p>
-    <span class="abs down rv"></span>
+    <span class="abs down rv-draw"></span>
     <p class="abs text14 rv">Our key factors are diversity and a fresh perspective. Our approach is based on diversity and innovation, giving our work a unique character.</p>
     <div class="abs clients rv"><img src="assets/clients.png" alt="Niceboy, CCC Group, Bolt"></div>
   </section>
 
   <!-- 3 · Showreel -->
   <section class="reel" id="reel" role="button" tabindex="0" aria-label="Play showreel">
-    <div class="abs lockup rv">
-      <img src="assets/logomark.png" alt="">
-      <p>Rubin<br>Production</p>
+    <div class="abs lockup rv-group">
+      <img class="rv" src="assets/logomark.png" alt="">
+      <p><span class="ln"><span>Rubin</span></span><span class="ln"><span style="--d:.12s">Production</span></span></p>
     </div>
     <img class="abs click" src="assets/click.svg" alt="Click">
     <div class="abs reel__msg">Showreel plays here</div>
@@ -318,14 +356,14 @@ production</h1>
   <section class="work" id="portfolio">
     <div class="work__bg"></div>
     <h2 class="sr">Our portfolio</h2>
-    <img class="abs h-our rv" src="assets/h-our.png" alt="">
+    <img class="abs h-our rv-wipe" src="assets/h-our.png" alt="">
     <p class="abs text14 t1 rv">We don't just create video content - we develop a customized marketing approach for each project.</p>
 
-    <a class="abs card c1 rv" href="#portfolio"><img src="assets/p-scooty.jpg" alt="Scooty food delivery"><img class="card__logo" src="assets/l-scooty.png" alt=""><span class="card__tag">Scooty · Commercial</span></a>
-    <a class="abs card c2 rv" href="#portfolio"><img src="assets/p-gamechanger.jpg" alt="GameChanger"><img class="card__logo" src="assets/l-gamechanger.png" alt=""><span class="card__tag">GameChanger · Product video</span></a>
-    <a class="abs card c3 rv" href="#portfolio"><img src="assets/p-elite.jpg" alt="Elite Voyage"><img class="card__logo" src="assets/l-elite.png" alt=""><span class="card__tag">Elite Voyage · Interview</span></a>
+    <a class="abs card c1 rv-mask" href="#portfolio"><img src="assets/p-scooty.jpg" alt="Scooty food delivery"><img class="card__logo" src="assets/l-scooty.png" alt=""><span class="card__tag">Scooty · Commercial</span></a>
+    <a class="abs card c2 rv-mask" href="#portfolio"><img src="assets/p-gamechanger.jpg" alt="GameChanger"><img class="card__logo" src="assets/l-gamechanger.png" alt=""><span class="card__tag">GameChanger · Product video</span></a>
+    <a class="abs card c3 rv-mask" href="#portfolio"><img src="assets/p-elite.jpg" alt="Elite Voyage"><img class="card__logo" src="assets/l-elite.png" alt=""><span class="card__tag">Elite Voyage · Interview</span></a>
 
-    <div class="abs render rv">
+    <div class="abs render rv-mask">
       <span class="dot"></span>
       <p>Your<br>project<br>is rendering</p>
       <span class="bar"><i></i></span>
@@ -333,11 +371,11 @@ production</h1>
     <p class="abs text14 t2 rv">Regardless of the project's complexity, we will provide a cost estimate during the first consultation.</p>
     <a class="abs btn b1 rv" href="#contact"><span class="btn__box">Work together</span><span class="btn__arrow"></span></a>
 
-    <div class="abs talk rv" id="contact">
-      <h3>Let’s talk</h3>
+    <div class="abs talk rv-group" id="contact">
+      <h3><span class="ln"><span>Let’s talk</span></span></h3>
     </div>
-    <img class="abs h-about rv" src="assets/h-about.png" alt="About your project">
-    <i class="abs talk-arrow rv"></i>
+    <img class="abs h-about rv-wipe" src="assets/h-about.png" alt="About your project">
+    <i class="abs talk-arrow rv-draw"></i>
     <form class="abs rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
       <input class="field" type="text" placeholder="Name" aria-label="Name">
       <input class="field" type="email" placeholder="Email" aria-label="Email">
@@ -369,10 +407,41 @@ production</h1>
 
 <script>
   // Reveal blocks as they scroll into view
-  const io = new IntersectionObserver((es) => es.forEach((e) => {
-    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-  }), { threshold: 0.15 });
-  document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+  // Hero plays its intro once the page is ready
+  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add("is-loaded")));
+  // Reveal on scroll. Checked by position (not IntersectionObserver: it ignores fully clipped elements).
+  // Elements that enter together are staggered by 90 ms, so a section unfolds instead of appearing at once.
+  let pending = [...document.querySelectorAll(".rv, .rv-wipe, .rv-mask, .rv-draw, .rv-spin, .rv-group")];
+  const reveal = () => {
+    let i = 0;
+    pending = pending.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.88 && r.bottom > 0) {
+        if (!el.style.getPropertyValue("--d")) el.style.setProperty("--d", i++ * 0.09 + "s");
+        el.style.transitionDelay = el.style.getPropertyValue("--d");
+        el.classList.add("in");
+        return false;
+      }
+      return true;
+    });
+  };
+  addEventListener("scroll", () => requestAnimationFrame(reveal), { passive: true });
+  addEventListener("resize", reveal);
+  setTimeout(reveal, 300);
+  // Gentle parallax on the two big photos
+  const hero = document.querySelector(".hero"), reelBg = document.querySelector(".reel");
+  let ticking = false;
+  addEventListener("scroll", () => {
+    if (ticking || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = scrollY;
+      hero.style.backgroundPositionY = `calc(50% + ${y * 0.25}px)`;
+      const r = reelBg.getBoundingClientRect();
+      reelBg.style.setProperty("--py", `${(r.top + r.height / 2 - innerHeight / 2) * -0.12}px`);
+      ticking = false;
+    });
+  }, { passive: true });
   // Showreel "click"
   const reel = document.getElementById("reel");
   const play = () => { reel.classList.add("is-clicked"); setTimeout(() => reel.classList.remove("is-clicked"), 1800); };
