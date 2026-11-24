@@ -156,13 +156,12 @@ const alt = () => `${altName} — image ${++altN}`;
             </div>
           </div>
         ) : typeof item === "object" && item.type === "about" ? (
-          <div class="project__concept project__about">
+          <div class="project__about">
             <img src={media(item.image)} alt={item.name || altName} loading="lazy" />
-            <div class="project__concept-text">
+            <div class="project__about-text">
               <p class="small-upper">{item.title}</p>
               <h2 class="h2">{item.name}</h2>
-              {item.caption && <p>{item.caption}</p>}
-              {item.site && <p class="small-upper project__about-site">{item.site}</p>}
+              <p>{[item.caption, item.site].filter(Boolean).join(" · ")}</p>
             </div>
           </div>
         ) : typeof item === "object" && item.type === "feature" ? (
@@ -348,20 +347,24 @@ const alt = () => `${altName} — image ${++altN}`;
     padding: 40px clamp(var(--pad-x), 8%, 120px);
     background: var(--bg);
   }
-  .project__about .project__concept-text { gap: 12px; }
-  .project__feature .project__concept-text { gap: 16px; }
-  .project__feature .rich { line-height: 1.5; }
-  /* Small visual under the text (formula, highlights, sub-logo): cropped from the old slide, dark chip */
-  .project__feature-detail {
-    margin-top: 16px;
-    width: 100%;
-    max-width: 360px;
-    height: auto !important;
-    aspect-ratio: auto !important;
-    border-radius: 8px;
+  /* Client card: small photo in the left third (same grid as the intro), caption at its bottom on the right */
+  .project__about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: var(--gap);
+    align-items: end;
+    padding: 0 0 80px;
   }
-  .project__about .h2 { margin-bottom: 4px; }
-  .project__about-site { margin-top: 16px; }
+  .project__about img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .project__about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
   .project__concept-text .rich {
     max-width: 440px;
     text-wrap: pretty;
@@ -411,6 +414,7 @@ const alt = () => `${altName} — image ${++altN}`;
     .project__set { padding-top: 24px; }
     .project__set img { border-radius: 12px; }
     .project__concept { grid-template-columns: 1fr; }
+    .project__about { grid-template-columns: 1fr 1fr; padding: 0 0 48px; }
     .project__concept-text { padding: 40px 0; }
   }
 </style>
