@@ -349,6 +349,15 @@ const alt = () => `${altName} — image ${++altN}`;
     aspect-ratio: 8 / 9;
     object-fit: cover;
   }
+  /* Small visual under the feature text (formula, highlights, sub-logo) */
+  .project__concept .project__feature-detail {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
   .project__concept-text {
     display: flex;
     flex-direction: column;
