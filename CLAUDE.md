@@ -46,8 +46,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
-  Space Karlín menu images `menu-*-placeholder-*.jpg` are temporary flat files until the owner sends mockups
-  (CZ + EN at 3:4 ~1500×2000 in the row with menu-close.jpg; Christmas at 16:9 2400×1350, full width).
+  Space Karlín Menus chapter: bar photo (full width), then a row of 3 squares: menu wall close-up, printed CZ/EN
+  menus mockup, Christmas menus mockup (owner's AI mockups, Nov 2026). Window photo closes the gallery.
 - `titleScript` — optional word after the title in Adobe Handwriting (e.g. la FORMULA + "Christmas").
 - `nextProjects` — "You might also like": 3 hand-picked slugs per project, chosen by theme and mood (set for all
   10 in Nov 2026 — update when adding a project). If fewer than 3, it's topped up with the next projects in the list.
