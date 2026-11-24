@@ -24,13 +24,24 @@ const next = (chosen.length
   : [1, 2, 3].map((n) => works[(idx + n) % works.length]).filter((w) => w.slug !== work.slug)
 ).slice(0, 3);
 
+// "a, b (x, y), c" -> ["A", "B (x, y)", "C"]: commas inside brackets stay
+function splitList(s: string) {
+  const out: string[] = []; let depth = 0, cur = "";
+  for (const ch of s) {
+    if (ch === "(") depth++;
+    if (ch === ")") depth--;
+    if (ch === "," && depth === 0) { out.push(cur); cur = ""; } else cur += ch;
+  }
+  out.push(cur);
+  return out.map((x) => x.trim()).filter(Boolean).map((x) => x[0].toUpperCase() + x.slice(1));
+}
 const meta = [
   { label: "Role", value: (work as any).role ? [(work as any).role] : [] },
   { label: "Client", value: work.client ? [work.client] : [] },
   { label: "Year", value: work.year ? [work.year] : [] },
   { label: "Location", value: work.location ? [work.location] : [] },
   { label: "Services", value: serviceNames },
-  { label: "Deliverables", value: work.deliverables ? [work.deliverables] : [], wide: true },
+  { label: "Deliverables", value: work.deliverables ? splitList(work.deliverables) : [], wide: true },
 ].filter((m) => m.value.length);
 
 const cover = work.cover || work.thumbnail;
@@ -68,10 +79,12 @@ const alt = () => `${altName} — image ${++altN}`;
     </div>
 
     <!-- Intro: name + lead, then details and Context / Task / Solution, all open -->
+    <!-- Reading order: 1) name + lead  2) facts (left, sticky) + Context / Task / Solution (right) -->
     <div class="project__intro">
-      <!-- Left: name + facts (Role, Client, Year, Location, Services, Deliverables) -->
-      <div class="project__side">
-        <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
+      <h1 class="h2 project__title">{work.title}{work.titleScript && <> <span class="script">{work.titleScript}</span></>}</h1>
+      <div class="project__lead">{lead && <div set:html={richText(lead)} />}</div>
+
+      <aside class="project__side">
         {meta.length > 0 && (
           <dl class="project__meta">
             {meta.map((m) => (
@@ -82,24 +95,19 @@ const alt = () => `${altName} — image ${++altN}`;
             ))}
           </dl>
         )}
-      </div>
-      <!-- Right: lead, then Context / Task / Solution -->
+      </aside>
+
       <div class="project__body">
-        {lead && <div class="project__lead" set:html={richText(lead)} />}
-        {(more.length > 0 || work.link) && (
-          <div class="project__more">
-            {more.map((m) => (
-              <div class="project__block">
-                <p class="small-upper">{m.label}</p>
-                <div class="rich" set:html={richText(m.text)} />
-              </div>
-            ))}
-            {work.link && (
-              <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
-                {work.linkText || "See live project"}
-              </a>
-            )}
-          </div>
+        {more.map((m) => (
+          <section class="project__block">
+            <h2 class="small-upper">{m.label}</h2>
+            <div class="rich" set:html={richText(m.text)} />
+          </section>
+        ))}
+        {work.link && (
+          <a class="upper underline project__link" href={work.link} target="_blank" rel="noopener">
+            {work.linkText || "See live project"}
+          </a>
         )}
       </div>
     </div>
@@ -155,55 +163,67 @@ const alt = () => `${altName} — image ${++altN}`;
     aspect-ratio: 16 / 9;
   }
 
-  /* Intro: name (1/3) + text (2/3), like the 12-col grid: 4 + 8 columns */
+  /* Intro grid, 1/3 + 2/3 (4 + 8 of 12 columns):
+     row 1 — name | lead (what to read first)
+     row 2 — facts (sticky) | Context / Task / Solution */
   .project__intro {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: var(--gap);
-    padding: 60px 0 100px;
+    column-gap: var(--gap);
+    row-gap: 96px;
+    padding: 64px 0 120px;
+    align-items: start;
   }
-  .project__body {
-    max-width: 760px;
-  }
-  /* Lead: same family as all body text (Inter), only larger — serif stays for headings */
+  .project__title { padding-right: 40px; }
+  /* Lead: same family as body text (Inter), only larger — serif stays for headings */
   .project__lead {
+    max-width: 800px;
     font-size: var(--fs-lead);
-    line-height: 1.25;
-    letter-spacing: -0.04em;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
     text-wrap: pretty;
   }
   .project__lead :global(p + p) { margin-top: 0.8em; }
 
-  /* Details and case texts under the lead (always open) */
-  .project__more {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin-top: 40px;
-  }
-
-  /* Facts under the name, one per line, in the left column */
+  /* Facts: quiet, compact, stay in view while the texts are read */
   .project__side {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    position: sticky;
+    top: calc(var(--nav-h) + 32px);
     padding-right: 40px;
   }
   .project__meta {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
   }
   .project__meta dd {
-    margin: 4px 0 0;
+    margin: 8px 0 0;
     display: flex;
     flex-direction: column;
+    gap: 4px;
+    font-size: var(--fs-ui);
+    line-height: 1.4;
+  }
+
+  /* Case texts: readable measure, generous leading, clear sections */
+  .project__body {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
   }
   .project__block {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .project__block h2 { font-weight: 400; }
+  .project__block .rich {
+    line-height: 1.6;
+    text-wrap: pretty;
   }
   .rich :global(p + p) {
     margin-top: 1em;
@@ -283,9 +303,12 @@ const alt = () => `${altName} — image ${++altN}`;
     gap: var(--gap);
   }
   @media (max-width: 809.98px) {
-    .project__intro { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 56px; }
-    .project__side { gap: 24px; padding-right: 0; }
+    .project__intro { grid-template-columns: 1fr; row-gap: 32px; padding: 40px 0 64px; }
+    .project__title { padding-right: 0; }
+    .project__lead { line-height: 1.3; }
+    .project__side { position: static; padding: 24px 0 8px; padding-right: 0; border-top: 1px solid var(--border); }
     .project__meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px var(--gap); }
+    .project__body { gap: 40px; }
     .project__meta .is-wide { grid-column: 1 / -1; }
     .next-grid { grid-template-columns: 1fr; }
     .project__row { grid-template-columns: 1fr; }
