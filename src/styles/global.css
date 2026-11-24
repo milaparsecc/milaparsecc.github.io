@@ -7,8 +7,8 @@
   --border: #ebebeb;
   --tile: #f2f2f2;
   --fade-to: 0.06; /* opened/hovered card: image fades to 6% on white (= 94% white layer) */
-  --accent: #3b4a8c;
-  --accent-light: #8fa0e6; /* accent on black (running line dot) */ /* navy from the hero signature */
+  --accent: #3b4a8c; /* navy from the hero signature */
+  --accent-light: #8fa0e6; /* accent on black (running line dot) */
 
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
