@@ -421,14 +421,6 @@
     "cover": "/media/rubin/cover-poster.jpg",
     "coverVideo": "/media/rubin/cover.mp4",
     "gallery": [
-      {
-        "type": "about",
-        "image": "/media/rubin-production-about-00e600.jpg",
-        "title": "The client",
-        "name": "Rubin Production",
-        "caption": "Video & photo production studio, Prague",
-        "site": "rubinproduction.eu"
-      },
       "/media/2Wp4eFsN0Dt3vXm9IZU5gPnMxo.gif",
       "/media/rubin/video-test-90e7cb.mp4",
       {
@@ -497,14 +489,6 @@
     "cover": "/media/ggLMiv6XDeQ5RrDg1PrBKUt2Cs.jpg",
     "coverVideo": "",
     "gallery": [
-      {
-        "type": "about",
-        "image": "/media/iris-atelier-about-de47fc.jpg",
-        "title": "The client",
-        "name": "Iris ateliér",
-        "caption": "Couture atelier, Prague",
-        "site": "irisboutique.cz"
-      },
       "/media/cJK2AzC5G50LUyvcUO6Xaj8WyJ4.jpg",
       "/media/HkBgKK3lhXy7LS8WbPF7v6Sdig.jpg",
       {
@@ -550,14 +534,6 @@
     "cover": "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
     "coverVideo": "",
     "gallery": [
-      {
-        "type": "about",
-        "image": "/media/alla-vakker-about-b556ff.jpg",
-        "title": "The client",
-        "name": "Alla Vakker",
-        "caption": "Portrait & brand photographer, Prague",
-        "site": "allavakker.com"
-      },
       "/media/nJgVE9gbGsPbBecBHVBBx6DAI.jpg",
       {
         "type": "concept",

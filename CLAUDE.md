@@ -39,10 +39,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   a row side by side (crop them to the same aspect ratio). Galleries with rows get 20px gaps; flat ones stay seamless.
 - Gallery item `{ "type": "concept", "image", "title", "text" }` → logo image left, white text block right
   (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
-- Gallery item `{ "type": "about", "image", "title", "name", "caption", "site" }` → client card in the page grid:
-  photo 4:5 in the left third, caption bottom-aligned in the right 2/3 (label "The client", serif name, "caption · site"). Context stays at the top —
-  never repeat it here. Used first in Rubin, Alla Vakker, Iris (owner likes showing the real people).
-  The old Czech intro slides (photo + text) were removed from galleries; about images are their right halves.
+- Client photo cards ("about" blocks) were tried and removed at the owner's request (Nov 2026) — don't add them back.
 - Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → visual left (8:9), right: small label,
   serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
