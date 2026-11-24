@@ -351,6 +351,9 @@ const alt = () => `${altName} — image ${++altN}`;
   }
   /* Feature blocks: two equal squares, like the hero on the homepage */
   .project__feature > img { aspect-ratio: 1 / 1; }
+  /* Text aligned to the right edge of the page */
+  .project__feature .project__concept-text { align-items: flex-end; text-align: right; padding-right: var(--pad-x); }
+  .project__feature .rich { margin-left: auto; }
   /* Small visual under the feature text (formula, highlights, sub-logo) */
   .project__concept .project__feature-detail {
     margin-top: 16px;
@@ -511,6 +514,7 @@ const alt = () => `${altName} — image ${++altN}`;
     .project__set img { border-radius: 12px; }
     .project__concept { grid-template-columns: 1fr; }
     .site-preview { padding: 40px 20px; gap: 24px; }
+    .project__feature .project__concept-text { align-items: flex-start; text-align: left; }
     .site-preview__bar { height: 28px; }
     .site-preview__bar i { width: 8px; height: 8px; }
     .project__about { grid-template-columns: 1fr 1fr; padding: 0 0 48px; }
