@@ -40,7 +40,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "concept", "image", "title", "text" }` → logo image left, white text block right
   (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
 - Client photo cards ("about" blocks) were tried and removed at the owner's request (Nov 2026) — don't add them back.
-- Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → visual left (8:9), right: small label,
+- Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → two equal squares (visual 1:1 left, text right), right: small label,
   serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
 - Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (#141316 + faint red glow, dark browser bar) with a browser window whose
