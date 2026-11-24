@@ -57,9 +57,11 @@ const cover = work.cover || work.thumbnail;
 // Lead next to the name: dedicated `lead`, else the task, else the tagline
 const lead = work.lead || work.task || work.tagline;
 // Everything else is shown under the lead
+// { type: "about", image, title }: client photo left, the Context text right (then Context is not repeated at the top)
+const hasAboutBlock = work.gallery.some((g: any) => g && typeof g === "object" && !Array.isArray(g) && g.type === "about");
 const hasConceptBlock = work.gallery.some((g: any) => g && typeof g === "object" && !Array.isArray(g) && g.type === "concept");
 const more = [
-  { label: "Context", text: work.description },
+  { label: "Context", text: hasAboutBlock ? "" : work.description },
   { label: "Task", text: work.task && lead !== work.task ? work.task : "" },
   // Concept goes here unless the gallery already has a concept block (then it fills that block)
   { label: "Concept", text: hasConceptBlock ? "" : work.concept },
@@ -153,6 +155,14 @@ const alt = () => `${altName} — image ${++altN}`;
             <p class="small-upper">{item.title}</p>
             <div class="project__row" style={`--cols: ${item.items.length}`}>
               {item.items.map((src: string, i: number) => <img src={media(src)} alt={`${item.title} — ad ${i + 1}`} loading="lazy" />)}
+            </div>
+          </div>
+        ) : typeof item === "object" && item.type === "about" ? (
+          <div class="project__concept project__about">
+            <img src={media(item.image)} alt={`${work.client || altName}`} loading="lazy" />
+            <div class="project__concept-text">
+              <p class="small-upper">{item.title}</p>
+              <div class="rich" set:html={richText(work.description)} />
             </div>
           </div>
         ) : typeof item === "object" && item.type === "concept" ? (
@@ -328,6 +338,8 @@ const alt = () => `${altName} — image ${++altN}`;
     padding: 40px clamp(var(--pad-x), 8%, 120px);
     background: var(--bg);
   }
+  .project__about .project__concept-text { gap: 16px; }
+  .project__about .rich { line-height: 1.5; }
   .project__concept-text .rich {
     max-width: 440px;
     text-wrap: pretty;
