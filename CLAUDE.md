@@ -47,7 +47,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   full-page screenshot scrolls by itself (pauses on hover) + pill button opening `url` in a new tab.
 - `public/rubin-site/` — live HTML prototype of the owner's Rubin Production homepage (desktop), rebuilt from Figma
   file fD2eQpiDJRQ1bz3flg6Deu, Frame 35 (node 3006:17). Static HTML, sizes in design px × --u, self-hosted Montserrat +
-  Permanent Marker (stand-in for Grunges). Old site, company has since rebranded → present as a past website.
+  Permanent Marker. Grunges lettering ("the best", "our", "about your project"), the grey heading and CLICK are
+  outlines/rasters exported from the owner's RubinMain.svg (positions = SVG coords − 10px offset). Menu: no language switch. Old site, company has since rebranded → present as a past website.
   Still to do: mobile version and the 4 case pages (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;

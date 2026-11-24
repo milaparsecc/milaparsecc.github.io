@@ -76,7 +76,7 @@ section { position: relative; }
 .hero > * { z-index: 1; }
 .logo { left: calc(141 * var(--u)); top: calc(61 * var(--u)); width: calc(97 * var(--u)); }
 .logo img { width: 100%; }
-.menu { left: calc(858 * var(--u)); top: calc(85 * var(--u)); display: flex; gap: calc(66 * var(--u)); }
+.menu { right: calc(183 * var(--u)); top: calc(85 * var(--u)); display: flex; gap: calc(66 * var(--u)); }
 .menu a, .social a {
   font-size: calc(18 * var(--u)); line-height: calc(30 * var(--u)); text-transform: uppercase; position: relative;
 }
@@ -108,7 +108,7 @@ section { position: relative; }
 .hero .text14 { left: calc(756 * var(--u)); top: calc(591 * var(--u)); width: calc(400 * var(--u)); }
 
 /* ---------- 2 · About ---------- */
-.about { height: calc(800 * var(--u)); }
+.about { height: calc(800 * var(--u)); z-index: 2; } /* above the showreel, so its slanted bottom edge overlaps it */
 .about__band, .about__bg { position: absolute; left: 0; width: 100%; }
 .about__bg { top: calc(-85 * var(--u)); height: calc(980 * var(--u)); background: var(--dark); clip-path: polygon(0 15%, 100% 7%, 100% 91.4%, 0 100%); }
 .about__band {
@@ -119,7 +119,7 @@ section { position: relative; }
 }
 /* running line along the slanted band */
 .marquee {
-  position: absolute; left: calc(-40 * var(--u)); top: calc(28 * var(--u)); width: calc(1520 * var(--u)); z-index: 2;
+  position: absolute; left: calc(-40 * var(--u)); top: calc(13 * var(--u)); width: calc(1520 * var(--u)); z-index: 2;
   transform: rotate(-3.2deg); transform-origin: left top; overflow: hidden; pointer-events: none;
 }
 .marquee__track { display: flex; width: max-content; animation: run 30s linear infinite; }
@@ -154,8 +154,7 @@ section { position: relative; }
 .lockup { left: calc(204 * var(--u)); top: calc(380 * var(--u)); display: flex; align-items: center; gap: calc(40 * var(--u)); }
 .lockup img { width: calc(176 * var(--u)); margin: calc(-20 * var(--u)) calc(-30 * var(--u)) calc(-20 * var(--u)) calc(-36 * var(--u)); }
 .lockup p { font-weight: 500; font-size: calc(36 * var(--u)); letter-spacing: calc(3 * var(--u)); line-height: calc(56 * var(--u)); text-transform: uppercase; }
-.click { left: 50%; transform: translateX(-50%); top: calc(776 * var(--u)); display: flex; align-items: center; gap: calc(6 * var(--u)); color: var(--grey); font-weight: 600; font-size: calc(20 * var(--u)); letter-spacing: calc(4 * var(--u)); }
-.click i { width: calc(19 * var(--u)); height: calc(32 * var(--u)); border: calc(2 * var(--u)) solid var(--grey); border-right: 0; border-radius: 50% 0 0 50%; animation: pulse 1.6s ease-in-out infinite; }
+.click { left: calc(668 * var(--u)); top: calc(776 * var(--u)); width: calc(103.1 * var(--u)); animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: .3; } }
 .reel__msg {
   left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); opacity: 0; transition: .4s; pointer-events: none;
@@ -224,6 +223,15 @@ form .btn { margin-top: calc(60 * var(--u)); }
 .footer nav a { position: absolute; white-space: nowrap; transition: color .3s; }
 .footer nav a:hover { color: #fff; }
 
+/* Lettering outlined from the design (Grunges + Montserrat), positions from RubinMain.svg */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.h-creating { left: calc(354.5 * var(--u)); top: calc(246.6 * var(--u)); width: calc(708.1 * var(--u)); z-index: 2; }
+.h-thebest { left: calc(800.3 * var(--u)); top: calc(247.5 * var(--u)); width: calc(253.3 * var(--u)); z-index: 2; }
+.h-our { left: calc(612.6 * var(--u)); top: calc(103.6 * var(--u)); width: calc(587.5 * var(--u)); }
+.h-about { left: calc(178.6 * var(--u)); top: calc(1697.9 * var(--u)); width: calc(417.4 * var(--u)); }
+.talk-arrow { left: calc(173.5 * var(--u)); top: calc(1754 * var(--u)); width: calc(482.5 * var(--u)); height: calc(2 * var(--u)); background: #fff; }
+.talk-arrow::after { content: ""; position: absolute; right: 0; top: 50%; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid #fff; border-right: calc(2 * var(--u)) solid #fff; transform: translateY(-50%) rotate(45deg); }
+
 /* ---------- Reveal on scroll ---------- */
 .rv { opacity: 0; translate: 0 calc(30 * var(--u)); transition: opacity .9s ease, translate .9s ease; }
 .rv.in { opacity: 1; translate: 0 0; }
@@ -259,7 +267,6 @@ form .btn { margin-top: calc(60 * var(--u)); }
     <nav class="abs menu">
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#" onclick="return false">Rus / Ger</a>
     </nav>
     <div class="abs social">
       <a href="#" onclick="return false">Youtube</a>
@@ -288,7 +295,9 @@ production</h1>
       <span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span><span>Full cycle video production</span>
     </div></div>
     <div class="abs since"><img src="assets/since2018.png" alt="Since 2018"></div>
-    <h2 class="abs rv">Creating <span class="the">the</span><br><span class="best">best</span> videos for<br>you</h2>
+    <h2 class="sr">Creating the best videos for you</h2>
+    <img class="abs h-creating rv" src="assets/h-creating.svg" alt="">
+    <img class="abs h-thebest rv" src="assets/h-thebest.png" alt="">
     <p class="abs clients-label rv">OUR CLIENTS</p>
     <span class="abs down rv"></span>
     <p class="abs text14 rv">Our key factors are diversity and a fresh perspective. Our approach is based on diversity and innovation, giving our work a unique character.</p>
@@ -301,14 +310,15 @@ production</h1>
       <img src="assets/logomark.png" alt="">
       <p>Rubin<br>Production</p>
     </div>
-    <div class="abs click"><i></i>CLICK</div>
+    <img class="abs click" src="assets/click.svg" alt="Click">
     <div class="abs reel__msg">Showreel plays here</div>
   </section>
 
   <!-- 4 · Portfolio + contact -->
   <section class="work" id="portfolio">
     <div class="work__bg"></div>
-    <h2 class="abs rv"><span>our</span>portfolio</h2>
+    <h2 class="sr">Our portfolio</h2>
+    <img class="abs h-our rv" src="assets/h-our.png" alt="">
     <p class="abs text14 t1 rv">We don't just create video content - we develop a customized marketing approach for each project.</p>
 
     <a class="abs card c1 rv" href="#portfolio"><img src="assets/p-scooty.jpg" alt="Scooty food delivery"><img class="card__logo" src="assets/l-scooty.png" alt=""><span class="card__tag">Scooty · Commercial</span></a>
@@ -325,9 +335,9 @@ production</h1>
 
     <div class="abs talk rv" id="contact">
       <h3>Let’s talk</h3>
-      <p>about your project</p>
-      <i></i>
     </div>
+    <img class="abs h-about rv" src="assets/h-about.png" alt="About your project">
+    <i class="abs talk-arrow rv"></i>
     <form class="abs rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
       <input class="field" type="text" placeholder="Name" aria-label="Name">
       <input class="field" type="email" placeholder="Email" aria-label="Email">
