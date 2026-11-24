@@ -351,6 +351,7 @@ const alt = () => `${altName} — image ${++altN}`;
   }
   /* Feature blocks: two equal squares, like the hero on the homepage */
   .project__feature > img { aspect-ratio: 1 / 1; }
+  .project__feature .project__concept-text { padding-left: 120px; }
   /* Small visual under the feature text (formula, highlights, sub-logo) */
   .project__concept .project__feature-detail {
     margin-top: 16px;
@@ -511,6 +512,7 @@ const alt = () => `${altName} — image ${++altN}`;
     .project__set img { border-radius: 12px; }
     .project__concept { grid-template-columns: 1fr; }
     .site-preview { padding: 40px 20px; gap: 24px; }
+    .project__feature .project__concept-text { padding-left: var(--pad-x); }
     .site-preview__bar { height: 28px; }
     .site-preview__bar i { width: 8px; height: 8px; }
     .project__about { grid-template-columns: 1fr 1fr; padding: 0 0 48px; }
