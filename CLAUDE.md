@@ -82,7 +82,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
 
 ## Hero
-- `hero.availability` — "Open to …" job line (empty string hides it) under the intro (small label with an accent dot). Keep it to one line on phones.
+- `hero.availability` — "Open to …" text shown as a running line (black strip, white uppercase 16px, light-accent dot)
+  across the bottom of the first screen; links to /contact, pauses on hover; empty string hides it. under the intro (small label with an accent dot). Keep it to one line on phones.
 - Homepage section "Expertise" (nav label too) shows `services.json`; its anchor stays `#services`.
 - Left half (desktop) / top block (mobile): `hero.video` (+ `videoMobile`, `videoPoster`) if set, else `hero.image`.
   Current reel: 11 works × 0.6 s, 4:5, 1080×1350 (desktop) / 720×900 (mobile), H.264 no audio, built with ffmpeg

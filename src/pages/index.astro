@@ -44,8 +44,21 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
         <img class="hero__portrait" src={media(site.hero.portrait)} alt={`Portrait of ${site.name}`} width="328" height="410" />
       </div>
       <p class="hero__intro">{site.hero.intro.split("\n").map((line, i) => <>{i > 0 && <br />}{line}</>)}</p>
-      {site.hero.availability && <p class="hero__open small-upper"><span class="hero__dot" aria-hidden="true" />{site.hero.availability}</p>}
     </div>
+      <!-- Running line: "Open to …" on a black strip, links to Contact; pauses on hover -->
+    {site.hero.availability && (
+      <a class="hero__marquee" href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/contact`} aria-label={site.hero.availability}>
+        <span class="hero__marquee-track" aria-hidden="true">
+          {[0, 1].map(() => (
+            <span class="hero__marquee-group">
+              {Array.from({ length: 6 }).map(() => (
+                <span class="hero__marquee-item"><span class="hero__dot" />{site.hero.availability}</span>
+              ))}
+            </span>
+          ))}
+        </span>
+      </a>
+    )}
   </section>
 
   <!-- Selected works -->
@@ -139,7 +152,7 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
     height: 100vh;
     height: 100svh;
     min-height: 640px;
@@ -220,19 +233,41 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     text-wrap: balance; /* body text: inherits 18px / 120% / -4% */
   }
 
-  /* "Open to …" job line under the intro: label size, small accent dot */
-  .hero__open {
-    margin-top: 16px;
+  /* Running "Open to …" line across the bottom of the first screen */
+  .hero__marquee {
+    grid-column: 1 / -1;
+    display: block;
+    overflow: hidden;
+    background: var(--text);
+    color: var(--bg);
+    font-size: var(--fs-ui);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .hero__marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+  .hero__marquee:hover .hero__marquee-track { animation-play-state: paused; }
+  .hero__marquee-group { display: flex; }
+  .hero__marquee-item {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: var(--text);
+    gap: 16px;
+    padding: 12px 24px;
   }
   .hero__dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent-light);
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__marquee-track { animation: none; }
   }
 
   @media (max-width: 809.98px) {
@@ -245,6 +280,7 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     .hero__photo {
       aspect-ratio: 4 / 5;
     }
+    .hero__marquee { margin-top: 32px; }
     .hero__content {
       padding: 48px var(--pad-x) 8px;
     }
