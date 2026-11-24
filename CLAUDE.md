@@ -25,8 +25,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `description` — plain text; `**bold**`, blank line = new paragraph.
 - Project page intro (grid 1/3 + 2/3), reading order: row 1 = name | lead (Inter 26px, lh 1.35; `lead`, else `task`,
   else `tagline`); row 2 = facts (16px, sticky; Role/Client/Year/Location/Services/Deliverables — deliverables split
-  on commas into lines; 2 columns on phones) | Context (`description`), Task, Solution: 18px, line-height 1.6,
-  max 680px, hairline + label above each, 56px between. All open, no toggle.
+  on commas into lines; 2 columns on phones) | Context (`description`), Task, Solution: 18px, line-height 1.5,
+  max 760px, hairline + label above each, 32px between (owner found more air too much scrolling). All open, no toggle.
 - `role` — the owner's role on the project (shown first in the meta row), e.g. "In-house designer", "Freelance designer".
   Owner's case text template: Tagline / Lead / Meta / Context / Task / Solution (Mynds is the reference).
 - `concept` — shown in More information after Task; if the gallery has a concept block, it fills that block instead.
