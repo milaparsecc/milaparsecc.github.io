@@ -238,8 +238,10 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     grid-column: 1 / -1;
     display: block;
     overflow: hidden;
-    background: var(--text);
-    color: var(--bg);
+    background: var(--bg);
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     font-size: var(--fs-ui);
     text-transform: uppercase;
     white-space: nowrap;
@@ -261,7 +263,7 @@ const homeList = works.filter((w) => homeCats(w.slug).length > 0);
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent-light);
+    background: var(--accent);
   }
   @keyframes marquee {
     to { transform: translateX(-50%); }
