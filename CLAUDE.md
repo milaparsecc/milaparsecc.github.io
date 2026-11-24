@@ -43,7 +43,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → visual left (8:9), right: small label,
   serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
-- Gallery item `{ "type": "site", "image", "address", "url", "button" }` → light-grey block with a browser window whose
+- Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (#141316 + faint red glow, dark browser bar) with a browser window whose
   full-page screenshot scrolls by itself (pauses on hover) + pill button opening `url` in a new tab.
 - `public/rubin-site/` — live HTML prototype of the owner's Rubin Production homepage (desktop), rebuilt from Figma
   file fD2eQpiDJRQ1bz3flg6Deu, Frame 35 (node 3006:17). Static HTML, sizes in design px × --u, self-hosted Montserrat +
