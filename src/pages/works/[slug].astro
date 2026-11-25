@@ -190,6 +190,11 @@ const buildId = Date.now().toString(36);
               <h2 class="h2">{item.title}</h2>
               <div class="rich" set:html={richText(item.text)} />
               {item.detail && <img class="project__feature-detail" src={media(item.detail)} alt="" loading="lazy" />}
+              {item.circles && (
+                <div class="project__feature-circles">
+                  {item.circles.map((c) => <img src={media(c)} alt="" loading="lazy" />)}
+                </div>
+              )}
             </div>
           </div>
         ) : typeof item === "object" && item.type === "concept" ? (
@@ -369,6 +374,20 @@ const buildId = Date.now().toString(36);
     height: auto;
     aspect-ratio: auto;
     object-fit: contain;
+  }
+  .project__concept .project__feature-circles {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .project__concept .project__feature-circles img {
+    flex: 0 1 64px;
+    min-width: 0;
+    width: 64px;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
   }
   .project__concept-text {
     display: flex;

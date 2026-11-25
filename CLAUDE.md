@@ -42,7 +42,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (50/50 like the hero). Used instead of flat "KONCEPCE" slides (Iris, Alla Vakker).
 - Client photo cards ("about" blocks) were tried and removed at the owner's request (Nov 2026) — don't add them back.
 - Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → two equal squares (visual 1:1 left, text right), right: small label,
-  serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
+  serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Optional `circles`: list of square photos shown as a row of 64px round thumbnails (Rubin Instagram highlights). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
 - Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (owner's textured background /media/rubin/site-bg-*.jpg, dark browser bar) with a browser window whose
   live site in an iframe (`url?embed=1`, scrollable in place; loaded lazily, desktop ≥810px only;
