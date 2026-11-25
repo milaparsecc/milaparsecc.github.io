@@ -69,6 +69,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   per-marquee angle in meta.json). Homepage card c2 links to it. All 3 portfolio cards now open case pages.
   Still to do: mobile version (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
+- Gallery item `{ "type": "stories", "handle", "items": [9:16 images] }` → Instagram-style story player on the dark Rubin
+  background: one 9:16 "phone" (360px desktop), progress bars, auto-advance every 5 s while in view, tap left/right,
+  swipe, hold to pause, round arrows on desktop. Used for Rubin Catering (7 stories, 720×1280), after the 3-stories image.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").

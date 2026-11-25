@@ -471,7 +471,20 @@
         "text": "A sub-brand for the studio’s catering: the R becomes a C, while the geometry, colours and Instagram system stay the same, so both brands read as one family.",
         "detail": "/media/rubin/catering-logo-851c19.png"
       },
-      "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg"
+      "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg",
+      {
+        "type": "stories",
+        "handle": "rubincatering",
+        "items": [
+          "/media/rubin/cat-story1-a892e9.jpg",
+          "/media/rubin/cat-story2-b77ac7.jpg",
+          "/media/rubin/cat-story3-696c4c.jpg",
+          "/media/rubin/cat-story4-4e10a2.jpg",
+          "/media/rubin/cat-story5-f90b28.jpg",
+          "/media/rubin/cat-story6-33dd53.jpg",
+          "/media/rubin/cat-story7-841329.jpg"
+        ]
+      }
     ],
     "nextProjects": [
       "alla-vakker",
