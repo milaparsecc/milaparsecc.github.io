@@ -44,7 +44,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "feature", "image", "label", "title", "text", "detail" }` → two equal squares (visual 1:1 left, text right), right: small label,
   serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
-- Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (#141316 + faint red glow, dark browser bar) with a browser window whose
+- Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (owner's textured background /media/rubin/site-bg-*.jpg, dark browser bar) with a browser window whose
   live site in an iframe (`url?embed=1`, scrollable in place; loaded lazily, desktop ≥810px only;
   embed hides the prototype badge) + hint + pill button opening `url` in a new tab. Phones: the self-scrolling screenshot instead.
 - `public/rubin-site/` — live HTML prototype of the owner's Rubin Production homepage (desktop), rebuilt from Figma
