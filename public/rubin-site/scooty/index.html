@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scooty — Rubin Production case (website concept by Mila Parsec)</title>
+<meta name="robots" content="noindex">
+<script>document.documentElement.classList.add("js-typing"); if (window.self !== window.top || location.search.includes("embed")) document.documentElement.classList.add("is-embed");</script>
+<style>
+/* Fonts are self-hosted (SIL OFL) */
+@font-face { font-family: Montserrat; font-weight: 300; font-display: swap; src: url(../fonts/montserrat-latin-300-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 400; font-display: swap; src: url(../fonts/montserrat-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 500; font-display: swap; src: url(../fonts/montserrat-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 600; font-display: swap; src: url(../fonts/montserrat-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 700; font-display: swap; src: url(../fonts/montserrat-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 800; font-display: swap; src: url(../fonts/montserrat-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Permanent Marker"; font-display: swap; src: url(../fonts/permanent-marker-latin-400-normal.woff2) format("woff2"); }
+</style>
+<style>
+/* Scooty case page of the Rubin Production site. Built from the owner's Scooty.svg (1440 × 7625):
+   the background is rendered from the design, the pieces that animate are separate layers on top.
+   Every size is in design px × --u. */
+:root { --u: calc(min(100vw, 1440px) / 1440); --lime: #d7f000; --red: #d91e37; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: #0d0d0d; }
+body { background: #0d0d0d; color: #fff; font-family: Montserrat, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.page { position: relative; width: calc(1440 * var(--u)); height: calc(7625 * var(--u)); margin: 0 auto; overflow: hidden; }
+.bg img { display: block; width: 100%; height: auto; }
+.abs { position: absolute; display: block; }
+img.abs { height: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+a { color: inherit; text-decoration: none; }
+
+/* nav: invisible hit areas over the design's own lettering, underline on hover */
+.navlink { height: calc(22 * var(--u)); color: transparent; font-size: 1px; }
+.navlink--u::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.navlink--u:hover::after { transform: none; }
+.link-img { transition: opacity .3s; }
+a:hover > .link-img { opacity: .7; }
+
+/* photos: soft fade in, slow zoom on hover */
+.tile { overflow: hidden; }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.tile:hover img { transform: scale(1.05); }
+
+/* running lines (grey lettering from the design), along the page's slant */
+.mq { overflow: hidden; transform: rotate(-3.442deg); }
+.mq__track { display: flex; width: max-content; height: 100%; animation: run 40s linear infinite; }
+.mq__track img { display: block; height: 100%; width: auto; box-sizing: content-box; }
+.mq--right .mq__track { animation-direction: reverse; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* typing */
+.typeimg img { display: block; width: 100%; }
+.js-typing [data-typeimg] { clip-path: inset(0 100% 0 0); }
+.caret { position: absolute; z-index: 3; width: calc(4 * var(--u)); background: var(--lime); animation: blink .9s steps(1) infinite; pointer-events: none; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* fades */
+.rv { opacity: 0; transition: opacity 1s ease; }
+.rv.in { opacity: 1; }
+
+/* contact form (live) */
+.form { left: calc(732 * var(--u)); top: calc(6797 * var(--u)); width: calc(483 * var(--u)); }
+.field { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.6); color: #fff; font: 400 calc(18 * var(--u)) / calc(30 * var(--u)) Montserrat, sans-serif; text-transform: uppercase; padding: 0 0 calc(14 * var(--u)) calc(2 * var(--u)); margin-bottom: calc(58 * var(--u)); outline: none; transition: border-color .3s; }
+.field::placeholder { color: rgba(255,255,255,.3); }
+.field:focus { border-color: var(--lime); }
+.agree { display: flex; align-items: center; gap: calc(14 * var(--u)); margin-top: calc(-6 * var(--u)); font-weight: 500; font-size: calc(14 * var(--u)); cursor: pointer; }
+.agree input { appearance: none; width: calc(22 * var(--u)); height: calc(22 * var(--u)); border: 1px solid #fff; cursor: pointer; display: grid; place-content: center; }
+.agree input:checked::after { content: ""; width: calc(10 * var(--u)); height: calc(10 * var(--u)); background: var(--lime); }
+.btn { position: relative; display: flex; align-items: center; margin-top: calc(64 * var(--u)); width: calc(433 * var(--u)); height: calc(75 * var(--u)); padding-left: calc(38 * var(--u)); background: none; border: calc(2 * var(--u)) solid var(--lime); color: #fff; font: 700 calc(28 * var(--u)) / 1 Montserrat, sans-serif; letter-spacing: calc(1 * var(--u)); text-transform: uppercase; cursor: pointer; transition: background .35s, color .35s; }
+.btn i { position: absolute; left: calc(357 * var(--u)); top: 50%; width: calc(119 * var(--u)); height: calc(2 * var(--u)); background: #fff; transition: transform .35s; }
+.btn i::after { content: ""; position: absolute; right: 0; top: 50%; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid #fff; border-right: calc(2 * var(--u)) solid #fff; transform: translateY(-50%) rotate(45deg); }
+.btn:hover { background: var(--lime); color: #0d0d0d; }
+.btn:hover i { transform: translateX(calc(14 * var(--u))); }
+.form-note { margin-top: calc(18 * var(--u)); font-size: calc(14 * var(--u)); min-height: calc(20 * var(--u)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; } [data-typeimg] { clip-path: none !important; } .caret { display: none; } .mq__track { animation: none; }
+}
+
+/* back to the portfolio (hidden inside the case preview window) */
+.proto { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: #fff; color: #111; font: 500 13px/1 Inter, Montserrat, sans-serif; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.is-embed .proto, .is-embed .notice { display: none; }
+.is-embed { scrollbar-width: thin; scrollbar-color: #3a373d transparent; }
+@media (max-width: 809.98px) { .notice { position: fixed; inset: auto 12px 64px 12px; z-index: 50; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.95); color: #111; font: 500 13px/1.4 Montserrat, sans-serif; } }
+@media (min-width: 810px) { .notice { display: none; } }
+</style>
+</head>
+<body>
+
+<main class="page" id="top">
+  <div class="bg"><img src="a/bg0.jpg" alt=""><img src="a/bg1.jpg" alt=""><img src="a/bg2.jpg" alt="" loading=lazy><img src="a/bg3.jpg" alt="" loading=lazy><img src="a/bg4.jpg" alt="" loading=lazy><img src="a/bg5.jpg" alt="" loading=lazy><img src="a/bg6.jpg" alt="" loading=lazy><img src="a/bg7.jpg" alt="" loading=lazy></div>
+
+  <!-- Hero -->
+  <a class="abs navlink" href="../" style="left:calc(141*var(--u));top:calc(60*var(--u));width:calc(98*var(--u));height:calc(98*var(--u))" aria-label="Rubin Production"></a>
+  <a class="abs navlink navlink--u" href="../" style="left:calc(893*var(--u));top:calc(86*var(--u));width:calc(58*var(--u))">Home</a>
+  <a class="abs navlink navlink--u" href="../#about" style="left:calc(1016*var(--u));top:calc(86*var(--u));width:calc(68*var(--u))">About</a>
+  <a class="abs navlink navlink--u" href="../#portfolio" style="left:calc(1150*var(--u));top:calc(86*var(--u));width:calc(108*var(--u))">Portfolio</a>
+  <img class="abs rv" style="left:calc(550*var(--u));top:calc(390*var(--u));width:calc(340*var(--u))" src="a/hero-logo.webp" alt="Scooty food delivery">
+
+  <!-- Project info -->
+  <img class="abs rv" style="left:calc(189*var(--u));top:calc(1084*var(--u));width:calc(250*var(--u))" src="a/info-logo.webp" alt="Scooty">
+  <img class="abs rv" style="left:calc(584*var(--u));top:calc(1084*var(--u));width:calc(122*var(--u))" src="a/info-c1.webp" alt=""><img class="abs rv" style="left:calc(959*var(--u));top:calc(1084*var(--u));width:calc(241*var(--u))" src="a/info-c2.webp" alt=""><img class="abs rv" style="left:calc(184*var(--u));top:calc(1265*var(--u));width:calc(314*var(--u))" src="a/info-c3.webp" alt=""><img class="abs rv" style="left:calc(584*var(--u));top:calc(1265*var(--u));width:calc(287*var(--u))" src="a/info-c4.webp" alt=""><img class="abs rv" style="left:calc(957*var(--u));top:calc(1265*var(--u));width:calc(291*var(--u))" src="a/info-c5.webp" alt="">
+
+  <!-- Photo collage -->
+  <div class="abs tile rv" style="left:calc(509*var(--u));top:calc(1715*var(--u));width:calc(323*var(--u));height:calc(471*var(--u))"><img src="a/ph5.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(847*var(--u));top:calc(1715*var(--u));width:calc(593*var(--u));height:calc(471*var(--u))"><img src="a/ph6.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(-1*var(--u));top:calc(1763*var(--u));width:calc(495*var(--u));height:calc(330*var(--u))"><img src="a/ph1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(0*var(--u));top:calc(2108*var(--u));width:calc(494*var(--u));height:calc(501*var(--u))"><img src="a/ph2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(509*var(--u));top:calc(2201*var(--u));width:calc(610*var(--u));height:calc(407*var(--u))"><img src="a/ph3.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(1132*var(--u));top:calc(2202*var(--u));width:calc(308*var(--u));height:calc(406*var(--u))"><img src="a/ph4.webp" alt="" loading="lazy"></div>
+
+  <!-- Services -->
+  <img class="abs rv" style="left:calc(147*var(--u));top:calc(2706*var(--u));width:calc(195*var(--u))" src="a/sv1.webp" alt="Strategy"><img class="abs rv" style="left:calc(391*var(--u));top:calc(2706*var(--u));width:calc(264*var(--u))" src="a/sv2.webp" alt="Concepting"><img class="abs rv" style="left:calc(696*var(--u));top:calc(2702*var(--u));width:calc(260*var(--u))" src="a/sv3.webp" alt="Production"><img class="abs rv" style="left:calc(995*var(--u));top:calc(2708*var(--u));width:calc(252*var(--u))" src="a/sv4.webp" alt="Post-production">
+
+  <!-- Instagram grid -->
+  <h2 class="sr">Instagram grid</h2>
+  <span class="abs typeimg" style="left:calc(190*var(--u));top:calc(3112*var(--u));width:calc(487*var(--u))"><img src="a/ig-title.webp" alt="" data-typeimg data-group="ig" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="9"></span><span class="abs typeimg" style="left:calc(709*var(--u));top:calc(3112*var(--u));width:calc(144*var(--u))"><img src="a/ig-grid.webp" alt="" data-typeimg data-group="ig" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="4"></span>
+  <div class="abs tile rv" style="left:calc(184*var(--u));top:calc(3264*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g0.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(352*var(--u));top:calc(3264*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(520*var(--u));top:calc(3264*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(184*var(--u));top:calc(3433*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g3.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(352*var(--u));top:calc(3433*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g4.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(520*var(--u));top:calc(3433*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g5.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(184*var(--u));top:calc(3602*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g6.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(352*var(--u));top:calc(3602*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g7.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(520*var(--u));top:calc(3602*var(--u));width:calc(163*var(--u));height:calc(163*var(--u))"><img src="a/g8.webp" alt="" loading="lazy"></div>
+  <img class="abs rv" style="left:calc(759*var(--u));top:calc(3175*var(--u));width:calc(563*var(--u))" src="a/phone.webp" alt="Scooty Instagram profile">
+
+  <!-- Yellow block -->
+  <img class="abs rv" style="left:calc(304*var(--u));top:calc(4240*var(--u));width:calc(832*var(--u))" src="a/big.webp" alt="Scooty">
+
+  <!-- Landing -->
+  <h2 class="sr">Landing</h2>
+  <span class="abs typeimg" style="left:calc(188*var(--u));top:calc(4905*var(--u));width:calc(377*var(--u))"><img src="a/land-title.webp" alt="" data-typeimg data-group="land" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="7"></span>
+  <a href="https://scooty.cz" target="_blank" rel="noopener"><img class="abs link-img rv" style="left:calc(437*var(--u));top:calc(4998*var(--u));width:calc(121*var(--u))" src="a/land-link.webp" alt="scooty.cz"></a>
+  <img class="abs rv" style="left:calc(652*var(--u));top:calc(4909*var(--u));width:calc(16*var(--u))" src="a/land-arrow.webp" alt=""><img class="abs rv" style="left:calc(706*var(--u));top:calc(4909*var(--u));width:calc(540*var(--u))" src="a/land-text.webp" alt="">
+  <img class="abs rv" style="left:calc(159*var(--u));top:calc(5080*var(--u));width:calc(1120*var(--u))" src="a/laptop.webp" alt="Scooty landing page">
+
+  <!-- Running lines + quote -->
+  <div class="abs mq mq--left" aria-hidden="true" style="left:calc(-180.0*var(--u));top:calc(5942.0*var(--u));width:calc(1800*var(--u));height:calc(43.0*var(--u))"><div class="mq__track"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"></div></div>
+  <img class="abs rv" style="left:calc(202*var(--u));top:calc(6099*var(--u));width:calc(303*var(--u))" src="a/q-photo.webp" alt="Nikita Rubin"><img class="abs rv" style="left:calc(574*var(--u));top:calc(6095*var(--u));width:calc(664*var(--u))" src="a/q-text.webp" alt="">
+  <div class="abs mq mq--right" aria-hidden="true" style="left:calc(-177.0*var(--u));top:calc(6525.75*var(--u));width:calc(1800*var(--u));height:calc(43.5*var(--u))"><div class="mq__track"><img src="a/mq2.webp" alt="" style="width:calc(1420.0*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1420.0*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1420.0*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1420.0*var(--u));padding-right:calc(60*var(--u))"></div></div>
+
+  <!-- Contact -->
+  <h2 class="sr">Let's talk about your project</h2>
+  <span class="abs typeimg" style="left:calc(195*var(--u));top:calc(6784*var(--u));width:calc(468*var(--u))"><img src="a/talk-h.webp" alt="" data-typeimg data-group="talk" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="9"></span><span class="abs typeimg" style="left:calc(190*var(--u));top:calc(6869*var(--u));width:calc(416*var(--u))"><img src="a/talk-s.webp" alt="" data-typeimg data-group="talk" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="16"></span>
+  <img class="abs rv" style="left:calc(184*var(--u));top:calc(6918*var(--u));width:calc(484*var(--u))" src="a/talk-a.webp" alt="">
+  <form class="abs form rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
+    <input class="field" type="text" placeholder="Name" aria-label="Name">
+    <input class="field" type="email" placeholder="Email" aria-label="Email">
+    <label class="agree"><input type="checkbox"> I agree with terms...</label>
+    <button class="btn" type="submit">Send request<i></i></button>
+    <p class="form-note" aria-live="polite"></p>
+  </form>
+  <a href="#top" aria-label="On top"><img class="abs link-img rv" style="left:calc(694*var(--u));top:calc(7291*var(--u));width:calc(72*var(--u))" src="a/ontop.webp" alt="On top"></a>
+</main>
+
+<a class="proto" href="../../works/rubin-production/">← Mila Parsec · Rubin case</a>
+<p class="notice">This is the desktop design. Open it on a computer for the full experience.</p>
+<script>
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  // Split [data-type] headings into letters (keeps <em>, <br> and line breaks)
+  document.querySelectorAll("[data-type]").forEach((el) => {
+    const walk = (node) => [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        [...n.textContent].forEach((c) => {
+          if (c === "\n" || c === " ") { frag.append(c); return; }
+          const s = document.createElement("span"); s.className = "ch"; s.textContent = c; frag.append(s);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+    walk(el);
+  });
+
+  // Type a text heading letter by letter, with a blinking caret after the last letter
+  async function typeText(el) {
+    const chars = [...el.querySelectorAll(".ch")];
+    const caret = document.createElement("span"); caret.className = "caret caret--inline";
+    for (const c of chars) { c.classList.add("on"); c.after(caret); await wait(reduce ? 0 : 55); }
+    await wait(500); caret.remove();
+  }
+  // Type outlined lettering (an image): uncover it in letter-sized steps, caret riding the edge
+  async function typeImg(img) {
+    const [t, r, b, l] = img.dataset.clip.split(" ");
+    const end = +img.dataset.end, n = +img.dataset.n, box = img.parentElement;
+    const caret = document.createElement("span"); caret.className = "caret"; box.append(caret);
+    const h = img.offsetHeight, top = parseFloat(t) / 100 * h, bot = parseFloat(b) / 100 * h;
+    caret.style.top = top + "px"; caret.style.height = (h - top - bot) + "px";
+    for (let i = 0; i <= n; i++) {
+      const right = 100 - (100 - end) * (i / n);
+      img.style.clipPath = `inset(${t} ${right}% ${b} ${l})`;
+      caret.style.left = (100 - right) / 100 * img.offsetWidth + "px";
+      await wait(reduce ? 0 : 65);
+    }
+    await wait(400); caret.remove();
+  }
+  // Each section types its headings in order once it is on screen
+  const groupNames = [...new Set([...document.querySelectorAll("[data-group]")].map((e) => e.dataset.group))];
+  const sections = groupNames.map((g) => ({
+    done: false,
+    items: [...document.querySelectorAll(`[data-group="${g}"]`)].sort((a, b) => (+a.dataset.order || 0) - (+b.dataset.order || 0)),
+  }));
+  async function run(s) {
+    for (const el of s.items) el.hasAttribute("data-typeimg") ? await typeImg(el) : await typeText(el);
+  }
+
+
+  let pending = [...document.querySelectorAll(".rv")];
+  const reveal = () => {
+    let i = 0;
+    pending = pending.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.9 && r.bottom > 0) { el.style.transitionDelay = i++ * 0.08 + "s"; el.classList.add("in"); return false; }
+      return true;
+    });
+    sections.forEach((s) => {
+      if (s.done) return;
+      const r = s.items[0].getBoundingClientRect();
+      if (r.top < innerHeight * 0.85 && r.bottom > 0) { s.done = true; run(s); }
+    });
+  };
+  addEventListener("scroll", () => requestAnimationFrame(reveal), { passive: true });
+  addEventListener("resize", reveal);
+  setTimeout(reveal, 250);
+</script>
+</body>
+</html>
