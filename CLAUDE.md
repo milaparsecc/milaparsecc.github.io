@@ -72,7 +72,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "ads", "label", "handle", "avatar", "rows": [[{ "src" }, …], …] }` → dark textured Rubin
   background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
   just the ad images with 12px corners (owner removed frames, then the handle/"Sponsored" captions as noise); 2 per row below 1024px.
-  Rubin: row 1 = 4 service ads (1:1, cut from the owner's 2-up images), row 2 = 4 recruitment ads (4:5), after the Instagram feature.
+  Rubin: row 1 = 4 recruitment ads (4:5), row 2 = 4 service ads (1:1, cut from the owner's 2-up images), after the Instagram feature.
 - Gallery item `{ "type": "stories", "items": [9:16 images] }` → dark Rubin background, three stories in view (16px corners),
   the rest scroll horizontally: round arrows (scroll by one, disabled at the ends), mouse drag, swipe, keyboard arrows.
   Story width = min(360px, (100svh − 200px)·9/16, (100vw − 288px)/3) → always fits the window; phones: 68vw, swipe, peek.
