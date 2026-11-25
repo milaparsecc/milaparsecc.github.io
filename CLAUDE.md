@@ -71,7 +71,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
 - Gallery item `{ "type": "ads", "label", "handle", "avatar", "items": [{ "src" (4:5), "cta" }] }` → dark textured Rubin
   background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
-  "Sponsored" posts (avatar + handle, 4:5 ad, grey bar with CTA); 2 per row below 1024px, CTA only on phones.
+  "Sponsored" posts in a calm dark-glass frame (owner found white cards too loud: 4% white fill, hairline outline,
+  outlined CTA); 2 per row below 1024px, CTA only on phones.
   Rubin: 4 recruitment ads, after the Instagram feature.
 - Gallery item `{ "type": "stories", "handle", "items": [9:16 images] }` → Instagram-style story player on the dark Rubin
   background: one 9:16 "phone" (360px desktop), progress bars, auto-advance every 5 s while in view, tap left/right,

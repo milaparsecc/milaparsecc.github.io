@@ -461,17 +461,18 @@ const buildId = Date.now().toString(36);
   .ads { display: flex; flex-direction: column; gap: 16px; padding: 80px var(--pad-x); background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover; }
   .ads__label { color: rgba(255, 255, 255, 0.6); }
   .ads__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .ad { background: #fff; color: #141316; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+  /* calm dark-glass frame: translucent fill + hairline outline, so the ads stay the focus */
+  .ad { background: rgba(255, 255, 255, 0.04); color: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.14); }
   .ad__head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
-  .ads .ad .ad__avatar { width: 28px; height: 28px; aspect-ratio: 1; border-radius: 50%; flex: none; object-fit: cover; }
+  .ads .ad .ad__avatar { width: 28px; height: 28px; aspect-ratio: 1; border-radius: 50%; flex: none; object-fit: cover; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2); }
   .ad__who { display: grid; line-height: 1.2; font-size: 14px; min-width: 0; }
   .ad__who b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .ad__who small { font-size: 12px; color: #6b6b6b; }
-  .ad__dots { margin-left: auto; color: #6b6b6b; letter-spacing: 1px; }
+  .ad__who small { font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+  .ad__dots { margin-left: auto; color: rgba(255, 255, 255, 0.5); letter-spacing: 1px; }
   .ads .ad .ad__img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-  .ad__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; background: #f2f2f2; font-size: 14px; }
-  .ad__foot span:first-child { color: #6b6b6b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-  .ad__cta { flex: none; padding: 6px 12px; border-radius: 6px; background: #e0e0e0; font-weight: 600; }
+  .ad__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 14px; }
+  .ad__foot span:first-child { color: rgba(255, 255, 255, 0.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .ad__cta { flex: none; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.3); font-weight: 500; }
   @media (max-width: 1023px) { .ads__row { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 809px) {
     .ads { padding: 40px 20px; }
