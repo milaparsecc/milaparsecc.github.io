@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elite Voyage — Rubin Production case (website concept by Mila Parsec)</title>
+<meta name="robots" content="noindex">
+<script>document.documentElement.classList.add("js-typing"); if (window.self !== window.top || location.search.includes("embed")) document.documentElement.classList.add("is-embed");</script>
+<style>
+/* Fonts are self-hosted (SIL OFL) */
+@font-face { font-family: Montserrat; font-weight: 300; font-display: swap; src: url(../fonts/montserrat-latin-300-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 400; font-display: swap; src: url(../fonts/montserrat-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 500; font-display: swap; src: url(../fonts/montserrat-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 600; font-display: swap; src: url(../fonts/montserrat-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 700; font-display: swap; src: url(../fonts/montserrat-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-weight: 800; font-display: swap; src: url(../fonts/montserrat-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Permanent Marker"; font-display: swap; src: url(../fonts/permanent-marker-latin-400-normal.woff2) format("woff2"); }
+</style>
+<style>
+/* Elite Voyage case page of the Rubin Production site. Built from the owner's Elite.svg (1440 × 8689):
+   the background is rendered from the design, the pieces that animate are separate layers on top.
+   Every size is in design px × --u. */
+:root { --u: calc(min(100vw, 1440px) / 1440); --lime: #b9965a; /* Elite Voyage gold (kept the variable name shared with the Scooty page) */ --red: #d91e37; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: #0d0d0d; }
+body { background: #0d0d0d; color: #fff; font-family: Montserrat, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.page { position: relative; width: calc(1440 * var(--u)); height: calc(8689 * var(--u)); margin: 0 auto; overflow: hidden; }
+.bg img { display: block; width: 100%; height: auto; }
+.abs { position: absolute; display: block; }
+img.abs { height: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+a { color: inherit; text-decoration: none; }
+
+/* nav: invisible hit areas over the design's own lettering, underline on hover */
+.navlink { height: calc(22 * var(--u)); color: transparent; font-size: 1px; }
+.navlink--u::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.navlink--u:hover::after { transform: none; }
+.link-img { transition: opacity .3s; }
+a:hover > .link-img { opacity: .7; }
+
+/* photos: soft fade in, slow zoom on hover */
+.tile { overflow: hidden; }
+.ov { pointer-events: none; z-index: 1; }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.tile:hover img { transform: scale(1.05); }
+
+/* running lines (grey lettering from the design), along the page's slant */
+.mq { overflow: hidden; transform: rotate(-3.442deg); }
+.mq__track { display: flex; width: max-content; height: 100%; animation: run 40s linear infinite; }
+.mq__track img { display: block; height: 100%; width: auto; box-sizing: content-box; }
+.mq--right .mq__track { animation-direction: reverse; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* typing */
+.typeimg img { display: block; width: 100%; }
+.js-typing [data-typeimg] { clip-path: inset(0 100% 0 0); }
+.caret { position: absolute; z-index: 3; width: calc(4 * var(--u)); background: var(--lime); animation: blink .9s steps(1) infinite; pointer-events: none; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* fades */
+.rv { opacity: 0; transition: opacity 1s ease; }
+.rv.in { opacity: 1; }
+
+/* contact form (live) */
+.form { left: calc(731 * var(--u)); top: calc(7859 * var(--u)); width: calc(483 * var(--u)); }
+.field { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.6); color: #fff; font: 400 calc(18 * var(--u)) / calc(30 * var(--u)) Montserrat, sans-serif; text-transform: uppercase; padding: 0 0 calc(14 * var(--u)) calc(2 * var(--u)); margin-bottom: calc(58 * var(--u)); outline: none; transition: border-color .3s; }
+.field::placeholder { color: rgba(255,255,255,.3); }
+.field:focus { border-color: var(--lime); }
+.agree { display: flex; align-items: center; gap: calc(14 * var(--u)); margin-top: calc(-6 * var(--u)); font-weight: 500; font-size: calc(14 * var(--u)); cursor: pointer; }
+.agree input { appearance: none; width: calc(22 * var(--u)); height: calc(22 * var(--u)); border: 1px solid #fff; cursor: pointer; display: grid; place-content: center; }
+.agree input:checked::after { content: ""; width: calc(10 * var(--u)); height: calc(10 * var(--u)); background: var(--lime); }
+.btn { position: relative; display: flex; align-items: center; margin-top: calc(64 * var(--u)); width: calc(433 * var(--u)); height: calc(75 * var(--u)); padding-left: calc(38 * var(--u)); background: none; border: calc(2 * var(--u)) solid var(--lime); color: #fff; font: 700 calc(28 * var(--u)) / 1 Montserrat, sans-serif; letter-spacing: calc(1 * var(--u)); text-transform: uppercase; cursor: pointer; transition: background .35s, color .35s; }
+.btn i { position: absolute; left: calc(357 * var(--u)); top: 50%; width: calc(119 * var(--u)); height: calc(2 * var(--u)); background: #fff; transition: transform .35s; }
+.btn i::after { content: ""; position: absolute; right: 0; top: 50%; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid #fff; border-right: calc(2 * var(--u)) solid #fff; transform: translateY(-50%) rotate(45deg); }
+.btn:hover { background: var(--lime); color: #fff; }
+.btn:hover i { transform: translateX(calc(14 * var(--u))); }
+.form-note { margin-top: calc(18 * var(--u)); font-size: calc(14 * var(--u)); min-height: calc(20 * var(--u)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; } [data-typeimg] { clip-path: none !important; } .caret { display: none; } .mq__track { animation: none; }
+}
+
+/* back to the portfolio (hidden inside the case preview window) */
+.proto { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: #fff; color: #111; font: 500 13px/1 Inter, Montserrat, sans-serif; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.is-embed .proto, .is-embed .notice { display: none; }
+.is-embed { scrollbar-width: thin; scrollbar-color: #3a373d transparent; }
+@media (max-width: 809.98px) { .notice { position: fixed; inset: auto 12px 64px 12px; z-index: 50; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.95); color: #111; font: 500 13px/1.4 Montserrat, sans-serif; } }
+@media (min-width: 810px) { .notice { display: none; } }
+</style>
+</head>
+<body>
+
+<main class="page" id="top">
+  <div class="bg"><img src="a/bg0.jpg" alt=""><img src="a/bg1.jpg" alt=""><img src="a/bg2.jpg" alt="" loading=lazy><img src="a/bg3.jpg" alt="" loading=lazy><img src="a/bg4.jpg" alt="" loading=lazy><img src="a/bg5.jpg" alt="" loading=lazy><img src="a/bg6.jpg" alt="" loading=lazy><img src="a/bg7.jpg" alt="" loading=lazy><img src="a/bg8.jpg" alt="" loading=lazy></div>
+
+  <!-- Hero -->
+  <a class="abs navlink" href="../" style="left:calc(141*var(--u));top:calc(60*var(--u));width:calc(98*var(--u));height:calc(98*var(--u))" aria-label="Rubin Production"></a>
+  <img class="abs " style="left:calc(893*var(--u));top:calc(93*var(--u));width:calc(363*var(--u))" src="a/nav.webp" alt="">
+  <a class="abs navlink navlink--u" href="../" style="left:calc(893*var(--u));top:calc(86*var(--u));width:calc(58*var(--u))">Home</a>
+  <a class="abs navlink navlink--u" href="../#about" style="left:calc(1016*var(--u));top:calc(86*var(--u));width:calc(68*var(--u))">About</a>
+  <a class="abs navlink navlink--u" href="../#portfolio" style="left:calc(1150*var(--u));top:calc(86*var(--u));width:calc(108*var(--u))">Portfolio</a>
+  <img class="abs rv" style="left:calc(563*var(--u));top:calc(390*var(--u));width:calc(340*var(--u))" src="a/hero-logo.webp" alt="Elite Voyage">
+
+  <!-- Project info -->
+  <img class="abs rv" style="left:calc(187*var(--u));top:calc(1084*var(--u));width:calc(250*var(--u))" src="a/info-logo.webp" alt="Elite Voyage"><img class="abs rv" style="left:calc(583*var(--u));top:calc(1084*var(--u));width:calc(123*var(--u))" src="a/info-c1.webp" alt=""><img class="abs rv" style="left:calc(957*var(--u));top:calc(1084*var(--u));width:calc(247*var(--u))" src="a/info-c2.webp" alt=""><img class="abs rv" style="left:calc(184*var(--u));top:calc(1265*var(--u));width:calc(252*var(--u))" src="a/info-c3.webp" alt=""><img class="abs rv" style="left:calc(583*var(--u));top:calc(1265*var(--u));width:calc(299*var(--u))" src="a/info-c4.webp" alt=""><img class="abs rv" style="left:calc(957*var(--u));top:calc(1265*var(--u));width:calc(299*var(--u))" src="a/info-c5.webp" alt="">
+
+  <!-- Gallery 1 -->
+  <div class="abs tile rv" style="left:calc(0*var(--u));top:calc(1763*var(--u));width:calc(495*var(--u));height:calc(329*var(--u))"><img src="a/p1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(512*var(--u));top:calc(1727*var(--u));width:calc(318*var(--u));height:calc(458*var(--u))"><img src="a/p2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(848*var(--u));top:calc(1727*var(--u));width:calc(592*var(--u));height:calc(458*var(--u))"><img src="a/p3.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(0*var(--u));top:calc(2110*var(--u));width:calc(494*var(--u));height:calc(501*var(--u))"><img src="a/p4.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(512*var(--u));top:calc(2203*var(--u));width:calc(605*var(--u));height:calc(408*var(--u))"><img src="a/p5.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(1135*var(--u));top:calc(2203*var(--u));width:calc(305*var(--u));height:calc(408*var(--u))"><img src="a/p6.webp" alt="" loading="lazy"></div>
+  <img class="abs ov" src="a/ov1.webp" alt="" style="left:calc(0*var(--u));top:calc(1700*var(--u));width:calc(1440*var(--u))"><img class="abs ov" src="a/ov2.webp" alt="" style="left:calc(0*var(--u));top:calc(2531*var(--u));width:calc(1440*var(--u))">
+
+  <!-- Services -->
+  <img class="abs rv" style="left:calc(201*var(--u));top:calc(2702*var(--u));width:calc(306*var(--u))" src="a/sv1.webp" alt="Full-cycle production"><img class="abs rv" style="left:calc(573*var(--u));top:calc(2706*var(--u));width:calc(290*var(--u))" src="a/sv2.webp" alt="Brand identity"><img class="abs rv" style="left:calc(922*var(--u));top:calc(2702*var(--u));width:calc(254*var(--u))" src="a/sv3.webp" alt="Social media content">
+
+  <!-- Travel videos -->
+  <h2 class="sr">Travel videos</h2>
+  <span class="abs typeimg" style="left:calc(184*var(--u));top:calc(3141*var(--u));width:calc(321*var(--u))"><img src="a/tr-t.webp" alt="" data-typeimg data-group="tr" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="6"></span><span class="abs typeimg" style="left:calc(534*var(--u));top:calc(3143*var(--u));width:calc(199*var(--u))"><img src="a/tr-v.webp" alt="" data-typeimg data-group="tr" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="6"></span>
+  <div class="abs tile rv" style="left:calc(186*var(--u));top:calc(3254*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/tv1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(549*var(--u));top:calc(3254*var(--u));width:calc(346*var(--u));height:calc(612*var(--u))"><img src="a/tv2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(914*var(--u));top:calc(3254*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/tv3.webp" alt="" loading="lazy"></div>
+  <img class="abs rv" style="left:calc(184*var(--u));top:calc(3907*var(--u));width:calc(277*var(--u))" src="a/fn1.webp" alt=""><img class="abs rv" style="left:calc(547*var(--u));top:calc(3907*var(--u));width:calc(256*var(--u))" src="a/fn2.webp" alt=""><img class="abs rv" style="left:calc(912*var(--u));top:calc(3907*var(--u));width:calc(279*var(--u))" src="a/fn3.webp" alt="">
+
+  <!-- Gallery 2 -->
+  <div class="abs tile rv" style="left:calc(0*var(--u));top:calc(4173*var(--u));width:calc(495*var(--u));height:calc(353*var(--u))"><img src="a/q1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(512*var(--u));top:calc(4145*var(--u));width:calc(320*var(--u));height:calc(474*var(--u))"><img src="a/q2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(850*var(--u));top:calc(4145*var(--u));width:calc(590*var(--u));height:calc(474*var(--u))"><img src="a/q3.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(-1*var(--u));top:calc(4544*var(--u));width:calc(496*var(--u));height:calc(501*var(--u))"><img src="a/q4.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(512*var(--u));top:calc(4637*var(--u));width:calc(610*var(--u));height:calc(408*var(--u))"><img src="a/q5.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(1141*var(--u));top:calc(4636*var(--u));width:calc(299*var(--u));height:calc(409*var(--u))"><img src="a/q6.webp" alt="" loading="lazy"></div>
+  <img class="abs ov" src="a/ov3.webp" alt="" style="left:calc(0*var(--u));top:calc(4120*var(--u));width:calc(1440*var(--u))"><img class="abs ov" src="a/ov4.webp" alt="" style="left:calc(0*var(--u));top:calc(4961*var(--u));width:calc(1440*var(--u))">
+
+  <!-- HR recruitment videos -->
+  <h2 class="sr">HR recruitment videos</h2>
+  <span class="abs typeimg" style="left:calc(189*var(--u));top:calc(5136*var(--u));width:calc(745*var(--u))"><img src="a/hr-t.webp" alt="" data-typeimg data-group="hr" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="14"></span><span class="abs typeimg" style="left:calc(962*var(--u));top:calc(5139*var(--u));width:calc(199*var(--u))"><img src="a/hr-v.webp" alt="" data-typeimg data-group="hr" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="6"></span>
+  <div class="abs tile rv" style="left:calc(184*var(--u));top:calc(5250*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/hr1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(547*var(--u));top:calc(5250*var(--u));width:calc(346*var(--u));height:calc(612*var(--u))"><img src="a/hr2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(912*var(--u));top:calc(5250*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/hr3.webp" alt="" loading="lazy"></div>
+
+  <!-- Employee spotlight videos -->
+  <h2 class="sr">Employee spotlight videos</h2>
+  <span class="abs typeimg" style="left:calc(189*var(--u));top:calc(6015*var(--u));width:calc(444*var(--u))"><img src="a/em-t.webp" alt="" data-typeimg data-group="em" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="8"></span><span class="abs typeimg" style="left:calc(656*var(--u));top:calc(6017*var(--u));width:calc(515*var(--u))"><img src="a/em-v.webp" alt="" data-typeimg data-group="em" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="16"></span>
+  <div class="abs tile rv" style="left:calc(184*var(--u));top:calc(6129*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/em1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(547*var(--u));top:calc(6129*var(--u));width:calc(346*var(--u));height:calc(612*var(--u))"><img src="a/em2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(912*var(--u));top:calc(6129*var(--u));width:calc(344*var(--u));height:calc(612*var(--u))"><img src="a/em3.webp" alt="" loading="lazy"></div>
+
+  <!-- Running lines + quote -->
+  <div class="abs mq mq--left" aria-hidden="true" style="left:calc(-181.0*var(--u));top:calc(7004.0*var(--u));width:calc(1800*var(--u));height:calc(43.0*var(--u))"><div class="mq__track"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq1.webp" alt="" style="width:calc(1409.5*var(--u));padding-right:calc(60*var(--u))"></div></div>
+  <img class="abs rv" style="left:calc(262*var(--u));top:calc(7161*var(--u));width:calc(303*var(--u))" src="a/q-photo.webp" alt="Igor Glinka"><img class="abs rv" style="left:calc(634*var(--u));top:calc(7157*var(--u));width:calc(542*var(--u))" src="a/q-text.webp" alt="">
+  <div class="abs mq mq--right" aria-hidden="true" style="left:calc(-178.0*var(--u));top:calc(7587.75*var(--u));width:calc(1800*var(--u));height:calc(43.5*var(--u))"><div class="mq__track"><img src="a/mq2.webp" alt="" style="width:calc(1419.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1419.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1419.5*var(--u));padding-right:calc(60*var(--u))"><img src="a/mq2.webp" alt="" style="width:calc(1419.5*var(--u));padding-right:calc(60*var(--u))"></div></div>
+
+  <!-- Contact -->
+  <h2 class="sr">Let's talk about your project</h2>
+  <span class="abs typeimg" style="left:calc(194*var(--u));top:calc(7846*var(--u));width:calc(468*var(--u))"><img src="a/talk-h.webp" alt="" data-typeimg data-group="talk" data-order="1" data-clip="0 0 0 0" data-end="0" data-n="9"></span><span class="abs typeimg" style="left:calc(189*var(--u));top:calc(7931*var(--u));width:calc(416*var(--u))"><img src="a/talk-s.webp" alt="" data-typeimg data-group="talk" data-order="2" data-clip="0 0 0 0" data-end="0" data-n="16"></span>
+  <img class="abs rv" style="left:calc(183*var(--u));top:calc(7980*var(--u));width:calc(484*var(--u))" src="a/talk-a.webp" alt="">
+  <form class="abs form rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
+    <input class="field" type="text" placeholder="Name" aria-label="Name">
+    <input class="field" type="email" placeholder="Email" aria-label="Email">
+    <label class="agree"><input type="checkbox"> I agree with terms...</label>
+    <button class="btn" type="submit">Send request<i></i></button>
+    <p class="form-note" aria-live="polite"></p>
+  </form>
+  <a href="#top" aria-label="On top"><img class="abs link-img rv" style="left:calc(693*var(--u));top:calc(8353*var(--u));width:calc(72*var(--u))" src="a/ontop.webp" alt="On top"></a>
+</main>
+
+<a class="proto" href="../../works/rubin-production/">← Mila Parsec · Rubin case</a>
+<p class="notice">This is the desktop design. Open it on a computer for the full experience.</p>
+<script>
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  // Split [data-type] headings into letters (keeps <em>, <br> and line breaks)
+  document.querySelectorAll("[data-type]").forEach((el) => {
+    const walk = (node) => [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        [...n.textContent].forEach((c) => {
+          if (c === "\n" || c === " ") { frag.append(c); return; }
+          const s = document.createElement("span"); s.className = "ch"; s.textContent = c; frag.append(s);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+    walk(el);
+  });
+
+  // Type a text heading letter by letter, with a blinking caret after the last letter
+  async function typeText(el) {
+    const chars = [...el.querySelectorAll(".ch")];
+    const caret = document.createElement("span"); caret.className = "caret caret--inline";
+    for (const c of chars) { c.classList.add("on"); c.after(caret); await wait(reduce ? 0 : 55); }
+    await wait(500); caret.remove();
+  }
+  // Type outlined lettering (an image): uncover it in letter-sized steps, caret riding the edge
+  async function typeImg(img) {
+    const [t, r, b, l] = img.dataset.clip.split(" ");
+    const end = +img.dataset.end, n = +img.dataset.n, box = img.parentElement;
+    const caret = document.createElement("span"); caret.className = "caret"; box.append(caret);
+    const h = img.offsetHeight, top = parseFloat(t) / 100 * h, bot = parseFloat(b) / 100 * h;
+    caret.style.top = top + "px"; caret.style.height = (h - top - bot) + "px";
+    for (let i = 0; i <= n; i++) {
+      const right = 100 - (100 - end) * (i / n);
+      img.style.clipPath = `inset(${t} ${right}% ${b} ${l})`;
+      caret.style.left = (100 - right) / 100 * img.offsetWidth + "px";
+      await wait(reduce ? 0 : 65);
+    }
+    await wait(400); caret.remove();
+  }
+  // Each section types its headings in order once it is on screen
+  const groupNames = [...new Set([...document.querySelectorAll("[data-group]")].map((e) => e.dataset.group))];
+  const sections = groupNames.map((g) => ({
+    done: false,
+    items: [...document.querySelectorAll(`[data-group="${g}"]`)].sort((a, b) => (+a.dataset.order || 0) - (+b.dataset.order || 0)),
+  }));
+  async function run(s) {
+    for (const el of s.items) el.hasAttribute("data-typeimg") ? await typeImg(el) : await typeText(el);
+  }
+
+
+  let pending = [...document.querySelectorAll(".rv")];
+  const reveal = () => {
+    let i = 0;
+    pending = pending.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.9 && r.bottom > 0) { el.style.transitionDelay = i++ * 0.08 + "s"; el.classList.add("in"); return false; }
+      return true;
+    });
+    sections.forEach((s) => {
+      if (s.done) return;
+      const r = s.items[0].getBoundingClientRect();
+      if (r.top < innerHeight * 0.85 && r.bottom > 0) { s.done = true; run(s); }
+    });
+  };
+  addEventListener("scroll", () => requestAnimationFrame(reveal), { passive: true });
+  addEventListener("resize", reveal);
+  setTimeout(reveal, 250);
+</script>
+</body>
+</html>
