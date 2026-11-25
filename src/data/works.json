@@ -489,7 +489,12 @@
         "label": "@rubincatering",
         "title": "Rubin Catering",
         "text": "A sub-brand for the studio’s catering: the R becomes a C, while the geometry, colours and Instagram system stay the same, so both brands read as one family.",
-        "detail": "/media/rubin/catering-logo-851c19.png"
+        "circles": [
+          "/media/rubin/hlc-box-386bce.jpg",
+          "/media/rubin/hlc-question-980176.jpg",
+          "/media/rubin/hlc-cutlery-b68079.jpg",
+          "/media/rubin/hlc-heart-427642.jpg"
+        ]
       },
       {
         "type": "stories",
