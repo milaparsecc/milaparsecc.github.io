@@ -459,20 +459,16 @@
         "avatar": "/media/rubin/ad-avatar-3606f5.png",
         "items": [
           {
-            "src": "/media/rubin/ad-profese-45-6ef866.jpg",
-            "cta": "Learn more"
+            "src": "/media/rubin/ad-profese-45-6ef866.jpg"
           },
           {
-            "src": "/media/rubin/ad-creators-45-ea38dc.jpg",
-            "cta": "Apply now"
+            "src": "/media/rubin/ad-creators-45-ea38dc.jpg"
           },
           {
-            "src": "/media/rubin/ad-ring-45-c5a9a8.jpg",
-            "cta": "Apply now"
+            "src": "/media/rubin/ad-ring-45-c5a9a8.jpg"
           },
           {
-            "src": "/media/rubin/ad-team-45-284789.jpg",
-            "cta": "Apply now"
+            "src": "/media/rubin/ad-team-45-284789.jpg"
           }
         ]
       },

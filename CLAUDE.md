@@ -69,10 +69,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
   per-marquee angle in meta.json). Homepage card c2 links to it. All 3 portfolio cards now open case pages.
   Still to do: mobile version (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
-- Gallery item `{ "type": "ads", "label", "handle", "avatar", "items": [{ "src" (4:5), "cta" }] }` → dark textured Rubin
+- Gallery item `{ "type": "ads", "label", "handle", "avatar", "items": [{ "src" (4:5) }] }` → dark textured Rubin
   background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
-  "Sponsored" posts in a calm dark-glass frame (owner found white cards too loud: 4% white fill, hairline outline,
-  outlined CTA); 2 per row below 1024px, CTA only on phones.
+  ads with no frame (owner found cards/outlines too noisy): one quiet line above each (24px avatar, handle,
+  "Sponsored" right), image with 12px corners; 2 per row below 1024px.
   Rubin: 4 recruitment ads, after the Instagram feature.
 - Gallery item `{ "type": "stories", "items": [9:16 images] }` → dark Rubin background, three stories in view (16px corners),
   the rest scroll horizontally: round arrows (scroll by one, disabled at the ends), mouse drag, swipe, keyboard arrows.
