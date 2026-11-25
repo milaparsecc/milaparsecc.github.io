@@ -74,6 +74,8 @@ const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 const altName = [work.title, work.titleScript].filter(Boolean).join(" ");
 let altN = 0;
 const alt = () => `${altName} — image ${++altN}`;
+// Changes every build, so the embedded site preview is never served from an old cache
+const buildId = Date.now().toString(36);
 ---
 
 <Layout title={[work.title, work.titleScript].filter(Boolean).join(" ")} description={work.tagline || work.description.replace(/\*\*/g, "").slice(0, 160) || undefined} image={[work.cover, work.thumbnail].find((s) => s && !s.endsWith(".gif"))}>
@@ -171,7 +173,7 @@ const alt = () => `${altName} — image ${++altN}`;
               <span class="site-preview__bar" aria-hidden="true"><i /><i /><i /><span>{item.address}</span></span>
               <span class="site-preview__screen">
                 {/* Desktop: the live site, scrollable right here. Phones: the self-scrolling screenshot. */}
-                <iframe class="site-preview__live" data-src={`${media(item.url)}?embed=1`} title={`${altName} — website`} loading="lazy"></iframe>
+                <iframe class="site-preview__live" data-src={`${media(item.url)}?embed=1&v=${buildId}`} title={`${altName} — website`} loading="lazy"></iframe>
                 <a class="site-preview__shot" href={media(item.url)} target="_blank" rel="noopener" aria-label={item.button}>
                   <img src={media(item.image)} alt={`${altName} — website`} loading="lazy" />
                 </a>
