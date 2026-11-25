@@ -71,7 +71,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
 - Gallery item `{ "type": "ads", "label", "handle", "avatar", "items": [{ "src" (4:5) }] }` → dark textured Rubin
   background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
-  ads with no frame (owner found cards/outlines too noisy): one quiet line above each (24px avatar, handle,
+  ads with no frame (owner found cards/outlines too noisy): one quiet line under each (24px avatar, handle,
   "Sponsored" right), image with 12px corners; 2 per row below 1024px.
   Rubin: 4 recruitment ads, after the Instagram feature.
 - Gallery item `{ "type": "stories", "items": [9:16 images] }` → dark Rubin background, three stories in view (16px corners),
