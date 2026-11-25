@@ -45,7 +45,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   serif title, English text, optional small dark "detail" image (formula, highlights, sub-logo). Replaces old slides with
   baked-in Czech text (Rubin: concept, Instagram, Rubin Catering). Crops live in /media/rubin/.
 - Gallery item `{ "type": "site", "image", "address", "url", "button" }` → dark Rubin block (#141316 + faint red glow, dark browser bar) with a browser window whose
-  full-page screenshot scrolls by itself (pauses on hover) + pill button opening `url` in a new tab.
+  live site in an iframe (`url?embed=1`, scrollable in place; loaded lazily, desktop ≥810px only;
+  embed hides the prototype badge) + hint + pill button opening `url` in a new tab. Phones: the self-scrolling screenshot instead.
 - `public/rubin-site/` — live HTML prototype of the owner's Rubin Production homepage (desktop), rebuilt from Figma
   file fD2eQpiDJRQ1bz3flg6Deu, Frame 35 (node 3006:17). Static HTML, sizes in design px × --u, self-hosted Montserrat +
   Permanent Marker. Grunges lettering ("the best", "our", "about your project"), the grey heading and CLICK are

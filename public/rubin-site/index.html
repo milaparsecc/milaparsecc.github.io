@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rubin Production — website concept by Mila Parsec</title>
 <meta name="robots" content="noindex">
-<script>document.documentElement.classList.add("js-typing")</script>
+<script>document.documentElement.classList.add("js-typing"); if (location.search.includes("embed")) document.documentElement.classList.add("is-embed");</script>
 <style>
 /* Fonts are self-hosted (SIL OFL) */
 @font-face { font-family: Montserrat; font-weight: 300; font-display: swap; src: url(fonts/montserrat-latin-300-normal.woff2) format("woff2"); }
@@ -264,6 +264,8 @@ form .btn { margin-top: calc(60 * var(--u)); }
   background: #fff; color: #111; font: 500 13px/1 Inter, Montserrat, sans-serif; box-shadow: 0 8px 24px rgba(0,0,0,.35);
 }
 .proto:hover { background: #f0f0f0; }
+.is-embed .proto, .is-embed .notice { display: none; }
+.is-embed { scrollbar-width: thin; scrollbar-color: #3a373d transparent; }
 
 /* ---------- Narrow screens: this is the desktop design; the mobile design will replace it ---------- */
 @media (max-width: 809.98px) {
