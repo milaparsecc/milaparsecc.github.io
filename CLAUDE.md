@@ -52,7 +52,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   outlines/rasters exported from the owner's RubinMain.svg (positions = SVG coords − 10px offset). Menu: no language switch.
   Motion (owner chose "camera / recording" style, Nov 2026): headings type letter by letter with a red blinking caret
   ([data-type] text; [data-typeimg] outlined lettering uncovered in letter steps, data-clip/data-end/data-n), in order per
-  section (data-order); hero has a viewfinder overlay (corners, blinking REC, running 25 fps timecode); everything else
+  section (data-order); no viewfinder/REC overlay (owner removed it); everything else
   only fades in (.rv). No wipes, slide-ups, spins or parallax — she disliked them. Old site, company has since rebranded → present as a past website.
   Showreel section: click opens a fullscreen player (assets/showreel.mp4, with sound, Esc/CLOSE).
   Still to do: mobile version and the 4 case pages (Figma MCP Starter plan hit its call limit, Nov 2026).

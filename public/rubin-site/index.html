@@ -249,18 +249,6 @@ form .btn { margin-top: calc(60 * var(--u)); }
 .caret--inline { position: relative; display: inline-block; vertical-align: baseline; height: .8em; margin-left: .06em; width: .08em; }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* ---------- Camera overlay on the first screen: viewfinder corners, REC, running timecode ---------- */
-.vf { left: calc(110 * var(--u)); top: calc(185 * var(--u)); width: calc(1220 * var(--u)); height: calc(560 * var(--u)); pointer-events: none; z-index: 1; }
-.vf i { position: absolute; width: calc(36 * var(--u)); height: calc(36 * var(--u)); border: 0 solid rgba(255,255,255,.55); }
-.vf i:nth-child(1) { left: 0; top: 0; border-width: 1px 0 0 1px; }
-.vf i:nth-child(2) { right: 0; top: 0; border-width: 1px 1px 0 0; }
-.vf i:nth-child(3) { left: 0; bottom: 0; border-width: 0 0 1px 1px; }
-.vf i:nth-child(4) { right: 0; bottom: 0; border-width: 0 1px 1px 0; }
-.rec, .tc { position: absolute; right: calc(24 * var(--u)); font: 500 calc(13 * var(--u)) / 1 Montserrat, sans-serif; letter-spacing: calc(2 * var(--u)); color: rgba(255,255,255,.75); }
-.rec { top: calc(22 * var(--u)); display: flex; align-items: center; gap: calc(8 * var(--u)); }
-.rec b { width: calc(10 * var(--u)); height: calc(10 * var(--u)); border-radius: 50%; background: var(--red); animation: blink 1.2s steps(1) infinite; }
-.tc { bottom: calc(22 * var(--u)); font-variant-numeric: tabular-nums; }
-
 /* ---------- Reveal on scroll ---------- */
 .rv { opacity: 0; transition: opacity 1s ease; }
 .rv.in { opacity: 1; }
@@ -305,7 +293,6 @@ form .btn { margin-top: calc(60 * var(--u)); }
       <a href="#" onclick="return false">Behance</a>
       <a href="#" onclick="return false">Instagram</a>
     </div>
-    <div class="abs vf rv" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="rec"><b></b>REC</span><span class="tc">00:00:00:00</span></div>
     <div class="abs wordmark">
       <img src="assets/logomark.png" alt="">
       <h1 aria-label="Rubin Production" data-type>   <em>ubin</em>
@@ -480,14 +467,7 @@ production</h1>
   addEventListener("resize", reveal);
   setTimeout(reveal, 250);
 
-  // Running timecode (25 fps) in the viewfinder
-  const tc = document.querySelector(".tc"), t0 = performance.now();
-  const pad = (n) => String(n).padStart(2, "0");
-  (function tick() {
-    const f = Math.floor((performance.now() - t0) / 40), s = Math.floor(f / 25);
-    tc.textContent = `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}:${pad(f % 25)}`;
-    requestAnimationFrame(tick);
-  })();
+
   // Showreel "click"
   const reel = document.getElementById("reel");
   const player = document.getElementById("player"), vid = player.querySelector("video");
