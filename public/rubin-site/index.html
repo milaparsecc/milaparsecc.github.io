@@ -157,12 +157,13 @@ section { position: relative; }
 .lockup p { font-weight: 500; font-size: calc(36 * var(--u)); letter-spacing: calc(3 * var(--u)); line-height: calc(56 * var(--u)); text-transform: uppercase; }
 .click { left: calc(668 * var(--u)); top: calc(776 * var(--u)); width: calc(103.1 * var(--u)); animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 50% { opacity: .3; } }
-.reel__msg {
-  left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); opacity: 0; transition: .4s; pointer-events: none;
-  padding: calc(18 * var(--u)) calc(28 * var(--u)); background: rgba(14,14,14,.85); border: 1px solid var(--red);
-  font-weight: 600; font-size: calc(16 * var(--u)); letter-spacing: calc(2 * var(--u)); text-transform: uppercase;
-}
-.reel.is-clicked .reel__msg { opacity: 1; transform: translate(-50%, -50%); }
+/* Showreel player: opens over the page on click, with sound */
+.player { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(10,10,12,.94); opacity: 0; pointer-events: none; transition: opacity .4s; }
+.player.open { opacity: 1; pointer-events: auto; }
+.player video { width: min(88vw, calc(82vh * 16 / 9)); aspect-ratio: 16 / 9; background: #000; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.player__close { position: absolute; top: 24px; right: 32px; background: none; border: 0; color: #fff; font: 500 14px/1 Montserrat, sans-serif; letter-spacing: 3px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.player__close::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
+.player__close:hover { color: var(--red); }
 
 /* ---------- 4 · Portfolio + contact ---------- */
 .work { height: calc(2400 * var(--u)); }
@@ -346,7 +347,6 @@ production</h1>
       <p data-type>Rubin<br>Production</p>
     </div>
     <img class="abs click" src="assets/click.svg" alt="Click">
-    <div class="abs reel__msg">Showreel plays here</div>
   </section>
 
   <!-- 4 · Portfolio + contact -->
@@ -398,6 +398,11 @@ production</h1>
     </nav>
   </footer>
 </main>
+
+<div class="player" id="player" role="dialog" aria-label="Showreel" aria-hidden="true">
+  <button class="player__close" type="button">CLOSE</button>
+  <video src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" controls playsinline preload="none"></video>
+</div>
 
 <a class="proto" href="../works/rubin-production/">← Mila Parsec · Rubin case</a>
 <p class="notice">This is the desktop design. Open it on a computer for the full experience.</p>
@@ -485,7 +490,13 @@ production</h1>
   })();
   // Showreel "click"
   const reel = document.getElementById("reel");
-  const play = () => { reel.classList.add("is-clicked"); setTimeout(() => reel.classList.remove("is-clicked"), 1800); };
+  const player = document.getElementById("player"), vid = player.querySelector("video");
+  const play = () => { player.classList.add("open"); player.setAttribute("aria-hidden", "false"); vid.currentTime = 0; vid.play(); };
+  const close = () => { player.classList.remove("open"); player.setAttribute("aria-hidden", "true"); vid.pause(); };
+  player.querySelector(".player__close").addEventListener("click", close);
+  player.addEventListener("click", (e) => { if (e.target === player) close(); });
+  vid.addEventListener("ended", close);
+  addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
   reel.addEventListener("click", play);
   reel.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } });
 </script>
