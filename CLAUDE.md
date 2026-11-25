@@ -65,7 +65,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Homepage card Scooty (c1) links to scooty/. Embedded detection = window.top check (badge hidden in the case iframe).
 - `public/rubin-site/elite-voyage/` — Elite Voyage case page (owner's Elite.svg, 1440×8689), built the same way as Scooty
   (gold #b9965a accent; RUS/GER removed from its menu, nav shifted to align like Scooty). Homepage card c3 links to it.
-  Still to do: mobile version and the remaining case page (GameChanger) (Figma MCP Starter plan hit its call limit, Nov 2026).
+- `public/rubin-site/gamechanger/` — GameChanger case page (owner's GameChanger.svg, 1440×7689), same build (purple #7055ec;
+  per-marquee angle in meta.json). Homepage card c2 links to it. All 3 portfolio cards now open case pages.
+  Still to do: mobile version (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
