@@ -444,9 +444,24 @@
         "label": "@rubinproduction.eu",
         "title": "Instagram",
         "text": "Story highlight covers and post templates that introduce the studio, its services, studio rental and prices at a glance, in the same dark palette with red accents as the rest of the brand.",
-        "circles": ["/media/rubin/hl-prices-e3f038.jpg", "/media/rubin/hl-clapper-1b0c48.jpg", "/media/rubin/hl-reviews-de5f0f.jpg", "/media/rubin/hl-camera-3f42cf.jpg", "/media/rubin/hl-about-4dbe6a.jpg"]
+        "circles": [
+          "/media/rubin/hl-prices-e3f038.jpg",
+          "/media/rubin/hl-clapper-1b0c48.jpg",
+          "/media/rubin/hl-reviews-de5f0f.jpg",
+          "/media/rubin/hl-camera-3f42cf.jpg",
+          "/media/rubin/hl-about-4dbe6a.jpg"
+        ]
       },
       "/media/2ayNofJqiP7m2Hly0iDOJHuvtw.gif",
+      "/media/D4xrVZwWVuKVNIH4Areuz853LM.jpg",
+      {
+        "type": "site",
+        "image": "/media/rubin/site-home-94181c.jpg",
+        "address": "rubinproduction.eu",
+        "url": "/rubin-site/",
+        "button": "Explore the website"
+      },
+      "/media/rubin/catering-cover-b58790.jpg",
       {
         "type": "feature",
         "image": "/media/rubin/catering-phones-d27c2b.jpg",
@@ -455,15 +470,7 @@
         "text": "A sub-brand for the studio’s catering: the R becomes a C, while the geometry, colours and Instagram system stay the same, so both brands read as one family.",
         "detail": "/media/rubin/catering-logo-851c19.png"
       },
-      "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg",
-      "/media/D4xrVZwWVuKVNIH4Areuz853LM.jpg",
-      {
-        "type": "site",
-        "image": "/media/rubin/site-home-94181c.jpg",
-        "address": "rubinproduction.eu",
-        "url": "/rubin-site/",
-        "button": "Explore the website"
-      }
+      "/media/PaQ6vYD557mnJRUdlBPLf5Qdkw.jpg"
     ],
     "nextProjects": [
       "alla-vakker",
