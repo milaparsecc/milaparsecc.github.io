@@ -18,16 +18,16 @@
     "image": "/media/service-packaging-a41298.jpg"
   },
   {
-    "title": "Web Design",
-    "slug": "web-design",
-    "description": "Websites and digital presentations with clear structure and strong brand feel, built mobile-first around one goal: booking, buying or getting in touch.",
-    "image": "/media/service-web-c5fb8f.jpg"
-  },
-  {
     "title": "AI Visuals",
     "slug": "ai-visuals",
     "description": "Campaign imagery, illustrations and product scenes made with AI and art-directed by hand, so every image fits the brand and never looks generic.",
     "image": "/media/service-ai-visuals-131d8b.jpg"
+  },
+  {
+    "title": "Web Design",
+    "slug": "web-design",
+    "description": "Websites and digital presentations with clear structure and strong brand feel, built mobile-first around one goal: booking, buying or getting in touch.",
+    "image": "/media/service-web-c5fb8f.jpg"
   },
   {
     "title": "Spaces",
