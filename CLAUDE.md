@@ -74,11 +74,11 @@ explain them in plain language (she writes in Russian), and never leave the buil
   "Sponsored" posts in a calm dark-glass frame (owner found white cards too loud: 4% white fill, hairline outline,
   outlined CTA); 2 per row below 1024px, CTA only on phones.
   Rubin: 4 recruitment ads, after the Instagram feature.
-- Gallery item `{ "type": "stories", "handle", "items": [9:16 images] }` → Instagram-style story player on the dark Rubin
-  background: one 9:16 "phone" (360px desktop), progress bars, auto-advance every 5 s while in view, tap left/right,
-  swipe, hold to pause, round arrows on desktop. Used for Rubin Catering (7 stories, 720×1280), after the 3-stories image.
-  Phone width = min(360px, 78vw, (100svh − 200px)·9/16) so it always fits the window. Optional `decor`:
-  [{ "src", "pos": tl|tr|bl|br, "width" }] — food plates cut out of the owner's stories, in the block corners (≥1024px only).
+- Gallery item `{ "type": "stories", "items": [9:16 images] }` → dark Rubin background, three stories in view (16px corners),
+  the rest scroll horizontally: round arrows (scroll by one, disabled at the ends), mouse drag, swipe, keyboard arrows.
+  Story width = min(360px, (100svh − 200px)·9/16, (100vw − 288px)/3) → always fits the window; phones: 68vw, swipe, peek.
+  Owner tried an auto-playing single-phone player and food plates in the corners — replaced by this (Nov 2026).
+  Used for Rubin Catering (7 stories, 720×1280), after the 3-stories image.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
