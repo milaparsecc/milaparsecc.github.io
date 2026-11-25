@@ -40,6 +40,7 @@ a:hover > .link-img { opacity: .7; }
 
 /* photos: soft fade in, slow zoom on hover */
 .tile { overflow: hidden; }
+.ov { pointer-events: none; z-index: 1; }
 .tile img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
 .tile:hover img { transform: scale(1.05); }
 
@@ -105,6 +106,11 @@ a:hover > .link-img { opacity: .7; }
 
   <!-- Photo collage -->
   <div class="abs tile rv" style="left:calc(509*var(--u));top:calc(1715*var(--u));width:calc(323*var(--u));height:calc(471*var(--u))"><img src="a/ph5.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(847*var(--u));top:calc(1715*var(--u));width:calc(593*var(--u));height:calc(471*var(--u))"><img src="a/ph6.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(-1*var(--u));top:calc(1763*var(--u));width:calc(495*var(--u));height:calc(330*var(--u))"><img src="a/ph1.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(0*var(--u));top:calc(2108*var(--u));width:calc(494*var(--u));height:calc(501*var(--u))"><img src="a/ph2.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(509*var(--u));top:calc(2201*var(--u));width:calc(610*var(--u));height:calc(407*var(--u))"><img src="a/ph3.webp" alt="" loading="lazy"></div><div class="abs tile rv" style="left:calc(1132*var(--u));top:calc(2202*var(--u));width:calc(308*var(--u));height:calc(406*var(--u))"><img src="a/ph4.webp" alt="" loading="lazy"></div>
+
+
+  <!-- slanted dark edges of the sections above and below lie over the photos -->
+  <img class="abs ov" src="a/ov-top.webp" alt="" style="left:0;top:calc(1700*var(--u));width:calc(1440*var(--u))">
+  <img class="abs ov" src="a/ov-bot.webp" alt="" style="left:0;top:calc(2531*var(--u));width:calc(1440*var(--u))">
 
   <!-- Services -->
   <img class="abs rv" style="left:calc(147*var(--u));top:calc(2706*var(--u));width:calc(195*var(--u))" src="a/sv1.webp" alt="Strategy"><img class="abs rv" style="left:calc(391*var(--u));top:calc(2706*var(--u));width:calc(264*var(--u))" src="a/sv2.webp" alt="Concepting"><img class="abs rv" style="left:calc(696*var(--u));top:calc(2702*var(--u));width:calc(260*var(--u))" src="a/sv3.webp" alt="Production"><img class="abs rv" style="left:calc(995*var(--u));top:calc(2708*var(--u));width:calc(252*var(--u))" src="a/sv4.webp" alt="Post-production">
