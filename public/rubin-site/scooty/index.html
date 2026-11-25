@@ -66,9 +66,6 @@ a:hover > .link-img { opacity: .7; }
 .field { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.6); color: #fff; font: 400 calc(18 * var(--u)) / calc(30 * var(--u)) Montserrat, sans-serif; text-transform: uppercase; padding: 0 0 calc(14 * var(--u)) calc(2 * var(--u)); margin-bottom: calc(58 * var(--u)); outline: none; transition: border-color .3s; }
 .field::placeholder { color: rgba(255,255,255,.3); }
 .field:focus { border-color: var(--lime); }
-.agree { display: flex; align-items: center; gap: calc(14 * var(--u)); margin-top: calc(-6 * var(--u)); font-weight: 500; font-size: calc(14 * var(--u)); cursor: pointer; }
-.agree input { appearance: none; width: calc(22 * var(--u)); height: calc(22 * var(--u)); border: 1px solid #fff; cursor: pointer; display: grid; place-content: center; }
-.agree input:checked::after { content: ""; width: calc(10 * var(--u)); height: calc(10 * var(--u)); background: var(--lime); }
 .btn { position: relative; display: flex; align-items: center; margin-top: calc(64 * var(--u)); width: calc(433 * var(--u)); height: calc(75 * var(--u)); padding-left: calc(38 * var(--u)); background: none; border: calc(2 * var(--u)) solid var(--lime); color: #fff; font: 700 calc(28 * var(--u)) / 1 Montserrat, sans-serif; letter-spacing: calc(1 * var(--u)); text-transform: uppercase; cursor: pointer; transition: background .35s, color .35s; }
 .btn i { position: absolute; left: calc(357 * var(--u)); top: 50%; width: calc(119 * var(--u)); height: calc(2 * var(--u)); background: #fff; transition: transform .35s; }
 .btn i::after { content: ""; position: absolute; right: 0; top: 50%; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-top: calc(2 * var(--u)) solid #fff; border-right: calc(2 * var(--u)) solid #fff; transform: translateY(-50%) rotate(45deg); }
@@ -143,7 +140,6 @@ a:hover > .link-img { opacity: .7; }
   <form class="abs form rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
     <input class="field" type="text" placeholder="Name" aria-label="Name">
     <input class="field" type="email" placeholder="Email" aria-label="Email">
-    <label class="agree"><input type="checkbox"> I agree with terms...</label>
     <button class="btn" type="submit">Send request<i></i></button>
     <p class="form-note" aria-live="polite"></p>
   </form>

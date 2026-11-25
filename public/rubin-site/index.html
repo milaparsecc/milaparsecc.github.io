@@ -205,9 +205,6 @@ form.abs { left: calc(720 * var(--u)); top: calc(1624 * var(--u)); width: calc(4
 .field { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid rgba(255,255,255,.6); color: #fff; font: 400 calc(18 * var(--u)) / calc(30 * var(--u)) Montserrat, sans-serif; text-transform: uppercase; padding-bottom: calc(14 * var(--u)); margin-bottom: calc(57 * var(--u)); outline: none; transition: border-color .3s; }
 .field::placeholder { color: rgba(255,255,255,.3); }
 .field:focus { border-color: var(--red); }
-.agree { display: flex; align-items: center; gap: calc(12 * var(--u)); margin-top: calc(-11 * var(--u)); font-weight: 500; font-size: calc(14 * var(--u)); cursor: pointer; }
-.agree input { appearance: none; width: calc(23 * var(--u)); height: calc(23 * var(--u)); border: 1px solid #fff; cursor: pointer; display: grid; place-content: center; }
-.agree input:checked::after { content: ""; width: calc(11 * var(--u)); height: calc(11 * var(--u)); background: var(--red); }
 form .btn { margin-top: calc(60 * var(--u)); }
 .form-note { margin-top: calc(18 * var(--u)); font-size: calc(14 * var(--u)); min-height: calc(20 * var(--u)); }
 .ontop { left: 50%; transform: translateX(-50%); top: calc(2119 * var(--u)); display: flex; flex-direction: column; align-items: center; gap: calc(6 * var(--u)); font-size: calc(18 * var(--u)); text-transform: uppercase; }
@@ -365,7 +362,6 @@ production</h1>
     <form class="abs rv" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent = 'Thank you! (This is a design prototype, nothing was sent.)';">
       <input class="field" type="text" placeholder="Name" aria-label="Name">
       <input class="field" type="email" placeholder="Email" aria-label="Email">
-      <label class="agree"><input type="checkbox"> I agree with terms...</label>
       <button class="btn btn--solid" type="submit"><span class="btn__box">Send request</span><span class="btn__arrow"></span></button>
       <p class="form-note" aria-live="polite"></p>
     </form>
