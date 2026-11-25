@@ -170,18 +170,20 @@ const buildId = Date.now().toString(36);
         ) : typeof item === "object" && item.type === "ads" ? (
           <div class="ads">
             {item.label && <p class="small-upper ads__label">{item.label}</p>}
-            <div class="ads__row">
-              {item.items.map((ad: any, i: number) => (
-                <figure class="ad">
-                  <img class="ad__img" src={media(ad.src)} alt={`${altName} — social ad ${i + 1}`} loading="lazy" />
-                  <figcaption class="ad__head">
-                    <img class="ad__avatar" src={media(item.avatar)} alt="" />
-                    <span class="ad__who">{item.handle}</span>
-                    <span class="ad__tag">Sponsored</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            {item.rows.map((row: any[], r: number) => (
+              <div class="ads__row">
+                {row.map((ad: any, i: number) => (
+                  <figure class="ad">
+                    <img class="ad__img" src={media(ad.src)} alt={`${altName} — social ad ${r * 4 + i + 1}`} loading="lazy" />
+                    <figcaption class="ad__head">
+                      <img class="ad__avatar" src={media(item.avatar)} alt="" />
+                      <span class="ad__who">{item.handle}</span>
+                      <span class="ad__tag">Sponsored</span>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            ))}
           </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
@@ -447,16 +449,17 @@ const buildId = Date.now().toString(36);
   }
   /* Website preview: browser window, the page scrolls by itself (pauses on hover), button opens the live prototype */
   /* Social ads ({ type: "ads" }): a row of 4:5 ads shown as sponsored posts, on the page background */
-  .ads { display: flex; flex-direction: column; gap: 16px; padding: 80px var(--pad-x); background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover; }
+  .ads { display: flex; flex-direction: column; gap: 16px; row-gap: 16px; padding: 80px var(--pad-x); background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover; }
   .ads__label { color: rgba(255, 255, 255, 0.6); }
   .ads__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .ads__row + .ads__row { margin-top: 24px; }
   /* quiet: no frame, just a one-line caption under each ad */
   .ad { margin: 0; display: grid; gap: 12px; }
   .ad__head { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255, 255, 255, 0.8); min-width: 0; }
   .ads .ad .ad__avatar { width: 24px; height: 24px; aspect-ratio: 1; border-radius: 50%; flex: none; object-fit: cover; }
   .ad__who { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .ad__tag { margin-left: auto; flex: none; color: rgba(255, 255, 255, 0.4); }
-  .ads .ad .ad__img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+  .ads .ad .ad__img { display: block; width: 100%; height: auto; aspect-ratio: auto; border-radius: 12px; }
   @media (max-width: 1023px) { .ads__row { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 809px) {
     .ads { padding: 40px 20px; }
