@@ -66,7 +66,8 @@ const more = [
   { label: "Solution", text: work.solution },
 ].filter((m) => m.text);
 // A gallery item can be a single image (full width) or a list of images shown side by side
-const hasRows = work.gallery.some((g: any) => Array.isArray(g) || (g && (g.type === "set" || g.type === "heading")));
+// `seamless: true` on a work keeps the whole gallery gapless, rows included
+const hasRows = !(work as any).seamless && work.gallery.some((g: any) => Array.isArray(g) || (g && (g.type === "set" || g.type === "heading")));
 // A gallery item can also be { type: "concept", image, title, text }: logo left, text right (like the hero)
 const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
 // Alt texts for gallery images: "<project> — image N"
@@ -138,7 +139,7 @@ const alt = () => `${altName} — image ${++altN}`;
       </div>
     </div>
 
-    <div class:list={["project__gallery", { "has-rows": hasRows }]}>
+    <div class:list={["project__gallery", { "has-rows": hasRows, "is-seamless": (work as any).seamless }]}>
       {work.gallery.map((item) =>
         Array.isArray(item) ? (
           <div class="project__row" style={`--cols: ${item.length}`}>
@@ -334,6 +335,7 @@ const alt = () => `${altName} — image ${++altN}`;
     height: auto;
   }
   /* Photo cases with rows: same 20px gap as card grids. Seamless slide cases keep no gap. */
+  .project__gallery.is-seamless .project__row { gap: 0; }
   .project__gallery.has-rows {
     gap: var(--gap);
   }
