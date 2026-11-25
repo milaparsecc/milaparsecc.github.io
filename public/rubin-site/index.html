@@ -163,7 +163,9 @@ section { position: relative; }
 .reel.is-playing .lockup, .reel.is-playing .click, .reel.is-paused .lockup, .reel.is-paused .click { opacity: 0; transition: opacity .3s; }
 
 /* ---------- 4 · Portfolio + contact ---------- */
-.work { height: calc(2400 * var(--u)); }
+.work { height: calc(2400 * var(--u)); z-index: 2; }
+/* the showreel sits under the slanted edges of the sections above and below, also while the video plays */
+.reel { z-index: 1; }
 .work__bg {
   position: absolute; left: 0; width: 100%; top: calc(-87 * var(--u)); height: calc(2487 * var(--u));
   background: linear-gradient(#0d0d0d 0%, #0e0e0e 36%, #1c0f12 44%, #4a1520 60%, #8a1a2c 78%, #d21a36 100%);
