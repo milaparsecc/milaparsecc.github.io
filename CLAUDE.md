@@ -69,10 +69,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
   per-marquee angle in meta.json). Homepage card c2 links to it. All 3 portfolio cards now open case pages.
   Still to do: mobile version (Figma MCP Starter plan hit its call limit, Nov 2026).
   Preview screenshot: /media/rubin/site-home-*.jpg (re-shoot full page at 1440 after changes).
-- Gallery item `{ "type": "ads", "label", "title", "text", "handle", "avatar", "campaigns": [{ "name", "cta", "items": [{ "src", "format": wide|square|portrait, "label" }] }] }`
-  → dark Rubin block, campaign tabs (pills), each campaign shown as three white "Sponsored" posts (avatar + handle,
-  image, grey link bar with CTA) side by side at equal image height (flex-grow = aspect ratio); phones: swipeable row.
-  Rubin: 3 recruitment campaigns (New profession / Content creators / Join the team), after the Instagram feature.
+- Gallery item `{ "type": "ads", "label", "handle", "avatar", "items": [{ "src" (4:5), "cta" }] }` → dark textured Rubin
+  background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
+  "Sponsored" posts (avatar + handle, 4:5 ad, grey bar with CTA); 2 per row below 1024px, CTA only on phones.
+  Rubin: 4 recruitment ads, after the Instagram feature.
 - Gallery item `{ "type": "stories", "handle", "items": [9:16 images] }` → Instagram-style story player on the dark Rubin
   background: one 9:16 "phone" (360px desktop), progress bars, auto-advance every 5 s while in view, tap left/right,
   swipe, hold to pause, round arrows on desktop. Used for Rubin Catering (7 stories, 720×1280), after the 3-stories image.

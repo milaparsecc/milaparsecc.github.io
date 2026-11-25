@@ -168,35 +168,21 @@ const buildId = Date.now().toString(36);
             </div>
           </div>
         ) : typeof item === "object" && item.type === "ads" ? (
-          <div class="ads" data-ads>
-            <div class="ads__intro">
-              {item.label && <p class="small-upper ads__label">{item.label}</p>}
-              <h2 class="h2">{item.title}</h2>
-              {item.text && <p class="ads__text">{item.text}</p>}
-            </div>
-            <div class="ads__tabs" role="tablist">
-              {item.campaigns.map((c: any, i: number) => (
-                <button class={i === 0 ? "ads__tab upper is-active" : "ads__tab upper"} type="button" role="tab" aria-selected={i === 0 ? "true" : "false"} data-i={i}>{c.name}</button>
+          <div class="ads">
+            {item.label && <p class="small-upper ads__label">{item.label}</p>}
+            <div class="ads__row">
+              {item.items.map((ad: any, i: number) => (
+                <div class="ad">
+                  <div class="ad__head">
+                    <img class="ad__avatar" src={media(item.avatar)} alt="" />
+                    <span class="ad__who"><b>{item.handle}</b><small>Sponsored</small></span>
+                    <span class="ad__dots" aria-hidden="true">···</span>
+                  </div>
+                  <img class="ad__img" src={media(ad.src)} alt={`${altName} — social ad ${i + 1}`} loading="lazy" />
+                  <div class="ad__foot"><span>{item.handle}</span><span class="ad__cta">{ad.cta}</span></div>
+                </div>
               ))}
             </div>
-            {item.campaigns.map((c: any, i: number) => (
-              <div class={i === 0 ? "ads__row is-active" : "ads__row"} role="tabpanel" data-i={i}>
-                {c.items.map((ad: any) => (
-                  <figure class={`ads__item ads__item--${ad.format}`}>
-                    <div class="ad">
-                      <div class="ad__head">
-                        <img class="ad__avatar" src={media(item.avatar)} alt="" />
-                        <span class="ad__who"><b>{item.handle}</b><small>Sponsored</small></span>
-                        <span class="ad__dots" aria-hidden="true">···</span>
-                      </div>
-                      <img class="ad__img" src={media(ad.src)} alt={`${altName} — ${c.name} ad, ${ad.label}`} loading="lazy" />
-                      <div class="ad__foot"><span>{item.handle}</span><span class="ad__cta">{c.cta}</span></div>
-                    </div>
-                    <figcaption class="ads__caption">{ad.label}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            ))}
           </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
@@ -470,38 +456,10 @@ const buildId = Date.now().toString(36);
     text-wrap: pretty;
   }
   /* Website preview: browser window, the page scrolls by itself (pauses on hover), button opens the live prototype */
-  /* Social ads: one campaign in three placements, shown as sponsored posts; tabs switch campaigns */
-  .ads {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 80px var(--pad-x);
-    background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover;
-    color: #fff;
-  }
-  .ads__intro { text-align: center; max-width: 640px; display: grid; gap: 16px; }
-  .ads__label, .ads__text { color: rgba(255, 255, 255, 0.6); }
-  .ads__tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-  .ads__tab {
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 999px;
-    background: none;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .ads__tab:hover { border-color: #fff; }
-  .ads__tab.is-active { background: #fff; color: #141316; border-color: #fff; }
-  .ads__row { display: none; width: min(100%, 1120px); gap: 24px; align-items: flex-start; }
-  .ads__row.is-active { display: flex; animation: ads-in 0.4s ease; }
-  @keyframes ads-in { from { opacity: 0; } to { opacity: 1; } }
-  .ads__item { margin: 0; min-width: 0; display: grid; gap: 12px; }
-  /* flex-grow = image aspect ratio, so all three images share one height */
-  .ads__item--wide { flex: 1.911 1 0; }
-  .ads__item--square { flex: 1 1 0; }
-  .ads__item--portrait { flex: 0.8 1 0; }
+  /* Social ads ({ type: "ads" }): a row of 4:5 ads shown as sponsored posts, on the page background */
+  .ads { display: flex; flex-direction: column; gap: 16px; padding: 80px var(--pad-x); background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover; }
+  .ads__label { color: rgba(255, 255, 255, 0.6); }
+  .ads__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .ad { background: #fff; color: #141316; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
   .ad__head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
   .ads .ad .ad__avatar { width: 28px; height: 28px; aspect-ratio: 1; border-radius: 50%; flex: none; object-fit: cover; }
@@ -509,30 +467,18 @@ const buildId = Date.now().toString(36);
   .ad__who b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ad__who small { font-size: 12px; color: #6b6b6b; }
   .ad__dots { margin-left: auto; color: #6b6b6b; letter-spacing: 1px; }
-  .ads .ad .ad__img { display: block; width: 100%; height: auto; }
-  .ad__foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 10px 12px;
-    background: #f2f2f2;
-    font-size: 14px;
-  }
+  .ads .ad .ad__img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+  .ad__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; background: #f2f2f2; font-size: 14px; }
   .ad__foot span:first-child { color: #6b6b6b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .ad__cta { flex: none; padding: 6px 12px; border-radius: 6px; background: #e0e0e0; font-weight: 600; }
-  .ads__caption { text-align: center; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+  @media (max-width: 1023px) { .ads__row { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 809px) {
-    .ads { padding: 40px 0; gap: 24px; }
-    .ads__intro, .ads__tabs { padding: 0 20px; }
-    /* phones: the three formats become a swipeable row */
-    .ads__row { width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 20px 8px; gap: 16px; scrollbar-width: none; }
-    .ads__row::-webkit-scrollbar { display: none; }
-    .ads__item { flex: none; scroll-snap-align: center; }
-    .ads__item--wide { width: 72vw; }
-    .ads__item--square { width: 56vw; }
-    .ads__item--portrait { width: 48vw; }
+    .ads { padding: 40px 20px; }
+    .ads__row { gap: 12px; }
+    .ad__foot span:first-child { display: none; }
+    .ad__cta { flex: 1; text-align: center; }
   }
+
   /* Instagram-style story player (Rubin Catering) */
   .stories {
     display: flex;
@@ -821,14 +767,3 @@ const buildId = Date.now().toString(36);
   });
 </script>
 
-<script>
-  // Social ads: campaign tabs
-  document.querySelectorAll<HTMLElement>("[data-ads]").forEach((root) => {
-    const tabs = [...root.querySelectorAll<HTMLButtonElement>(".ads__tab")];
-    const rows = [...root.querySelectorAll<HTMLElement>(".ads__row")];
-    tabs.forEach((t) => t.addEventListener("click", () => {
-      tabs.forEach((x) => { x.classList.toggle("is-active", x === t); x.setAttribute("aria-selected", String(x === t)); });
-      rows.forEach((r) => r.classList.toggle("is-active", r.dataset.i === t.dataset.i));
-    }));
-  });
-</script>
