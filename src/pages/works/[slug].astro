@@ -186,6 +186,7 @@ const buildId = Date.now().toString(36);
           </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
+            {item.decor && item.decor.map((d: any) => <img class={`stories__decor stories__decor--${d.pos}`} src={media(d.src)} alt="" aria-hidden="true" loading="lazy" style={`width:${d.width}px`} />)}
             <div class="stories__stage">
               <button class="stories__arrow stories__arrow--prev" type="button" aria-label="Previous story"><span aria-hidden="true">←</span></button>
               <div class="stories__phone">
@@ -489,10 +490,20 @@ const buildId = Date.now().toString(36);
     background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover;
     color: #fff;
   }
+  .stories { position: relative; overflow: hidden; }
+  .stories > :not(.stories__decor) { position: relative; z-index: 1; }
+  /* food cut out from the owner's catering stories, entering the frame from the corners like in the stories */
+  .stories .stories__decor { position: absolute; height: auto; pointer-events: none; }
+  .stories__decor--tl { left: 0; top: 0; }
+  .stories__decor--tr { right: 0; top: 0; }
+  .stories__decor--bl { left: 0; bottom: 0; }
+  .stories__decor--br { right: 0; bottom: 0; }
+  @media (max-width: 1023px) { .stories .stories__decor { display: none; } }
   .stories__stage { display: flex; align-items: center; gap: 40px; }
   .stories__phone {
     position: relative;
-    width: min(360px, 78vw);
+    /* never taller than the window: leave room for the site header and the hint */
+    width: min(360px, 78vw, calc((100svh - 200px) * 9 / 16));
     aspect-ratio: 9 / 16;
     border-radius: 28px;
     overflow: hidden;

@@ -507,6 +507,28 @@
           "/media/rubin/cat-story5-f90b28.jpg",
           "/media/rubin/cat-story6-33dd53.jpg",
           "/media/rubin/cat-story7-841329.jpg"
+        ],
+        "decor": [
+          {
+            "src": "/media/rubin/food-chicken-c0f6e0.webp",
+            "pos": "tl",
+            "width": 256
+          },
+          {
+            "src": "/media/rubin/food-waffles-926c94.webp",
+            "pos": "tr",
+            "width": 220
+          },
+          {
+            "src": "/media/rubin/food-salmon-ec6bc6.webp",
+            "pos": "bl",
+            "width": 400
+          },
+          {
+            "src": "/media/rubin/food-coffee-a65650.webp",
+            "pos": "br",
+            "width": 288
+          }
         ]
       }
     ],
