@@ -78,7 +78,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   the rest scroll horizontally: round arrows (scroll by one, disabled at the ends), mouse drag, swipe, keyboard arrows.
   Story width = min(360px, (100svh − 200px)·9/16, (100vw − 288px)/3) → always fits the window; phones: 68vw, swipe, peek.
   Owner tried an auto-playing single-phone player and food plates in the corners — replaced by this (Nov 2026).
-  Used for Rubin Catering (7 stories, 720×1280), after the 3-stories image.
+  Used for Rubin Catering (7 stories, 720×1280), after the Catering feature (old 3-stories image removed).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads.
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
