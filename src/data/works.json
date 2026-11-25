@@ -452,6 +452,79 @@
           "/media/rubin/hl-about-4dbe6a.jpg"
         ]
       },
+      {
+        "type": "ads",
+        "label": "Social ads",
+        "title": "Recruitment campaigns",
+        "text": "Meta ads for Facebook and Instagram: every campaign in three placements, in the same viewfinder frame as the rest of the brand.",
+        "handle": "rubinproduction.eu",
+        "avatar": "/media/rubin/ad-avatar-3606f5.png",
+        "campaigns": [
+          {
+            "name": "New profession",
+            "cta": "Learn more",
+            "items": [
+              {
+                "src": "/media/rubin/ad-profese-wide-550ccd.jpg",
+                "format": "wide",
+                "label": "Facebook feed · 1.91:1"
+              },
+              {
+                "src": "/media/rubin/ad-profese-sq-4220f7.jpg",
+                "format": "square",
+                "label": "Instagram feed · 1:1"
+              },
+              {
+                "src": "/media/rubin/ad-profese-45-6ef866.jpg",
+                "format": "portrait",
+                "label": "Instagram feed · 4:5"
+              }
+            ]
+          },
+          {
+            "name": "Content creators",
+            "cta": "Apply now",
+            "items": [
+              {
+                "src": "/media/rubin/ad-creators-wide-5c4d0f.jpg",
+                "format": "wide",
+                "label": "Facebook feed · 1.91:1"
+              },
+              {
+                "src": "/media/rubin/ad-creators-sq-88fd38.jpg",
+                "format": "square",
+                "label": "Instagram feed · 1:1"
+              },
+              {
+                "src": "/media/rubin/ad-creators-45-ea38dc.jpg",
+                "format": "portrait",
+                "label": "Instagram feed · 4:5"
+              }
+            ]
+          },
+          {
+            "name": "Join the team",
+            "cta": "Apply now",
+            "items": [
+              {
+                "src": "/media/rubin/ad-team-wide-abaec3.jpg",
+                "format": "wide",
+                "label": "Facebook feed · 1.91:1"
+              },
+              {
+                "src": "/media/rubin/ad-team-sq-035b80.jpg",
+                "format": "square",
+                "label": "Instagram feed · 1:1"
+              },
+              {
+                "src": "/media/rubin/ad-team-45-284789.jpg",
+                "format": "portrait",
+                "label": "Instagram feed · 4:5"
+              }
+            ]
+          }
+        ]
+      },
       "/media/2ayNofJqiP7m2Hly0iDOJHuvtw.gif",
       "/media/D4xrVZwWVuKVNIH4Areuz853LM.jpg",
       {
