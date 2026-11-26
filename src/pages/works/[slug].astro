@@ -194,6 +194,19 @@ const buildId = Date.now().toString(36);
               </div>
             ))}
           </div>
+        ) : typeof item === "object" && item.type === "thumbs" ? (
+          <div class="yt">
+            {item.label && <p class="small-upper">{item.label}</p>}
+            <div class="yt__grid">
+              {item.items.map((t: any, i: number) => (
+                <figure class="yt__item">
+                  <img src={media(t.src)} alt={`${altName} — YouTube thumbnail ${i + 1}`} loading="lazy" />
+                  {t.duration && <span class="yt__time">{t.duration}</span>}
+                  <span class="yt__bar" aria-hidden="true"></span>
+                </figure>
+              ))}
+            </div>
+          </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
             <button class="stories__arrow stories__arrow--prev" type="button" aria-label="Previous stories"><span aria-hidden="true">←</span></button>
@@ -472,6 +485,23 @@ const buildId = Date.now().toString(36);
     .ads { padding: 40px 20px; }
     .ads__row { gap: 12px; }
     }
+
+  /* YouTube thumbnails ({ type: "thumbs" }): a channel-page grid, 16:9 with rounded corners,
+     a duration badge and a red "watched" bar that grows on hover — reads as YouTube without extra text */
+  .yt { display: flex; flex-direction: column; gap: 12px; padding-top: 40px; }
+  .yt:first-child { padding-top: 0; }
+  .yt__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+  .yt__item { position: relative; margin: 0; border-radius: 12px; overflow: hidden; }
+  .yt__item img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .yt__item:hover img { transform: scale(1.03); }
+  .yt__time {
+    position: absolute; right: 8px; bottom: 8px; padding: 2px 6px; border-radius: 4px;
+    background: rgba(0, 0, 0, 0.8); color: #fff; font-size: 14px; line-height: 1.2; font-weight: 500;
+  }
+  .yt__bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: #ff0033; transition: width 0.6s var(--ease); }
+  .yt__item:hover .yt__bar { width: 40%; }
+  @media (max-width: 1023px) { .yt__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 599px) { .yt__grid { grid-template-columns: 1fr; } }
 
   /* Stories ({ type: "stories" }): three 9:16 stories in view, the rest scroll horizontally (arrows, swipe, drag) */
   .stories {

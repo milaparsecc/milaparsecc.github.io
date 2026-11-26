@@ -207,18 +207,76 @@
     "cover": "/media/ZS6aZVHrVHVYaqppQkqkU0TQ0.png",
     "coverVideo": "",
     "gallery": [
-      [
-        "/media/dsQiJDEdupDkHhxwd01ip8oZBo.png",
-        "/media/K848ZpJoKxezdN10lJl6FRRVXI.png"
-      ],
-      [
-        "/media/AxlXPQ7c6Nl0avmz4YfT1ykRwEU.png",
-        "/media/zPW9ierSQToHrPIcSms1nE.png"
-      ],
-      [
-        "/media/h5Aemb5llrJ1N682ijJiLTqE.png",
-        "/media/ZS6aZVHrVHVYaqppQkqkU0TQ0.png"
-      ]
+      {
+        "type": "thumbs",
+        "label": "YouTube thumbnails",
+        "items": [
+          {
+            "src": "/media/arsov/bonfire-shampoo-097843.jpg",
+            "duration": "12:48"
+          },
+          {
+            "src": "/media/arsov/bonfire-conditioner-d974e2.jpg",
+            "duration": "9:31"
+          },
+          {
+            "src": "/media/arsov/architekt-e6d8c6.jpg",
+            "duration": "14:05"
+          },
+          {
+            "src": "/media/arsov/balance-63d442.jpg",
+            "duration": "8:17"
+          },
+          {
+            "src": "/media/arsov/hair-liquid-1d9185.jpg",
+            "duration": "6:52"
+          },
+          {
+            "src": "/media/arsov/gripped-cfeb95.jpg",
+            "duration": "11:24"
+          },
+          {
+            "src": "/media/arsov/gripped-spray-d87e46.jpg",
+            "duration": "7:09"
+          },
+          {
+            "src": "/media/arsov/hold-up-e75d0f.jpg",
+            "duration": "10:36"
+          },
+          {
+            "src": "/media/arsov/renew-me-be0b4d.jpg",
+            "duration": "13:12"
+          },
+          {
+            "src": "/media/arsov/plump-me-aa92c7.jpg",
+            "duration": "9:48"
+          },
+          {
+            "src": "/media/arsov/re-barrier-b07bc0.jpg",
+            "duration": "8:55"
+          },
+          {
+            "src": "/media/arsov/relief-57cf54.jpg",
+            "duration": "7:43"
+          },
+          {
+            "src": "/media/arsov/all-around-6f1241.jpg",
+            "duration": "11:02"
+          },
+          {
+            "src": "/media/arsov/hair-booster-ca2566.jpg",
+            "duration": "15:27"
+          },
+          {
+            "src": "/media/arsov/hair-guard-c3761a.jpg",
+            "duration": "12:14"
+          },
+          {
+            "src": "/media/arsov/thank-you-a00fb1.jpg",
+            "duration": "3:26"
+          }
+        ]
+      }
     ],
     "nextProjects": [
       "first-class-social-ads",
