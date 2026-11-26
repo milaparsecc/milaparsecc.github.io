@@ -46,6 +46,14 @@
       },
       {
         "type": "set",
+        "title": "Mozek v menopauze · Video",
+        "cols": 4,
+        "items": [
+          "/media/fc-ads/menopauza-video-3c4e89.mp4"
+        ]
+      },
+      {
+        "type": "set",
         "title": "Navždy mladí",
         "items": [
           "/media/fc-ads/2-1.jpg",
