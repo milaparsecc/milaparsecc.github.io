@@ -66,6 +66,15 @@
       },
       {
         "type": "set",
+        "title": "Navždy mladí — Kuchařka · Video",
+        "cols": 4,
+        "items": [
+          "/media/fc-ads/kucharka-flipthrough-60fa91.mp4",
+          "/media/fc-ads/kucharka-shelf-054253.mp4"
+        ]
+      },
+      {
+        "type": "set",
         "title": "Christmas collection",
         "items": [
           "/media/fc-ads/6-1.jpg",

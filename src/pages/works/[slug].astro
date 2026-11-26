@@ -154,8 +154,14 @@ const buildId = Date.now().toString(36);
         ) : typeof item === "object" && item.type === "set" ? (
           <div class="project__set">
             <p class="small-upper">{item.title}</p>
-            <div class="project__row" style={`--cols: ${item.items.length}`}>
-              {item.items.map((src: string, i: number) => <img src={media(src)} alt={`${item.title} — ad ${i + 1}`} loading="lazy" />)}
+            <div class="project__row" style={`--cols: ${item.cols || item.items.length}`}>
+              {item.items.map((src: string, i: number) =>
+                src.endsWith(".mp4") ? (
+                  <video src={media(src)} autoplay muted loop playsinline preload="metadata" aria-label={`${item.title} — video ad ${i + 1}`} />
+                ) : (
+                  <img src={media(src)} alt={`${item.title} — ad ${i + 1}`} loading="lazy" />
+                )
+              )}
             </div>
           </div>
         ) : typeof item === "object" && item.type === "about" ? (
@@ -613,7 +619,8 @@ const buildId = Date.now().toString(36);
   .project__chapter { padding-top: 40px; }
   .project__chapter:first-child { padding-top: 0; }
   /* Stories look like phone screens: rounded corners + soft shadow, same as the case cover */
-  .project__set img {
+  .project__set img,
+  .project__set video {
     border-radius: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 10px 24px rgba(0, 0, 0, 0.10);
   }

@@ -84,7 +84,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Owner tried an auto-playing single-phone player and food plates in the corners — replaced by this (Nov 2026).
   Used for Rubin Catering (7 stories, 720×1280), after the Catering feature (old 3-stories image removed).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
-  4 per row on desktop, 2 on phones). Used in First Class Social Ads.
+  4 per row on desktop, 2 on phones). Used in First Class Social Ads. Items may be .mp4 (silent autoplay loop);
+  optional "cols" fixes the column count (Kuchařka video set: 2 videos in 4 columns, same size as the image ads).
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
   Space Karlín Menus chapter: bar photo (full width), then a row of 3 squares: menu wall close-up, printed CZ/EN
   menus mockup, Christmas menus mockup (owner's AI mockups, Nov 2026). Window photo closes the gallery.
