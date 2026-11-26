@@ -83,8 +83,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Story width = min(360px, (100svh − 200px)·9/16, (100vw − 288px)/3) → always fits the window; phones: 68vw, swipe, peek.
   Owner tried an auto-playing single-phone player and food plates in the corners — replaced by this (Nov 2026).
   Used for Rubin Catering (7 stories, 720×1280), after the Catering feature (old 3-stories image removed).
-- Gallery item `{ "type": "thumbs", "label", "items": [{ "src" (16:9), "duration" }] }` → YouTube channel-style grid
-  (4 per row, 2 below 1024px, 1 on phones), 12px corners, dark duration badge bottom-right, red "watched" bar grows on
+- Gallery item `{ "type": "thumbs", "channel": { name, handle, meta, avatar }, "items": [{ "src" (16:9), "duration", "title" }] }`
+  → minimal YouTube channel page: avatar (cropped from the owner's Děkuji thumbnail), name, handle · real counts,
+  outlined Subscribe pill, tabs with "Videos" active; grid 3 per row (owner asked), titles "X - TOMAS ARSOV" under each
+  (no views/dates — not known for all), 2 below 1024px, 1 on phones, 12px corners, dark duration badge bottom-right, red "watched" bar grows on
   hover. Tomas Arsov: 16 thumbnails (hair → skin → supplements → Děkuji). Cover still the old one — owner found tilted
   thumbnail-grid covers far too noisy; she'll decide the cover later.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
