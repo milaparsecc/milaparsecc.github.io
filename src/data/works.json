@@ -86,6 +86,18 @@
           "/media/fc-ads/4-3.jpg",
           "/media/fc-ads/4-4.jpg"
         ]
+      },
+      {
+        "type": "set",
+        "title": "Sebepřijetí",
+        "items": [
+          "/media/fc-ads/sebe-shelf-7ffdb3.jpg",
+          "/media/fc-ads/sebe-bath-d1e8e6.mp4",
+          "/media/fc-ads/sebe-window-fe772d.jpg",
+          "/media/fc-ads/sebe-flatlay-fc2da0.jpg",
+          "/media/fc-ads/sebe-poppy-032475.jpg",
+          "/media/fc-ads/sebe-cafe-83dbc9.jpg"
+        ]
       }
     ],
     "nextProjects": [
