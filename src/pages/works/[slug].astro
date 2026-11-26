@@ -703,21 +703,20 @@ const buildId = Date.now().toString(36);
     track.addEventListener("pointerup", end);
     track.addEventListener("pointercancel", end);
     update();
-    // auto-scroll: one story every 4 s while the block is on screen; pauses while hovered/touched,
+    // auto-scroll: one story every 4 s while the block is on screen; pauses only while pressed/dragged,
     // waits a little after the visitor scrolls by hand, loops back to the start at the end
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let inView = false, hover = false, lastUser = 0;
+    let inView = false, pressed = false, lastUser = 0;
     const AUTO = 4000;
     const userAct = () => { lastUser = Date.now(); };
-    root.addEventListener("pointerenter", () => { hover = true; });
-    root.addEventListener("pointerleave", () => { hover = false; userAct(); });
-    track.addEventListener("pointerdown", userAct);
+    track.addEventListener("pointerdown", () => { pressed = true; userAct(); });
+    window.addEventListener("pointerup", () => { if (pressed) { pressed = false; userAct(); } });
     track.addEventListener("touchstart", userAct, { passive: true });
     track.addEventListener("wheel", userAct, { passive: true });
     [prev, next].forEach((btn) => btn.addEventListener("click", userAct));
     new IntersectionObserver((es) => { inView = es[0].isIntersecting; }, { threshold: 0.5 }).observe(root);
     setInterval(() => {
-      if (!inView || hover || dragging || document.hidden || Date.now() - lastUser < AUTO * 2) return;
+      if (!inView || pressed || dragging || document.hidden || Date.now() - lastUser < AUTO * 1.5) return;
       const atEnd = track.scrollLeft + track.clientWidth > track.scrollWidth - 4;
       if (atEnd) track.scrollTo({ left: 0, behavior: "smooth" });
       else track.scrollBy({ left: step(), behavior: "smooth" });
