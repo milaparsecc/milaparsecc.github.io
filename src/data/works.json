@@ -94,7 +94,14 @@
           "/media/fc-ads/spanek-cat-70f16c.jpg",
           "/media/fc-ads/4-4.jpg"
         ]
-      },
+      }
+    ],
+    "nextProjects": [
+      "tomas-arsov",
+      "wannasurf",
+      "mynds"
+    ],
+    "hiddenGallery": [
       {
         "type": "set",
         "title": "Sebepřijetí",
@@ -107,11 +114,6 @@
           "/media/fc-ads/sebe-poppy-032475.jpg"
         ]
       }
-    ],
-    "nextProjects": [
-      "tomas-arsov",
-      "wannasurf",
-      "mynds"
     ]
   },
   {

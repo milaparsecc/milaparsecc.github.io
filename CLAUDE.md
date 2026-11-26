@@ -95,6 +95,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
   Space Karlín Menus chapter: bar photo (full width), then a row of 3 squares: menu wall close-up, printed CZ/EN
   menus mockup, Christmas menus mockup (owner's AI mockups, Nov 2026). Window photo closes the gallery.
+- `hiddenGallery` — gallery items kept in the data but not shown (First Class: Sebepřijetí set, hidden Nov 2026 until the
+  owner adds more design; move it back into `gallery` to show it).
 - `titleScript` — optional word after the title in Adobe Handwriting (e.g. la FORMULA + "Christmas").
 - `nextProjects` — "You might also like": 3 hand-picked slugs per project, chosen by theme and mood (set for all
   10 in Nov 2026 — update when adding a project). If fewer than 3, it's topped up with the next projects in the list.
