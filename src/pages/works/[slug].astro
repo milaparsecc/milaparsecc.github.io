@@ -152,9 +152,17 @@ const buildId = Date.now().toString(36);
         ) : typeof item === "object" && item.type === "heading" ? (
           <p class="small-upper project__chapter">{item.title}</p>
         ) : typeof item === "object" && item.type === "set" ? (
-          <div class="project__set">
-            <p class="small-upper">{item.title}</p>
-            <div class="project__row" style={`--cols: ${item.cols || item.items.length}`}>
+          <div class={item.items.length > 4 ? "project__set is-scroll" : "project__set"} data-set-scroll={item.items.length > 4 ? "" : undefined}>
+            <div class="project__set-head">
+              <p class="small-upper">{item.title}</p>
+              {item.items.length > 4 && (
+                <div class="project__set-arrows">
+                  <button class="set-arrow set-arrow--prev" type="button" aria-label="Previous"><span aria-hidden="true">←</span></button>
+                  <button class="set-arrow set-arrow--next" type="button" aria-label="Next"><span aria-hidden="true">→</span></button>
+                </div>
+              )}
+            </div>
+            <div class="project__row" style={`--cols: ${item.cols || Math.min(item.items.length, 4)}`}>
               {item.items.map((src: string, i: number) =>
                 src.endsWith(".mp4") ? (
                   <video src={media(src)} autoplay muted loop playsinline preload="metadata" aria-label={`${item.title} — video ad ${i + 1}`} />
@@ -629,6 +637,39 @@ const buildId = Date.now().toString(36);
     grid-template-columns: repeat(var(--cols), 1fr);
     gap: var(--gap);
   }
+  /* Sets with more than 4 items (image + video ads): 4 in view, the rest scroll sideways */
+  .project__set-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .project__set-arrows { display: flex; gap: 8px; }
+  .set-arrow {
+    display: grid; place-items: center; width: 40px; height: 40px;
+    border: 1px solid var(--text); border-radius: 50%; background: none; color: var(--text);
+    cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .set-arrow:hover { background: var(--text); color: var(--bg); }
+  .set-arrow:disabled { opacity: 0.25; pointer-events: none; }
+  .project__set.is-scroll .project__row {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+    padding: 4px 0 24px; /* room for the cards' shadow */
+    margin-bottom: -24px;
+  }
+  .project__set.is-scroll .project__row::-webkit-scrollbar { display: none; }
+  .project__set.is-scroll .project__row.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .project__set.is-scroll .project__row > * {
+    flex: none;
+    width: calc((100% - 3 * var(--gap)) / 4);
+    aspect-ratio: 9 / 16;
+    height: auto;
+    scroll-snap-align: start;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  @media (max-width: 809.98px) {
+    .project__set.is-scroll .project__row > * { width: calc((100% - var(--gap)) / 2); }
+  }
   .project__row img,
   .project__row video {
     height: 100%;
@@ -733,3 +774,35 @@ const buildId = Date.now().toString(36);
   });
 </script>
 
+<script>
+  // Ad sets with more than 4 items: arrows scroll by one card, mouse drag, swipe/trackpad natively
+  document.querySelectorAll<HTMLElement>("[data-set-scroll]").forEach((root) => {
+    const row = root.querySelector<HTMLElement>(".project__row")!;
+    const prev = root.querySelector<HTMLButtonElement>(".set-arrow--prev")!;
+    const next = root.querySelector<HTMLButtonElement>(".set-arrow--next")!;
+    const step = () => (row.firstElementChild as HTMLElement).offsetWidth + parseFloat(getComputedStyle(row).columnGap || "0");
+    const update = () => {
+      prev.disabled = row.scrollLeft < 4;
+      next.disabled = row.scrollLeft + row.clientWidth > row.scrollWidth - 4;
+    };
+    prev.addEventListener("click", () => row.scrollBy({ left: -step(), behavior: "smooth" }));
+    next.addEventListener("click", () => row.scrollBy({ left: step(), behavior: "smooth" }));
+    row.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    let startX = 0, startLeft = 0, dragging = false;
+    row.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") return;
+      dragging = true; startX = e.clientX; startLeft = row.scrollLeft;
+      row.classList.add("is-dragging"); row.setPointerCapture(e.pointerId);
+    });
+    row.addEventListener("pointermove", (e) => { if (dragging) row.scrollLeft = startLeft - (e.clientX - startX); });
+    const end = () => {
+      if (!dragging) return;
+      dragging = false; row.classList.remove("is-dragging");
+      const st = step(); row.scrollTo({ left: Math.round(row.scrollLeft / st) * st, behavior: "smooth" });
+    };
+    row.addEventListener("pointerup", end);
+    row.addEventListener("pointercancel", end);
+    update();
+  });
+</script>

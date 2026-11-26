@@ -39,17 +39,10 @@
         "title": "Mozek v menopauze",
         "items": [
           "/media/fc-ads/1-1.jpg",
+          "/media/fc-ads/menopauza-video-3c4e89.mp4",
           "/media/fc-ads/1-2.jpg",
           "/media/fc-ads/1-3.jpg",
           "/media/fc-ads/1-4.jpg"
-        ]
-      },
-      {
-        "type": "set",
-        "title": "Mozek v menopauze · Video",
-        "cols": 4,
-        "items": [
-          "/media/fc-ads/menopauza-video-3c4e89.mp4"
         ]
       },
       {
@@ -67,18 +60,11 @@
         "title": "Navždy mladí — Kuchařka",
         "items": [
           "/media/fc-ads/3-1.jpg",
+          "/media/fc-ads/kucharka-flipthrough-60fa91.mp4",
           "/media/fc-ads/3-2.jpg",
           "/media/fc-ads/3-3.jpg",
+          "/media/fc-ads/kucharka-shelf-054253.mp4",
           "/media/fc-ads/3-4.jpg"
-        ]
-      },
-      {
-        "type": "set",
-        "title": "Navždy mladí — Kuchařka · Video",
-        "cols": 4,
-        "items": [
-          "/media/fc-ads/kucharka-flipthrough-60fa91.mp4",
-          "/media/fc-ads/kucharka-shelf-054253.mp4"
         ]
       },
       {
