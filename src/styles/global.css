@@ -397,3 +397,23 @@ a.tile:hover video {
   letter-spacing: 0;
   white-space: nowrap;
 }
+
+/* Running text everywhere uses the same rhythm as the case texts (Context / Task / Solution):
+   18px, line-height 1.5, and "pretty" wrapping so lines end evenly without orphans. Headings keep their own. */
+.rich,
+.hero__intro,
+.service__desc,
+.about__row dd,
+.contact__intro,
+.work-card__tagline {
+  line-height: 1.5;
+}
+p,
+dd,
+li,
+.rich,
+.service__desc,
+.work-card__tagline {
+  text-wrap: pretty;
+}
+.hero__intro { text-wrap: balance; }

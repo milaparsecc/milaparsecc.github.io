@@ -440,8 +440,10 @@ const buildId = Date.now().toString(36);
   }
   .project__concept-text .rich {
     max-width: 440px;
-    text-wrap: pretty;
+    line-height: 1.5;
+    text-wrap: balance; /* short text beside a square: even lines, no ragged edge */
   }
+  .project__concept-text .rich :global(p) { text-wrap: balance; }
   /* Website preview: browser window, the page scrolls by itself (pauses on hover), button opens the live prototype */
   /* Social ads ({ type: "ads" }): a row of 4:5 ads shown as sponsored posts, on the page background */
   .ads { display: flex; flex-direction: column; gap: 16px; row-gap: 16px; padding: 80px var(--pad-x); background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover; }

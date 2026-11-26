@@ -125,6 +125,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Typography: no short words (a, and, of, to, the, I…) hanging at line ends. `scripts/typography.mjs` glues them
   to the next word with &nbsp; in every built page — keep it enabled; check line breaks in screenshots.
 - After a change, compare the edited block with the rest of the site (sizes, spacing, colors).
+- Running text everywhere: line-height 1.5 + text-wrap: pretty (rule at the end of global.css) — same as the case
+  texts; add new text classes there. Headings/labels keep their tighter line-height.
 
 ## Hero
 - `hero.availability` — "Open to …" text shown as a running line (white strip with hairlines, uppercase 16px, navy accent dot;
