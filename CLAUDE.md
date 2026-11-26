@@ -87,8 +87,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   → minimal YouTube channel page: avatar (cropped from the owner's Děkuji thumbnail), name, handle · real counts,
   outlined Subscribe pill, tabs with "Videos" active; grid 3 per row (owner asked), titles "X - TOMAS ARSOV" under each
   (no views/dates — not known for all), 2 below 1024px, 1 on phones, 12px corners, dark duration badge bottom-right, red "watched" bar grows on
-  hover. Tomas Arsov: 16 thumbnails (hair → skin → supplements → Děkuji). Cover: Tomas cut out on the left (light blue),
-  three thumbnails fanned on the right, logo under them (owner rejected tilted grids and huge-logo versions as noisy).
+  hover. Tomas Arsov: 16 thumbnails (hair → skin → supplements → Děkuji). Cover: mustard #f0a92b (brand tape colour), Tomas
+  cut out on the left, three thumbnails as a staircase tucked behind his shoulder, logo bottom right (owner rejected tilted grids and huge-logo versions as noisy).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads. Items may be .mp4 (silent autoplay loop),
   mixed with images (never two videos side by side; videos within the first 4, i.e. visible without scrolling:
