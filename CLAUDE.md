@@ -85,7 +85,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
   Used for Rubin Catering (7 stories, 720×1280), after the Catering feature (old 3-stories image removed).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads. Items may be .mp4 (silent autoplay loop),
-  mixed with images (never two videos side by side). More than 4 items → horizontal scroller: 4 in view (2 on phones),
+  mixed with images (never two videos side by side; videos within the first 4, i.e. visible without scrolling:
+  photo, video, photo, video…). More than 4 items → horizontal scroller: 4 in view (2 on phones),
   round arrows next to the label, drag, swipe (Mozek v menopauze, Kuchařka).
 - Gallery item `{ "type": "heading", "title" }` → small chapter label inside a gallery (Space Karlín: "Wayfinding & signage" / "Menus").
   Space Karlín Menus chapter: bar photo (full width), then a row of 3 squares: menu wall close-up, printed CZ/EN
