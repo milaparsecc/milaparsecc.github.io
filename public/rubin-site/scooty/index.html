@@ -35,8 +35,10 @@ a { color: inherit; text-decoration: none; }
 .navlink { height: calc(22 * var(--u)); color: transparent; font-size: 1px; }
 .navlink--u::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--lime); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
 .navlink--u:hover::after { transform: none; }
-.link-img { transition: opacity .3s; }
+/* image links: the site link fades like before; "on top" lifts like on the homepage */
+.link-img { transition: opacity .3s, transform .3s; }
 a:hover > .link-img { opacity: .7; }
+a[href="#top"]:hover > .link-img { opacity: 1; transform: translateY(calc(-6 * var(--u))); }
 
 /* photos: soft fade in, slow zoom on hover */
 .tile { overflow: hidden; }

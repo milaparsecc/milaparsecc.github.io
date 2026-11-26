@@ -81,14 +81,14 @@ section { position: relative; }
 .menu a, .social a {
   font-size: calc(18 * var(--u)); line-height: calc(30 * var(--u)); text-transform: uppercase; position: relative;
 }
-.menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
-.menu a:hover::after { transform: none; }
+/* one hover style for every text link: a red line grows from the left, colour stays */
+.menu a::after, .social a::after, .contact a::after, .footer nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.menu a:hover::after, .social a:hover::after, .contact a:hover::after, .footer nav a:hover::after { transform: none; }
 .social { left: calc(159 * var(--u)); top: calc(290 * var(--u)); width: calc(30 * var(--u)); height: calc(424 * var(--u)); }
 .social a {
   position: absolute; left: 0; color: var(--grey); white-space: nowrap;
-  transform: rotate(-90deg) translateX(-100%); transform-origin: top left; transition: color .3s;
+  transform: rotate(-90deg) translateX(-100%); transform-origin: top left;
 }
-.social a:hover { color: var(--red); }
 .social a:nth-child(1) { top: calc(90 * var(--u)); }
 .social a:nth-child(2) { top: calc(247 * var(--u)); }
 .social a:nth-child(3) { top: calc(424 * var(--u)); }
@@ -104,7 +104,7 @@ section { position: relative; }
 .hero .btn__box { width: calc(400 * var(--u)); padding-left: calc(47 * var(--u)); }
 .hero .btn__arrow { width: calc(95 * var(--u)); margin-left: calc(-50 * var(--u)); }
 .contact { left: calc(283 * var(--u)); top: calc(595 * var(--u)); font-size: calc(18 * var(--u)); line-height: calc(36 * var(--u)); text-transform: uppercase; }
-.contact a:hover { color: var(--red); }
+.contact a { position: relative; display: inline-block; }
 .text14 { font-weight: 500; font-size: calc(14 * var(--u)); line-height: calc(30 * var(--u)); }
 .hero .text14 { left: calc(756 * var(--u)); top: calc(591 * var(--u)); width: calc(400 * var(--u)); }
 
@@ -212,14 +212,13 @@ form .btn { margin-top: calc(60 * var(--u)); }
 .ontop:hover i { transform: translateY(calc(-6 * var(--u))) rotate(45deg); }
 
 /* ---------- Footer ---------- */
-.footer { position: relative; height: calc(210 * var(--u)); margin-top: calc(-210 * var(--u)); }
+.footer { position: relative; z-index: 3; height: calc(210 * var(--u)); margin-top: calc(-210 * var(--u)); }
 .footer::before { content: ""; position: absolute; inset: 0; background: var(--dark); clip-path: polygon(0 calc(82 * var(--u)), 100% 0, 100% 100%, 0 100%); }
 .footer > * { z-index: 1; }
 .footer .mark { left: calc(167 * var(--u)); top: calc(107 * var(--u)); width: calc(70 * var(--u)); filter: brightness(0) invert(1); opacity: .2; }
 .footer .copy { left: calc(422 * var(--u)); top: calc(141 * var(--u)); }
 .footer .copy, .footer nav a { font-size: calc(12 * var(--u)); line-height: calc(30 * var(--u)); color: var(--grey); text-transform: uppercase; }
-.footer nav a { position: absolute; white-space: nowrap; transition: color .3s; }
-.footer nav a:hover { color: #fff; }
+.footer nav a { position: absolute; white-space: nowrap; }
 
 /* Lettering outlined from the design (Grunges + Montserrat), positions from RubinMain.svg */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
