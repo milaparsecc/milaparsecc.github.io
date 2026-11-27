@@ -230,7 +230,7 @@ const buildId = Date.now().toString(36);
               <div class="palette__band" style={`--c:${c.hex}`}>
                 <span class="palette__mark">
                   {c.icon ? (
-                    <svg class={`mi mi--${c.icon}`} viewBox="340 -80 1240 1240" aria-hidden="true" style={`fill:${(myndsIcons as any)[c.icon].fg}`}>
+                    <svg class={`mi mi--${c.icon}`} viewBox={(myndsIcons as any)[c.icon].vb || "340 -80 1240 1240"} aria-hidden="true" style={`fill:${(myndsIcons as any)[c.icon].fg}`}>
                       {(myndsIcons as any)[c.icon].paths.map((pp: string[], k: number) =>
                         pp[0] === "c"
                           ? <circle class={`mi-p mi-p${k + 1}`} cx={pp[1].split(",")[0]} cy={pp[1].split(",")[1]} r={pp[1].split(",")[2]} />
@@ -612,6 +612,10 @@ const buildId = Date.now().toString(36);
   .mi--learn.is-on .mi-p2 { animation: mi-learn-head 1.3s infinite; }
   @keyframes mi-learn-head { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(.16,1,.3,1); } 28% { transform: translateY(-90px); animation-timing-function: cubic-bezier(.55,0,1,.45); } 46% { transform: translateY(0) scale(1.04,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 58% { transform: translateY(-14px) scale(1); } 70%, 100% { transform: translateY(0); } }
   @keyframes mi-learn-book { 0%, 44% { transform: scale(1,1); } 50% { transform: scale(1.02,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 64%, 100% { transform: scale(1,1); } }
+  /* mynds "m": a little hop — squash, jump, land, settle */
+  .mi--mynds .mi-p1 { transform-origin: 50% 100%; }
+  .mi--mynds.is-on .mi-p1 { animation: mi-mynds 1.4s infinite; }
+  @keyframes mi-mynds { 0% { transform: translateY(0) scale(1,1); animation-timing-function: cubic-bezier(.37,0,.63,1); } 14% { transform: translateY(0) scale(1.07,.9); animation-timing-function: cubic-bezier(.16,1,.3,1); } 34% { transform: translateY(-16%) scale(.95,1.07); animation-timing-function: cubic-bezier(.55,0,1,.45); } 50% { transform: translateY(0) scale(1.06,.92); animation-timing-function: cubic-bezier(.16,1,.3,1); } 62% { transform: translateY(0) scale(.99,1.02); } 74%, 100% { transform: translateY(0) scale(1,1); } }
   @media (prefers-reduced-motion: reduce) { .palette .mi-p { animation: none !important; } }
   /* type specimen from the owner's colour sheet: brand body font Atkinson Hyperlegible */
   .palette__text {

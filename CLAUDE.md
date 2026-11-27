@@ -89,7 +89,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Gallery item `{ "type": "palette", "colors": [{ "name", "hex", "mark", "title", "text" }] }` → full-width colour bands
   (owner's colour sheet): icon + wordmark left: the 7 stream icons are inline SVG
   (src/data/mynds-icons.json, paths from the owner's "mynds · иконки" artifact) that animate while the band is hovered
-  and finish their loop on leave; the mynds "m" is a static PNG; wordmarks /media/mynds/word-*.png cut from her SVG, colour name in
+  and finish their loop on leave; the mynds "m" is inline SVG too (a small hop, path from her colour SVG); wordmarks /media/mynds/word-*.png cut from her SVG, colour name in
   Bricolage Grotesque Bold 26px + description in Atkinson Hyperlegible 18px at 54% (hidden below 1024px), HEX right;
   band grows on hover (owner removed the Copy hint / click-to-copy). Both fonts loaded via the Google Fonts link in Layout.astro.
   Mynds: 8 colours (Mint, Lime, Lemon, Electric Blue, Sky, Peach, Bubblegum, Violet), then two rows of 4:5 photos
