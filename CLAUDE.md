@@ -76,13 +76,10 @@ explain them in plain language (she writes in Russian), and never leave the buil
   background like the other Rubin blocks (owner removed film strips, tabs, texts and format captions as "too much"): small label + a row of 4
   just the ad images with 12px corners (owner removed frames, then the handle/"Sponsored" captions as noise); 2 per row below 1024px.
   Rubin: row 1 = 4 recruitment ads (4:5), row 2 = 4 service ads (1:1, cut from the owner's 2-up images), after the Instagram feature.
-- Gallery item `{ "type": "stories", "items": [9:16 images] }` → dark Rubin background, three stories in view (16px corners),
-  the rest scroll horizontally: round arrows (scroll by one, disabled at the ends), mouse drag, swipe, keyboard arrows.
-  Auto-scrolls one story every 4 s while ≥50% in view (no hover pause — owner saw no motion with the mouse over it; pauses only while pressed, waits 6 s after manual
-  scrolling, loops to start).
-  Story width = min(360px, (100svh − 200px)·9/16, (100vw − 288px)/3) → always fits the window; phones: 68vw, swipe, peek.
-  Owner tried an auto-playing single-phone player and food plates in the corners — replaced by this (Nov 2026).
-  Used for Rubin Catering (7 stories, 720×1280), after the Catering feature (old 3-stories image removed).
+- Gallery item `{ "type": "stories", "label"?, "items": [9:16 images] }` → laid out like the First Class sets (owner asked):
+  dark Rubin background, small label left ("Instagram stories"), round arrows right of it, 4 stories in view (2 on phones),
+  12px corners, rest scrolls sideways (arrows, drag, swipe, keys). Auto-scrolls one story every 4 s while ≥50% in view
+  (pauses only while pressed, waits 6 s after manual scrolling, loops). Used for Rubin Catering (7 stories, 720×1280).
 - Gallery item `{ "type": "thumbs", "channel": { name, handle, meta, avatar }, "items": [{ "src" (16:9), "duration", "title" }] }`
   → minimal YouTube channel page: avatar (cropped from the owner's Děkuji thumbnail), name, handle · real counts,
   outlined Subscribe pill, tabs with "Videos" active; grid 3 per row (owner asked), titles "X - TOMAS ARSOV" under each

@@ -225,13 +225,18 @@ const buildId = Date.now().toString(36);
           </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
-            <button class="stories__arrow stories__arrow--prev" type="button" aria-label="Previous stories"><span aria-hidden="true">←</span></button>
+            <div class="stories__head">
+              <p class="small-upper">{item.label || "Instagram stories"}</p>
+              <div class="stories__arrows">
+                <button class="stories__arrow stories__arrow--prev" type="button" aria-label="Previous stories"><span aria-hidden="true">←</span></button>
+                <button class="stories__arrow stories__arrow--next" type="button" aria-label="Next stories"><span aria-hidden="true">→</span></button>
+              </div>
+            </div>
             <div class="stories__track" tabindex="0" aria-label={`${altName} — Instagram stories`}>
               {item.items.map((src: string, i: number) => (
                 <img class="stories__img" src={media(src)} alt={`${altName} — story ${i + 1}`} loading="lazy" draggable="false" />
               ))}
             </div>
-            <button class="stories__arrow stories__arrow--next" type="button" aria-label="Next stories"><span aria-hidden="true">→</span></button>
           </div>
         ) : typeof item === "object" && item.type === "site" ? (
           <div class="site-preview">
@@ -538,25 +543,30 @@ const buildId = Date.now().toString(36);
     .yt__tabs { gap: 24px; overflow-x: auto; }
   }
 
-  /* Stories ({ type: "stories" }): three 9:16 stories in view, the rest scroll horizontally (arrows, swipe, drag) */
+  /* Stories ({ type: "stories" }): laid out like the First Class ad sets — small label with round arrows on the right,
+     4 stories in view (2 on phones), the rest scroll sideways; on the dark Rubin background */
   .stories {
-    /* story width: max 360px, and never taller than the window (room for the header) */
-    /* …and three must fit between the arrows: page margins 2×40, arrows+gaps 2×80, two gaps */
-    --w: min(360px, calc((100svh - 200px) * 9 / 16), calc((100vw - 288px) / 3));
-    --g: 24px;
-    position: relative;
+    --g: var(--gap);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
+    flex-direction: column;
+    gap: 16px;
     padding: 80px var(--pad-x);
     background: #141316 url("/media/rubin/site-bg-9761ad.jpg") center / cover;
+    color: #fff;
   }
+  .stories__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .stories__head .small-upper { color: rgba(255, 255, 255, 0.6); }
+  .stories__arrows { display: flex; gap: 8px; }
+  .stories__arrow {
+    display: grid; place-items: center; width: 40px; height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 50%; background: none; color: #fff;
+    cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .stories__arrow:hover { background: #fff; color: #141316; }
+  .stories__arrow:disabled { opacity: 0.25; pointer-events: none; }
   .stories__track {
     display: flex;
     gap: var(--g);
-    flex: none;
-    width: min(100%, calc(3 * var(--w) + 2 * var(--g)));
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -567,35 +577,18 @@ const buildId = Date.now().toString(36);
   .stories__track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
   .stories .stories__img {
     flex: none;
-    width: var(--w);
+    width: calc((100% - 3 * var(--g)) / 4);
     height: auto;
     aspect-ratio: 9 / 16;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 12px;
     scroll-snap-align: start;
     user-select: none;
     -webkit-user-drag: none;
   }
-  .stories__arrow {
-    flex: none;
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    background: none;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, opacity 0.2s;
-  }
-  .stories__arrow:hover { background: #fff; color: #141316; }
-  .stories__arrow:disabled { opacity: 0.25; pointer-events: none; }
-  @media (max-width: 809px) {
-    .stories { --w: 68vw; --g: 12px; padding: 40px 0; }
-    .stories__arrow { display: none; }
-    .stories__track { flex: 1; width: 100%; padding: 0 20px; scroll-padding: 0 20px; }
+  @media (max-width: 809.98px) {
+    .stories { padding: 40px 20px; }
+    .stories .stories__img { width: calc((100% - var(--g)) / 2); }
   }
 
   .site-preview {
