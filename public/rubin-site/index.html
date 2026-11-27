@@ -128,7 +128,7 @@ section { position: relative; }
   font-weight: 600; font-size: calc(19 * var(--u)); letter-spacing: calc(1 * var(--u)); text-transform: uppercase;
   white-space: nowrap; padding-right: calc(185 * var(--u)); line-height: calc(42 * var(--u));
 }
-@keyframes run { to { transform: translateX(-50%); } }
+@keyframes run { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .about h2 {
   left: calc(356 * var(--u)); top: calc(225 * var(--u)); width: calc(820 * var(--u)); z-index: 2;
   font-weight: 700; font-size: calc(75 * var(--u)); letter-spacing: calc(2.25 * var(--u)); line-height: 1.22;
