@@ -501,59 +501,7 @@
           }
         ]
       },
-      {
-        "type": "wordcycle",
-        "words": [
-          {
-            "word": "/media/mynds/wm-mynds-836c66.png",
-            "bg": "#28D198",
-            "icon": "mynds",
-            "alt": "mynds"
-          },
-          {
-            "word": "/media/mynds/wm-body-d01dbb.png",
-            "bg": "#ACEF43",
-            "icon": "body",
-            "alt": "my body"
-          },
-          {
-            "word": "/media/mynds/wm-mind-949368.png",
-            "bg": "#FFFA43",
-            "icon": "mind",
-            "alt": "my mind"
-          },
-          {
-            "word": "/media/mynds/wm-work-5e4532.png",
-            "bg": "#5798FF",
-            "icon": "work",
-            "alt": "my work"
-          },
-          {
-            "word": "/media/mynds/wm-learn-c1e0d4.png",
-            "bg": "#79DCEB",
-            "icon": "learn",
-            "alt": "my learn"
-          },
-          {
-            "word": "/media/mynds/wm-family-918420.png",
-            "bg": "#FFC8B0",
-            "icon": "family",
-            "alt": "my family"
-          },
-          {
-            "word": "/media/mynds/wm-love-023d9f.png",
-            "bg": "#FE80EE",
-            "icon": "love",
-            "alt": "my love"
-          },
-          {
-            "word": "/media/mynds/wm-soul-5f3cc2.png",
-            "bg": "#A264FF",
-            "icon": "soul",
-            "alt": "my soul"
-          }
-        ]
-      },
+      "/media/mynds/construction-410783.svg",
       {
         "type": "heading",
         "title": "02 Brand system"

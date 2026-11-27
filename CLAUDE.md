@@ -97,8 +97,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - Mynds case (Nov 2026 draft) is told in chapters ("01 Name & logo", "02 Brand system", "03 Print", "04 Festival",
   "05 Merch") with `heading` items. Extra block types built for it:
   `{ "type": "tiles", "ratio", "items": [{ "bg", "image", "w", "text"? }] }` — coloured blocks with a centred logo (opener, finale);
-  `{ "type": "wordcycle", "words": [{ "word", "bg", "icon" }] }` — "my + stream" wordmark, background and big ghost icon
-  switch every 1.8 s while on screen; `{ "type": "swatches", "colors": [{ "name", "hex", "ink"? }] }` — core colours row;
+  `{ "type": "wordcycle", "words": [{ "word", "bg", "icon" }] }` — "my + stream" wordmark cycler (code kept, REMOVED from the case:
+  owner didn't see the point); logo construction drawing /media/mynds/construction-*.svg (black anchors/handles/guides on mint,
+  outlines refitted with nodes at extremes; owner picked black over white lines) follows the opener; `{ "type": "swatches", "colors": [{ "name", "hex", "ink"? }] }` — core colours row;
   `{ "type": "mosaic", "tiles": [{ "icon", "bg" }] }` — 4×2 pictogram pattern, tiles animate on hover;
   `{ "type": "typespec" }` exists but is unused. Logos /media/mynds/logo-*.png and wordmarks wm-*.png are cut from the
   owner's guideline (MyndsGuideline_curves.ai). Owner REJECTED: three plain logo-version tiles and a type specimen
