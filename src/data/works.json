@@ -678,7 +678,8 @@
       "rubin-production",
       "space-karlin",
       "first-class-social-ads"
-    ]
+    ],
+    "seamless": true
   },
   {
     "title": "Rubin Production",
