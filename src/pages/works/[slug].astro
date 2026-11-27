@@ -612,10 +612,10 @@ const buildId = Date.now().toString(36);
   .mi--learn.is-on .mi-p2 { animation: mi-learn-head 1.3s infinite; }
   @keyframes mi-learn-head { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(.16,1,.3,1); } 28% { transform: translateY(-90px); animation-timing-function: cubic-bezier(.55,0,1,.45); } 46% { transform: translateY(0) scale(1.04,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 58% { transform: translateY(-14px) scale(1); } 70%, 100% { transform: translateY(0); } }
   @keyframes mi-learn-book { 0%, 44% { transform: scale(1,1); } 50% { transform: scale(1.02,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 64%, 100% { transform: scale(1,1); } }
-  /* mynds "m": a little hop — squash, jump, land, settle */
+  /* mynds "m": a calm "breath" — stretches up a little and settles (owner found the hop too childish) */
   .mi--mynds .mi-p1 { transform-origin: 50% 100%; }
-  .mi--mynds.is-on .mi-p1 { animation: mi-mynds 1.4s infinite; }
-  @keyframes mi-mynds { 0% { transform: translateY(0) scale(1,1); animation-timing-function: cubic-bezier(.37,0,.63,1); } 14% { transform: translateY(0) scale(1.07,.9); animation-timing-function: cubic-bezier(.16,1,.3,1); } 34% { transform: translateY(-16%) scale(.95,1.07); animation-timing-function: cubic-bezier(.55,0,1,.45); } 50% { transform: translateY(0) scale(1.06,.92); animation-timing-function: cubic-bezier(.16,1,.3,1); } 62% { transform: translateY(0) scale(.99,1.02); } 74%, 100% { transform: translateY(0) scale(1,1); } }
+  .mi--mynds.is-on .mi-p1 { animation: mi-mynds 1.8s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-mynds { 0% { transform: scale(1,1); } 30% { transform: scale(.985,1.06); } 55% { transform: scale(1.01,.985); } 75%, 100% { transform: scale(1,1); } }
   @media (prefers-reduced-motion: reduce) { .palette .mi-p { animation: none !important; } }
   /* type specimen from the owner's colour sheet: brand body font Atkinson Hyperlegible */
   .palette__text {
