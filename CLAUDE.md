@@ -87,7 +87,9 @@ explain them in plain language (she writes in Russian), and never leave the buil
   hover. Tomas Arsov: 16 thumbnails (hair → skin → supplements → Děkuji). Cover: mustard #f0a92b (brand tape colour), Tomas
   cut out on the left, three thumbnails as a staircase tucked behind his shoulder, logo bottom right (owner rejected tilted grids and huge-logo versions as noisy).
 - Gallery item `{ "type": "palette", "colors": [{ "name", "hex", "mark", "title", "text" }] }` → full-width colour bands
-  (owner's colour sheet): icon + wordmark image left (/media/mynds/mark-*.png, cut from her SVG), colour name in
+  (owner's colour sheet): icon + wordmark left: the 7 stream icons are inline SVG
+  (src/data/mynds-icons.json, paths from the owner's "mynds · иконки" artifact) that animate while the band is hovered
+  and finish their loop on leave; the mynds "m" is a static PNG; wordmarks /media/mynds/word-*.png cut from her SVG, colour name in
   Bricolage Grotesque Bold 26px + description in Atkinson Hyperlegible 18px at 54% (hidden below 1024px), HEX right;
   band grows on hover (owner removed the Copy hint / click-to-copy). Both fonts loaded via the Google Fonts link in Layout.astro.
   Mynds: 8 colours (Mint, Lime, Lemon, Electric Blue, Sky, Peach, Bubblegum, Violet), then two rows of 4:5 photos

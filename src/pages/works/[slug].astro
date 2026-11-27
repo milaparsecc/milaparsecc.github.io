@@ -1,4 +1,5 @@
 ---
+import myndsIcons from "../../data/mynds-icons.json";
 import Layout from "../../layouts/Layout.astro";
 import WorkCard from "../../components/WorkCard.astro";
 import works from "../../data/works.json";
@@ -227,7 +228,20 @@ const buildId = Date.now().toString(36);
           <div class="palette">
             {item.colors.map((c: any) => (
               <div class="palette__band" style={`--c:${c.hex}`}>
-                <img class="palette__mark" src={media(c.mark)} alt={c.name} loading="lazy" />
+                <span class="palette__mark">
+                  {c.icon ? (
+                    <svg class={`mi mi--${c.icon}`} viewBox="340 -80 1240 1240" aria-hidden="true" style={`fill:${(myndsIcons as any)[c.icon].fg}`}>
+                      {(myndsIcons as any)[c.icon].paths.map((pp: string[], k: number) =>
+                        pp[0] === "c"
+                          ? <circle class={`mi-p mi-p${k + 1}`} cx={pp[1].split(",")[0]} cy={pp[1].split(",")[1]} r={pp[1].split(",")[2]} />
+                          : <path class={`mi-p mi-p${k + 1}`} d={pp[1]} />
+                      )}
+                    </svg>
+                  ) : (
+                    <img class="palette__icon" src={media(c.iconImg)} alt="" loading="lazy" />
+                  )}
+                  <img class="palette__word" src={media(c.word)} alt={c.name} loading="lazy" />
+                </span>
                 <span class="palette__text">
                   <b>{c.title || item.title}</b>
                   <span>{c.text || item.text}</span>
@@ -566,7 +580,39 @@ const buildId = Date.now().toString(36);
     transition: height 0.4s var(--ease);
   }
   .palette__band:hover { height: clamp(112px, 13vw, 190px); }
-  .palette .palette__mark { height: 78%; width: auto; aspect-ratio: auto; object-fit: contain; }
+  .palette__mark { display: flex; align-items: center; height: 78%; }
+  .palette .palette__word { height: 100%; width: auto; aspect-ratio: auto; object-fit: contain; }
+  .palette .palette__icon { height: 100%; width: auto; aspect-ratio: 1; object-fit: contain; }
+  /* animated icons (owner's hover set): same box as the m icon, plays while the band is hovered,
+     finishes its loop on leave */
+  .palette .mi { height: 100%; width: auto; aspect-ratio: 1; flex: none; overflow: visible; }
+  .palette .mi-p { transform-box: fill-box; }
+  .mi--body .mi-p1 { transform-origin: 50% 100%; }
+  .mi--body.is-on .mi-p1 { animation: mi-body 1.6s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-body { 0% { transform: scale(1,1); } 14% { transform: scale(1.03,.95); } 34% { transform: scale(.97,1.06); } 50% { transform: scale(1.01,.99); } 62%, 100% { transform: scale(1,1); } }
+  .mi--mind .mi-p1 { transform-origin: 100% 50%; } .mi--mind .mi-p2 { transform-origin: 0% 50%; }
+  .mi--mind.is-on .mi-p1 { animation: mi-mind-l 1.2s cubic-bezier(.37,0,.63,1) infinite; }
+  .mi--mind.is-on .mi-p2 { animation: mi-mind-r 1.2s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-mind-l { 0% { transform: translateX(0) rotate(0); } 22% { transform: translateX(-46px) rotate(-5deg); } 44% { transform: translateX(4px) rotate(0); } 54%, 100% { transform: translateX(0) rotate(0); } }
+  @keyframes mi-mind-r { 0% { transform: translateX(0) rotate(0); } 22% { transform: translateX(46px) rotate(5deg); } 44% { transform: translateX(-4px) rotate(0); } 54%, 100% { transform: translateX(0) rotate(0); } }
+  .mi--family .mi-p1 { transform-origin: 50% 100%; }
+  .mi--family.is-on .mi-p1 { animation: mi-family 1.4s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-family { 0% { transform: rotate(0); } 16% { transform: rotate(-9deg); } 36% { transform: rotate(8deg); } 56% { transform: rotate(-5deg); } 74% { transform: rotate(2deg); } 86%, 100% { transform: rotate(0); } }
+  .mi--love .mi-p1 { transform-origin: 50% 50%; }
+  .mi--love.is-on .mi-p1 { animation: mi-love 1s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-love { 0% { transform: scale(1); } 12% { transform: scale(1.09); } 24% { transform: scale(.985); } 36% { transform: scale(1.055); } 52%, 100% { transform: scale(1); } }
+  .mi--soul .mi-p1 { transform-origin: 48.3% 52.1%; }
+  .mi--soul.is-on .mi-p1 { animation: mi-soul 1.9s cubic-bezier(.37,0,.63,1) infinite; }
+  @keyframes mi-soul { 0% { transform: rotate(0) scale(1); } 10% { transform: rotate(5deg) scale(1.02); } 30% { transform: rotate(-24deg) scale(.92); } 48% { transform: rotate(10deg) scale(1.03); } 63% { transform: rotate(-4.5deg) scale(.99); } 77% { transform: rotate(1.5deg) scale(1); } 88%, 100% { transform: rotate(0) scale(1); } }
+  .mi--work .mi-p1 { transform-origin: 50% 50%; }
+  .mi--work.is-on .mi-p1 { animation: mi-work .7s infinite; }
+  @keyframes mi-work { 0% { transform: scale(1); animation-timing-function: cubic-bezier(.16,1,.3,1); } 14% { transform: scale(1.09); animation-timing-function: cubic-bezier(.37,0,.63,1); } 70%, 100% { transform: scale(1); } }
+  .mi--learn .mi-p1, .mi--learn .mi-p2 { transform-origin: 50% 100%; }
+  .mi--learn.is-on .mi-p1 { animation: mi-learn-book 1.3s infinite; }
+  .mi--learn.is-on .mi-p2 { animation: mi-learn-head 1.3s infinite; }
+  @keyframes mi-learn-head { 0% { transform: translateY(0); animation-timing-function: cubic-bezier(.16,1,.3,1); } 28% { transform: translateY(-90px); animation-timing-function: cubic-bezier(.55,0,1,.45); } 46% { transform: translateY(0) scale(1.04,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 58% { transform: translateY(-14px) scale(1); } 70%, 100% { transform: translateY(0); } }
+  @keyframes mi-learn-book { 0%, 44% { transform: scale(1,1); } 50% { transform: scale(1.02,.94); animation-timing-function: cubic-bezier(.16,1,.3,1); } 64%, 100% { transform: scale(1,1); } }
+  @media (prefers-reduced-motion: reduce) { .palette .mi-p { animation: none !important; } }
   /* type specimen from the owner's colour sheet: brand body font Atkinson Hyperlegible */
   .palette__text {
     position: absolute; left: 53.75%; top: 50%; transform: translateY(-50%);
@@ -904,3 +950,21 @@ const buildId = Date.now().toString(36);
   });
 </script>
 
+<script>
+  // Mynds colour bands: the icon animates while its band is hovered; on leave it finishes the current loop
+  document.querySelectorAll<HTMLElement>(".palette__band").forEach((band) => {
+    const svg = band.querySelector<SVGElement>(".mi");
+    if (!svg) return;
+    let off: (() => void) | null = null, t = 0;
+    const on = () => { if (off) { svg.removeEventListener("animationiteration", off); off = null; } clearTimeout(t); svg.classList.add("is-on"); };
+    const leave = () => {
+      if (!svg.classList.contains("is-on")) return;
+      off = () => { svg.classList.remove("is-on"); if (off) svg.removeEventListener("animationiteration", off); off = null; };
+      svg.addEventListener("animationiteration", off);
+      clearTimeout(t); t = window.setTimeout(() => off && off(), 3600);
+    };
+    band.addEventListener("mouseenter", on);
+    band.addEventListener("mouseleave", leave);
+    band.addEventListener("touchstart", () => (svg.classList.contains("is-on") ? leave() : on()), { passive: true });
+  });
+</script>

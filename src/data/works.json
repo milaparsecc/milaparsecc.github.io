@@ -492,58 +492,66 @@
           {
             "name": "mynds",
             "hex": "#28D198",
-            "mark": "/media/mynds/mark-mynds-746b8a.png",
             "title": "Mint",
-            "text": "The main festival colour. Fresh, curious and calm — it ties all the streams together."
+            "text": "The main festival colour. Fresh, curious and calm — it ties all the streams together.",
+            "word": "/media/mynds/word-mynds-3c5dbf.png",
+            "iconImg": "/media/mynds/icon-m-3db8ac.png"
           },
           {
             "name": "my body",
             "hex": "#ACEF43",
-            "mark": "/media/mynds/mark-body-5f12ae.png",
             "title": "Lime",
-            "text": "Health, movement and food. Energetic talks about how the body works."
+            "text": "Health, movement and food. Energetic talks about how the body works.",
+            "word": "/media/mynds/word-body-103a7b.png",
+            "icon": "body"
           },
           {
             "name": "my mind",
             "hex": "#FFFA43",
-            "mark": "/media/mynds/mark-mind-9f88c1.png",
             "title": "Lemon",
-            "text": "Psychology and the brain. Bright, open conversations about how we think and feel."
+            "text": "Psychology and the brain. Bright, open conversations about how we think and feel.",
+            "word": "/media/mynds/word-mind-007233.png",
+            "icon": "mind"
           },
           {
             "name": "my work",
             "hex": "#5798FF",
-            "mark": "/media/mynds/mark-work-1d5b49.png",
             "title": "Electric Blue",
-            "text": "Careers and productivity. Clear, focused sessions about work and ambition."
+            "text": "Careers and productivity. Clear, focused sessions about work and ambition.",
+            "word": "/media/mynds/word-work-e6fa69.png",
+            "icon": "work"
           },
           {
             "name": "my learn",
             "hex": "#79DCEB",
-            "mark": "/media/mynds/mark-learn-66e561.png",
             "title": "Sky",
-            "text": "Education and science. Light, curious lectures for lifelong learners."
+            "text": "Education and science. Light, curious lectures for lifelong learners.",
+            "word": "/media/mynds/word-learn-d0f611.png",
+            "icon": "learn"
           },
           {
             "name": "my family",
             "hex": "#FFC8B0",
-            "mark": "/media/mynds/mark-family-56434a.png",
             "title": "Peach",
-            "text": "Parenting and life at home. Warm, caring talks about family."
+            "text": "Parenting and life at home. Warm, caring talks about family.",
+            "word": "/media/mynds/word-family-b14577.png",
+            "icon": "family"
           },
           {
             "name": "my love",
             "hex": "#FE80EE",
-            "mark": "/media/mynds/mark-love-318164.png",
             "title": "Bubblegum",
-            "text": "Love, intimacy and connection. Playful, honest conversations."
+            "text": "Love, intimacy and connection. Playful, honest conversations.",
+            "word": "/media/mynds/word-love-c5b069.png",
+            "icon": "love"
           },
           {
             "name": "my soul",
             "hex": "#A264FF",
-            "mark": "/media/mynds/mark-soul-62acf7.png",
             "title": "Violet",
-            "text": "Meaning and inner life. Deep, reflective sessions about the soul."
+            "text": "Meaning and inner life. Deep, reflective sessions about the soul.",
+            "word": "/media/mynds/word-soul-5ce653.png",
+            "icon": "soul"
           }
         ]
       },
