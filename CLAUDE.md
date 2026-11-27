@@ -86,6 +86,12 @@ explain them in plain language (she writes in Russian), and never leave the buil
   (no views/dates — not known for all), 2 below 1024px, 1 on phones, 12px corners, dark duration badge bottom-right, red "watched" bar grows on
   hover. Tomas Arsov: 16 thumbnails (hair → skin → supplements → Děkuji). Cover: mustard #f0a92b (brand tape colour), Tomas
   cut out on the left, three thumbnails as a staircase tucked behind his shoulder, logo bottom right (owner rejected tilted grids and huge-logo versions as noisy).
+- Gallery item `{ "type": "palette", "colors": [{ "name", "hex", "mark", "title", "text" }] }` → full-width colour bands
+  (owner's colour sheet): icon + wordmark image left (/media/mynds/mark-*.png, cut from her SVG), colour name in
+  Bricolage Grotesque Bold 26px + description in Atkinson Hyperlegible 18px at 54% (hidden below 1024px), HEX right;
+  band grows on hover, click copies HEX. Both fonts loaded via the Google Fonts link in Layout.astro.
+  Mynds: 8 colours (Mint, Lime, Lemon, Electric Blue, Sky, Peach, Bubblegum, Violet), then two rows of 4:5 photos
+  (flags + caps stack, cap with pins + keychain).
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads. Items may be .mp4 (silent autoplay loop),
   mixed with images (never two videos side by side; videos within the first 4, i.e. visible without scrolling:

@@ -223,6 +223,20 @@ const buildId = Date.now().toString(36);
               ))}
             </div>
           </div>
+        ) : typeof item === "object" && item.type === "palette" ? (
+          <div class="palette">
+            {item.colors.map((c: any) => (
+              <button class="palette__band" type="button" style={`--c:${c.hex}`} data-hex={c.hex} aria-label={`${c.name} ${c.hex}, copy colour`}>
+                <img class="palette__mark" src={media(c.mark)} alt={c.name} loading="lazy" />
+                <span class="palette__text">
+                  <b>{c.title || item.title}</b>
+                  <span>{c.text || item.text}</span>
+                </span>
+                <span class="palette__hex upper">{c.hex}</span>
+                <span class="palette__copy small-upper" aria-hidden="true">Copy</span>
+              </button>
+            ))}
+          </div>
         ) : typeof item === "object" && item.type === "stories" ? (
           <div class="stories" data-stories>
             <div class="stories__head">
@@ -541,6 +555,38 @@ const buildId = Date.now().toString(36);
     .yt__channel { gap: 16px; }
     .yt__name { font-size: 18px; }
     .yt__tabs { gap: 24px; overflow-x: auto; }
+  }
+
+  /* Colour system ({ type: "palette" }): one full-width band per sub-brand, icon + wordmark left, HEX right;
+     click copies the HEX. Bands grow a little on hover. */
+  .palette { display: flex; flex-direction: column; }
+  .palette__band {
+    position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    width: 100%; height: clamp(96px, 11vw, 160px); padding: 0 var(--pad-x);
+    border: 0; background: var(--c); color: #1e1d1c; cursor: copy; text-align: left;
+    transition: height 0.4s var(--ease);
+  }
+  .palette__band:hover { height: clamp(112px, 13vw, 190px); }
+  .palette .palette__mark { height: 78%; width: auto; aspect-ratio: auto; object-fit: contain; }
+  /* type specimen from the owner's colour sheet: brand body font Atkinson Hyperlegible */
+  .palette__text {
+    position: absolute; left: 53.75%; top: 50%; transform: translateY(-50%);
+    display: grid; gap: 4px; max-width: 34%;
+    font-family: "Atkinson Hyperlegible", var(--font-sans, sans-serif); color: #1e1d1c;
+  }
+  .palette__text b { font-family: "Bricolage Grotesque", var(--font-sans, sans-serif); font-size: 26px; line-height: 1.2; font-weight: 700; }
+  .palette__text span { font-size: 18px; line-height: 1.5; text-wrap: balance; }
+  .palette__hex { letter-spacing: 0.04em; }
+  .palette__copy {
+    position: absolute; right: var(--pad-x); bottom: 16px; opacity: 0; transition: opacity 0.2s;
+  }
+  .palette__band:hover .palette__copy { opacity: 0.6; }
+  .palette__band.is-copied .palette__copy { opacity: 1; }
+  @media (max-width: 1023.98px) { .palette__text { display: none; } }
+  @media (max-width: 809.98px) {
+    .palette__band { height: 88px; }
+    .palette__band:hover { height: 88px; }
+    .palette__copy { display: none; }
   }
 
   /* Stories ({ type: "stories" }): laid out like the First Class ad sets — small label with round arrows on the right,
@@ -862,5 +908,17 @@ const buildId = Date.now().toString(36);
     row.addEventListener("pointerup", end);
     row.addEventListener("pointercancel", end);
     update();
+  });
+</script>
+
+<script>
+  // Colour system: click a band to copy its HEX
+  document.querySelectorAll<HTMLButtonElement>(".palette__band").forEach((b) => {
+    b.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(b.dataset.hex || ""); } catch {}
+      const t = b.querySelector(".palette__copy")!; t.textContent = "Copied";
+      b.classList.add("is-copied");
+      setTimeout(() => { b.classList.remove("is-copied"); t.textContent = "Copy"; }, 1400);
+    });
   });
 </script>

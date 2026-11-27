@@ -486,6 +486,75 @@
     "coverVideo": "",
     "gallery": [
       "/media/DQSommF3nF3MyZXv5wyefOga48.png",
+      {
+        "type": "palette",
+        "colors": [
+          {
+            "name": "mynds",
+            "hex": "#28D198",
+            "mark": "/media/mynds/mark-mynds-746b8a.png",
+            "title": "Mint",
+            "text": "The main festival colour. Fresh, curious and calm — it ties all the streams together."
+          },
+          {
+            "name": "my body",
+            "hex": "#ACEF43",
+            "mark": "/media/mynds/mark-body-5f12ae.png",
+            "title": "Lime",
+            "text": "Health, movement and food. Energetic talks about how the body works."
+          },
+          {
+            "name": "my mind",
+            "hex": "#FFFA43",
+            "mark": "/media/mynds/mark-mind-9f88c1.png",
+            "title": "Lemon",
+            "text": "Psychology and the brain. Bright, open conversations about how we think and feel."
+          },
+          {
+            "name": "my work",
+            "hex": "#5798FF",
+            "mark": "/media/mynds/mark-work-1d5b49.png",
+            "title": "Electric Blue",
+            "text": "Careers and productivity. Clear, focused sessions about work and ambition."
+          },
+          {
+            "name": "my learn",
+            "hex": "#79DCEB",
+            "mark": "/media/mynds/mark-learn-66e561.png",
+            "title": "Sky",
+            "text": "Education and science. Light, curious lectures for lifelong learners."
+          },
+          {
+            "name": "my family",
+            "hex": "#FFC8B0",
+            "mark": "/media/mynds/mark-family-56434a.png",
+            "title": "Peach",
+            "text": "Parenting and life at home. Warm, caring talks about family."
+          },
+          {
+            "name": "my love",
+            "hex": "#FE80EE",
+            "mark": "/media/mynds/mark-love-318164.png",
+            "title": "Bubblegum",
+            "text": "Love, intimacy and connection. Playful, honest conversations."
+          },
+          {
+            "name": "my soul",
+            "hex": "#A264FF",
+            "mark": "/media/mynds/mark-soul-62acf7.png",
+            "title": "Violet",
+            "text": "Meaning and inner life. Deep, reflective sessions about the soul."
+          }
+        ]
+      },
+      [
+        "/media/mynds/flags-471024.jpg",
+        "/media/mynds/caps-2a9cf7.jpg"
+      ],
+      [
+        "/media/mynds/cap-pins-1b6fe4.jpg",
+        "/media/mynds/keychain-5b5d51.jpg"
+      ],
       "/media/MTvfs9nk6BcRIZVfjK9jDSbwyk.png",
       "/media/HhsjZYTQRgOnRTIQygzflxpdc.png",
       "/media/CfQqbCpIsMDPiCq9uHk8lNApcs.png",
