@@ -937,9 +937,9 @@ const buildId = Date.now().toString(36);
   /* mosaic: the pictograms as a brand pattern, each tile animates on hover */
   .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); }
   .mosaic__tile { position: relative; aspect-ratio: 1; overflow: hidden; display: grid; place-items: center; }
-  .mosaic .mi { width: 78%; height: auto; aspect-ratio: 1; overflow: visible; }
-  .mosaic__tile:nth-child(3n+1) .mi { transform: translate(14%, 12%) scale(1.25); }
-  .mosaic__tile:nth-child(3n+2) .mi { transform: translate(-10%, -8%) scale(1.15); }
+  /* all pictograms centred at one size (owner asked to align them); the m has a tighter box, so it is set smaller */
+  .mosaic .mi { width: 62%; height: auto; aspect-ratio: 1; overflow: visible; }
+  .mosaic .mi--mynds { width: 66%; }
   @media (max-width: 809px) { .mosaic { grid-template-columns: 1fr 1fr; } }
 
 </style>
