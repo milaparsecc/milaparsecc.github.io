@@ -224,10 +224,70 @@ const buildId = Date.now().toString(36);
               ))}
             </div>
           </div>
+        ) : typeof item === "object" && item.type === "tiles" ? (
+          <div class="tiles" style={`--cols:${item.items.length};--ratio:${item.ratio || "1"}`}>
+            {item.items.map((t: any) => (
+              <div class="tiles__tile" style={`background:${t.bg}`}>
+                <img src={media(t.image)} alt={t.alt || ""} loading="lazy" style={`width:${t.w || "60%"}`} />
+                {t.text && <p class="small-upper tiles__text" style={`color:${t.ink || "#1e1d1c"}`}>{t.text}</p>}
+              </div>
+            ))}
+          </div>
+        ) : typeof item === "object" && item.type === "wordcycle" ? (
+          <div class="wcycle" data-wcycle style={`--c:${item.words[0].bg}`}>
+            {item.words.map((w: any, k: number) => (
+              <div class:list={["wcycle__slide", { "is-active": k === 0 }]} data-bg={w.bg}>
+                {w.icon && (
+                  <svg class={`mi mi--${w.icon} wcycle__icon`} viewBox={(myndsIcons as any)[w.icon].vb || "340 -80 1240 1240"} aria-hidden="true" style={`fill:${(myndsIcons as any)[w.icon].fg}`}>
+                    {(myndsIcons as any)[w.icon].paths.map((pp: string[], j: number) =>
+                      pp[0] === "c"
+                        ? <circle class={`mi-p mi-p${j + 1}`} cx={pp[1].split(",")[0]} cy={pp[1].split(",")[1]} r={pp[1].split(",")[2]} />
+                        : <path class={`mi-p mi-p${j + 1}`} d={pp[1]} />
+                    )}
+                  </svg>
+                )}
+                <img class="wcycle__word" src={media(w.word)} alt={w.alt || ""} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        ) : typeof item === "object" && item.type === "typespec" ? (
+          <div class="typespec">
+            {item.fonts.map((f: any) => (
+              <div class="typespec__font" style={`font-family:${f.family}`}>
+                <p class="small-upper typespec__role">{f.role}</p>
+                <p class="typespec__aa" style={`font-weight:${f.weight}`}>Aa</p>
+                <p class="typespec__name" style={`font-weight:${f.weight}`}>{f.name}</p>
+                <p class="typespec__chars" style={`font-weight:${f.charsWeight || f.weight}`}>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />abcdefghijklmnopqrstuvwxyz<br />0123456789 ěščřžýáíé</p>
+              </div>
+            ))}
+          </div>
+        ) : typeof item === "object" && item.type === "swatches" ? (
+          <div class="swatches">
+            {item.colors.map((c: any) => (
+              <div class="swatches__c" style={`background:${c.hex};color:${c.ink || "#1e1d1c"}`}>
+                <b>{c.name}</b>
+                <span class="upper">{c.hex}</span>
+              </div>
+            ))}
+          </div>
+        ) : typeof item === "object" && item.type === "mosaic" ? (
+          <div class="mosaic">
+            {item.tiles.map((t: any) => (
+              <div class="mosaic__tile" data-mi-hover style={`background:${t.bg}`}>
+                <svg class={`mi mi--${t.icon}`} viewBox={(myndsIcons as any)[t.icon].vb || "340 -80 1240 1240"} aria-hidden="true" style={`fill:${(myndsIcons as any)[t.icon].fg}`}>
+                  {(myndsIcons as any)[t.icon].paths.map((pp: string[], j: number) =>
+                    pp[0] === "c"
+                      ? <circle class={`mi-p mi-p${j + 1}`} cx={pp[1].split(",")[0]} cy={pp[1].split(",")[1]} r={pp[1].split(",")[2]} />
+                      : <path class={`mi-p mi-p${j + 1}`} d={pp[1]} />
+                  )}
+                </svg>
+              </div>
+            ))}
+          </div>
         ) : typeof item === "object" && item.type === "palette" ? (
           <div class="palette">
             {item.colors.map((c: any) => (
-              <div class="palette__band" style={`--c:${c.hex}`}>
+              <div class="palette__band" data-mi-hover style={`--c:${c.hex}`}>
                 <span class="palette__mark">
                   {c.icon ? (
                     <svg class={`mi mi--${c.icon}`} viewBox={(myndsIcons as any)[c.icon].vb || "340 -80 1240 1240"} aria-hidden="true" style={`fill:${(myndsIcons as any)[c.icon].fg}`}>
@@ -586,7 +646,7 @@ const buildId = Date.now().toString(36);
   /* animated icons (owner's hover set): same box as the m icon, plays while the band is hovered,
      finishes its loop on leave */
   .palette .mi { height: 100%; width: auto; aspect-ratio: 1; flex: none; overflow: visible; }
-  .palette .mi-p { transform-box: fill-box; }
+  .mi-p { transform-box: fill-box; }
   .mi--body .mi-p1 { transform-origin: 50% 100%; }
   .mi--body.is-on .mi-p1 { animation: mi-body 1.6s cubic-bezier(.37,0,.63,1) infinite; }
   @keyframes mi-body { 0% { transform: scale(1,1); } 14% { transform: scale(1.03,.95); } 34% { transform: scale(.97,1.06); } 50% { transform: scale(1.01,.99); } 62%, 100% { transform: scale(1,1); } }
@@ -616,7 +676,7 @@ const buildId = Date.now().toString(36);
   .mi--mynds .mi-p1 { transform-origin: 50% 100%; }
   .mi--mynds.is-on .mi-p1 { animation: mi-mynds 1.8s cubic-bezier(.37,0,.63,1) infinite; }
   @keyframes mi-mynds { 0% { transform: scale(1,1); } 30% { transform: scale(.985,1.06); } 55% { transform: scale(1.01,.985); } 75%, 100% { transform: scale(1,1); } }
-  @media (prefers-reduced-motion: reduce) { .palette .mi-p { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .mi-p { animation: none !important; } }
   /* type specimen from the owner's colour sheet: brand body font Atkinson Hyperlegible */
   .palette__text {
     position: absolute; left: 53.75%; top: 50%; transform: translateY(-50%);
@@ -848,6 +908,40 @@ const buildId = Date.now().toString(36);
     .project__about { grid-template-columns: 1fr 1fr; padding: 0 0 48px; }
     .project__concept-text { padding: 40px 0; }
   }
+
+  /* ---- Mynds case blocks (Nov 2026 draft) ---- */
+  /* tiles: coloured blocks with a centred logo (opener, logo versions, finale) */
+  .tiles { display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: var(--gap); }
+  .tiles__tile { position: relative; display: grid; place-items: center; aspect-ratio: var(--ratio); overflow: hidden; }
+  .project__gallery .tiles__tile img { height: auto; }
+  .tiles__text { position: absolute; left: 0; right: 0; bottom: 32px; text-align: center; }
+  @media (max-width: 809px) { .tiles { grid-template-columns: 1fr; } }
+  /* wordcycle: "my" + each stream, background and ghost icon change every 1.8 s */
+  .wcycle { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--c); transition: background-color 0.6s var(--ease); }
+  .wcycle__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); }
+  .wcycle__slide.is-active { opacity: 1; }
+  .wcycle .wcycle__icon { position: absolute; right: -4%; top: 50%; height: 92%; width: auto; aspect-ratio: 1; transform: translateY(-50%); overflow: visible; }
+  .project__gallery .wcycle__word { position: absolute; left: 6%; top: 50%; width: 62%; height: auto; transform: translateY(-50%); }
+  /* typespec: the two brand typefaces set live */
+  .typespec { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 80px var(--pad-x); background: #f4f0ed; color: #1e1d1c; }
+  .typespec .typespec__role { font-family: var(--font-sans, Inter, sans-serif); opacity: 0.54; }
+  .typespec__aa { font-size: clamp(140px, 18vw, 280px); line-height: 1; letter-spacing: -0.03em; margin: 16px 0 24px; }
+  .typespec__name { font-size: 26px; line-height: 1.2; }
+  .typespec__chars { font-size: var(--fs-body); line-height: 1.5; margin-top: 16px; opacity: 0.7; }
+  @media (max-width: 809px) { .typespec { grid-template-columns: 1fr; padding: 48px var(--pad-x); } }
+  /* swatches: the core colours */
+  .swatches { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .swatches__c { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; height: clamp(160px, 16vw, 240px); padding: 24px; }
+  .swatches__c b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 26px; line-height: 1.2; }
+  @media (max-width: 809px) { .swatches { grid-template-columns: 1fr 1fr; } }
+  /* mosaic: the pictograms as a brand pattern, each tile animates on hover */
+  .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .mosaic__tile { position: relative; aspect-ratio: 1; overflow: hidden; display: grid; place-items: center; }
+  .mosaic .mi { width: 78%; height: auto; aspect-ratio: 1; overflow: visible; }
+  .mosaic__tile:nth-child(3n+1) .mi { transform: translate(14%, 12%) scale(1.25); }
+  .mosaic__tile:nth-child(3n+2) .mi { transform: translate(-10%, -8%) scale(1.15); }
+  @media (max-width: 809px) { .mosaic { grid-template-columns: 1fr 1fr; } }
+
 </style>
 
 <script>
@@ -956,7 +1050,7 @@ const buildId = Date.now().toString(36);
 
 <script>
   // Mynds colour bands: the icon animates while its band is hovered; on leave it finishes the current loop
-  document.querySelectorAll<HTMLElement>(".palette__band").forEach((band) => {
+  document.querySelectorAll<HTMLElement>("[data-mi-hover]").forEach((band) => {
     const svg = band.querySelector<SVGElement>(".mi");
     if (!svg) return;
     let off: (() => void) | null = null, t = 0;
@@ -972,3 +1066,23 @@ const buildId = Date.now().toString(36);
     band.addEventListener("touchstart", () => (svg.classList.contains("is-on") ? leave() : on()), { passive: true });
   });
 </script>
+
+<script>
+  // Mynds "my + word" block: next stream every 1.8 s while on screen; static for reduced motion
+  document.querySelectorAll<HTMLElement>("[data-wcycle]").forEach((box) => {
+    const slides = [...box.querySelectorAll<HTMLElement>(".wcycle__slide")];
+    if (slides.length < 2 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let i = 0, timer = 0;
+    const show = (n: number) => {
+      slides[i].classList.remove("is-active"); slides[i].querySelector(".mi")?.classList.remove("is-on");
+      i = n % slides.length; slides[i].classList.add("is-active");
+      slides[i].querySelector(".mi")?.classList.add("is-on");
+      box.style.setProperty("--c", slides[i].dataset.bg || "");
+    };
+    new IntersectionObserver(([e]) => {
+      clearInterval(timer);
+      if (e.isIntersecting) timer = window.setInterval(() => show(i + 1), 1800);
+    }, { threshold: 0.4 }).observe(box);
+  });
+</script>
+

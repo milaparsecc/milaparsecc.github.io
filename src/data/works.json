@@ -485,7 +485,101 @@
     "cover": "/media/etOBKLJkQquTijofV6T9bDwkAJs.gif",
     "coverVideo": "",
     "gallery": [
-      "/media/DQSommF3nF3MyZXv5wyefOga48.png",
+      {
+        "type": "heading",
+        "title": "01 Name & logo"
+      },
+      {
+        "type": "tiles",
+        "ratio": "2 / 1",
+        "items": [
+          {
+            "bg": "#28d198",
+            "image": "/media/mynds/logo-black-1d981e.png",
+            "w": "56%",
+            "alt": "mynds logo"
+          }
+        ]
+      },
+      {
+        "type": "wordcycle",
+        "words": [
+          {
+            "word": "/media/mynds/wm-mynds-836c66.png",
+            "bg": "#28D198",
+            "icon": "mynds",
+            "alt": "mynds"
+          },
+          {
+            "word": "/media/mynds/wm-body-d01dbb.png",
+            "bg": "#ACEF43",
+            "icon": "body",
+            "alt": "my body"
+          },
+          {
+            "word": "/media/mynds/wm-mind-949368.png",
+            "bg": "#FFFA43",
+            "icon": "mind",
+            "alt": "my mind"
+          },
+          {
+            "word": "/media/mynds/wm-work-5e4532.png",
+            "bg": "#5798FF",
+            "icon": "work",
+            "alt": "my work"
+          },
+          {
+            "word": "/media/mynds/wm-learn-c1e0d4.png",
+            "bg": "#79DCEB",
+            "icon": "learn",
+            "alt": "my learn"
+          },
+          {
+            "word": "/media/mynds/wm-family-918420.png",
+            "bg": "#FFC8B0",
+            "icon": "family",
+            "alt": "my family"
+          },
+          {
+            "word": "/media/mynds/wm-love-023d9f.png",
+            "bg": "#FE80EE",
+            "icon": "love",
+            "alt": "my love"
+          },
+          {
+            "word": "/media/mynds/wm-soul-5f3cc2.png",
+            "bg": "#A264FF",
+            "icon": "soul",
+            "alt": "my soul"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "title": "02 Brand system"
+      },
+      {
+        "type": "swatches",
+        "colors": [
+          {
+            "name": "Mint",
+            "hex": "#28D198"
+          },
+          {
+            "name": "Paper",
+            "hex": "#F4F0ED"
+          },
+          {
+            "name": "Ink",
+            "hex": "#1E1D1C",
+            "ink": "#f4f0ed"
+          },
+          {
+            "name": "Sage",
+            "hex": "#90A59F"
+          }
+        ]
+      },
       {
         "type": "palette",
         "colors": [
@@ -555,19 +649,82 @@
           }
         ]
       },
+      {
+        "type": "mosaic",
+        "tiles": [
+          {
+            "icon": "body",
+            "bg": "#ACEF43"
+          },
+          {
+            "icon": "work",
+            "bg": "#5798FF"
+          },
+          {
+            "icon": "family",
+            "bg": "#FFC8B0"
+          },
+          {
+            "icon": "soul",
+            "bg": "#A264FF"
+          },
+          {
+            "icon": "mynds",
+            "bg": "#28D198"
+          },
+          {
+            "icon": "mind",
+            "bg": "#FFFA43"
+          },
+          {
+            "icon": "learn",
+            "bg": "#79DCEB"
+          },
+          {
+            "icon": "love",
+            "bg": "#FE80EE"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "title": "03 Print"
+      },
+      "/media/HhsjZYTQRgOnRTIQygzflxpdc.png",
+      {
+        "type": "heading",
+        "title": "04 Festival"
+      },
+      "/media/DQSommF3nF3MyZXv5wyefOga48.png",
+      "/media/TsvEIcGm0FJNXUnVdQ0poQsExM.png",
       [
-        "/media/mynds/flags-471024.jpg",
-        "/media/mynds/caps-2a9cf7.jpg"
+        "/media/CfQqbCpIsMDPiCq9uHk8lNApcs.png",
+        "/media/zTFC40GRHIMU2zGBQuBBr9iDXxs.png"
       ],
+      "/media/MTvfs9nk6BcRIZVfjK9jDSbwyk.png",
+      "/media/mynds/flags-471024.jpg",
+      {
+        "type": "heading",
+        "title": "05 Merch"
+      },
       [
+        "/media/mynds/caps-2a9cf7.jpg",
         "/media/mynds/cap-pins-1b6fe4.jpg",
         "/media/mynds/keychain-5b5d51.jpg"
       ],
-      "/media/MTvfs9nk6BcRIZVfjK9jDSbwyk.png",
-      "/media/HhsjZYTQRgOnRTIQygzflxpdc.png",
-      "/media/CfQqbCpIsMDPiCq9uHk8lNApcs.png",
-      "/media/zTFC40GRHIMU2zGBQuBBr9iDXxs.png",
-      "/media/TsvEIcGm0FJNXUnVdQ0poQsExM.png"
+      {
+        "type": "tiles",
+        "ratio": "2 / 1",
+        "items": [
+          {
+            "bg": "#28d198",
+            "image": "/media/mynds/logo-prague-black-24fa22.png",
+            "w": "44%",
+            "text": "Prague · 19–24 April 2027",
+            "alt": "mynds Prague 2027"
+          }
+        ]
+      }
     ],
     "nextProjects": [
       "rubin-production",

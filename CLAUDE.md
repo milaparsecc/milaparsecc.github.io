@@ -94,6 +94,18 @@ explain them in plain language (she writes in Russian), and never leave the buil
   band grows on hover (owner removed the Copy hint / click-to-copy). Both fonts loaded via the Google Fonts link in Layout.astro.
   Mynds: 8 colours (Mint, Lime, Lemon, Electric Blue, Sky, Peach, Bubblegum, Violet), then two rows of 4:5 photos
   (flags + caps stack, cap with pins + keychain).
+- Mynds case (Nov 2026 draft) is told in chapters ("01 Name & logo", "02 Brand system", "03 Print", "04 Festival",
+  "05 Merch") with `heading` items. Extra block types built for it:
+  `{ "type": "tiles", "ratio", "items": [{ "bg", "image", "w", "text"? }] }` — coloured blocks with a centred logo (opener, finale);
+  `{ "type": "wordcycle", "words": [{ "word", "bg", "icon" }] }` — "my + stream" wordmark, background and big ghost icon
+  switch every 1.8 s while on screen; `{ "type": "swatches", "colors": [{ "name", "hex", "ink"? }] }` — core colours row;
+  `{ "type": "mosaic", "tiles": [{ "icon", "bg" }] }` — 4×2 pictogram pattern, tiles animate on hover;
+  `{ "type": "typespec" }` exists but is unused. Logos /media/mynds/logo-*.png and wordmarks wm-*.png are cut from the
+  owner's guideline (MyndsGuideline_curves.ai). Owner REJECTED: three plain logo-version tiles and a type specimen
+  ("boring"), a logo split with a cursor window and a "Different minds meet." type poster ("horrible"), and the idea
+  list (poster generator, wristband switcher, live programme, map, cap with pins, badge…). She wants the identity shown
+  in use — strong mockups/visualisations and interactive ideas on the level of the palette — to be found together.
+  Print/wayfinding/merch chapters wait for her files.
 - Gallery item `{ "type": "set", "title", "items": [...] }` → small label + a row (e.g. one ad campaign per book;
   4 per row on desktop, 2 on phones). Used in First Class Social Ads. Items may be .mp4 (silent autoplay loop),
   mixed with images (never two videos side by side; videos within the first 4, i.e. visible without scrolling:
