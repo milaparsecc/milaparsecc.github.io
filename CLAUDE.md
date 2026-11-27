@@ -33,8 +33,8 @@ explain them in plain language (she writes in Russian), and never leave the buil
 - `deliverables` — optional, shown full-width in the meta row.
 - `task`, `solution` — same text format as description. Empty fields are hidden.
 - `thumbnail` — image for cards; `cover` — big image on the project page (falls back to thumbnail).
-  Cover sits 20px under the fixed 58px menu (padding-top 78px) and fits the first screen whole: on wide, short screens it
-  gets narrower (centred) instead of being cropped — owner disliked the old 160px gap above it.
+  Cover sits 20px under the fixed 58px menu (padding-top 78px) always full width, 16:9 (owner disliked the old 160px gap; she
+  REJECTED narrowing the cover to fit short screens — never change its width).
 - `coverVideo` — optional 16:9 MP4 (no audio, ~1280×720) used instead of the image on the card and the project
   cover; `thumbnail`/`cover` then serve as poster (use its first frame).
 - `gallery` — images/videos in order (`.mp4` plays as video). An item can also be a list of 2–3 paths →

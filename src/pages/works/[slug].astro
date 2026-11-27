@@ -385,14 +385,10 @@ const buildId = Date.now().toString(36);
 </Layout>
 
 <style>
-  /* Cover sits right under the fixed menu (58px + 20px gap) and fits the first screen whole
-     (owner: the gap above it looked untidy) */
+  /* Cover sits right under the fixed menu (58px + 20px gap); full width as before */
   .project.page-top { padding-top: 78px; }
   .project__cover {
     aspect-ratio: 16 / 9;
-    /* on wide but short screens the cover gets narrower instead of being cropped */
-    width: min(100%, calc((100svh - 98px) * 16 / 9));
-    margin-inline: auto;
   }
 
   /* Intro grid, 1/3 + 2/3 (4 + 8 of 12 columns):
