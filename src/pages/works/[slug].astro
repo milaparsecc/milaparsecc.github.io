@@ -271,9 +271,9 @@ const buildId = Date.now().toString(36);
             ))}
           </div>
         ) : typeof item === "object" && item.type === "mosaic" ? (
-          <div class="mosaic">
-            {item.tiles.map((t: any) => (
-              <div class="mosaic__tile" data-mi-hover style={`background:${t.bg}`}>
+          <div class="mosaic" data-mi-auto>
+            {item.tiles.map((t: any, k: number) => (
+              <div class="mosaic__tile" style={`background:${t.bg};--d:${(-k * 0.37).toFixed(2)}s`}>
                 <svg class={`mi mi--${t.icon}`} viewBox={(myndsIcons as any)[t.icon].vb || "340 -80 1240 1240"} aria-hidden="true" style={`fill:${(myndsIcons as any)[t.icon].fg}`}>
                   {(myndsIcons as any)[t.icon].paths.map((pp: string[], j: number) =>
                     pp[0] === "c"
@@ -942,6 +942,8 @@ const buildId = Date.now().toString(36);
   /* all pictograms centred at one size (owner asked to align them); the m has a tighter box, so it is set smaller */
   .mosaic .mi { width: 62%; height: auto; aspect-ratio: 1; overflow: visible; }
   .mosaic .mi--mynds { width: 66%; }
+  /* icons play on their own while the mosaic is on screen; offset starts so they don't move in sync */
+  .mosaic .mi-p { animation-delay: var(--d) !important; }
   @media (max-width: 809px) { .mosaic { grid-template-columns: 1fr 1fr; } }
 
 </style>
@@ -1088,3 +1090,11 @@ const buildId = Date.now().toString(36);
   });
 </script>
 
+
+<script>
+  // Mynds mosaic: icons animate automatically while the block is in view
+  document.querySelectorAll<HTMLElement>("[data-mi-auto]").forEach((el) => {
+    const icons = el.querySelectorAll(".mi");
+    new IntersectionObserver(([e]) => icons.forEach((i) => i.classList.toggle("is-on", e.isIntersecting)), { threshold: 0.2 }).observe(el);
+  });
+</script>

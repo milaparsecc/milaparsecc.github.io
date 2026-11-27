@@ -102,7 +102,7 @@ explain them in plain language (she writes in Russian), and never leave the buil
   `{ "type": "wordcycle", "words": [{ "word", "bg", "icon" }] }` — "my + stream" wordmark cycler (code kept, REMOVED from the case:
   owner didn't see the point); logo construction drawing /media/mynds/construction-*.svg (black anchors/handles/guides on mint,
   outlines refitted with nodes at extremes; owner picked black over white lines) follows the opener; `{ "type": "swatches", "colors": [{ "name", "hex", "ink"? }] }` — core colours row;
-  `{ "type": "mosaic", "tiles": [{ "icon", "bg" }] }` — 4×2 pictogram pattern, tiles animate on hover;
+  `{ "type": "mosaic", "tiles": [{ "icon", "bg" }] }` — 4×2 pictogram pattern (m first, all centred one size), icons animate automatically while in view, staggered start;
   `{ "type": "typespec" }` exists but is unused. Logos /media/mynds/logo-*.png and wordmarks wm-*.png are cut from the
   owner's guideline (MyndsGuideline_curves.ai). Owner REJECTED: three plain logo-version tiles and a type specimen
   ("boring"), a logo split with a cursor window and a "Different minds meet." type poster ("horrible"), and the idea
