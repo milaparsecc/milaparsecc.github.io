@@ -601,8 +601,8 @@
         "type": "mosaic",
         "tiles": [
           {
-            "icon": "body",
-            "bg": "#ACEF43"
+            "icon": "mynds",
+            "bg": "#28D198"
           },
           {
             "icon": "work",
@@ -617,8 +617,8 @@
             "bg": "#A264FF"
           },
           {
-            "icon": "mynds",
-            "bg": "#28D198"
+            "icon": "body",
+            "bg": "#ACEF43"
           },
           {
             "icon": "mind",
